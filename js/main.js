@@ -61,7 +61,7 @@ function switchTab(id, btn) {
     {
       file: 'agent_state.py',
       lang: 'python',
-      code: `# LangGraph state — VaultDesk agent
+      code: `LangGraph state — VaultDesk agent
 from typing import TypedDict, List
 from langgraph.graph import StateGraph
 
@@ -90,7 +90,7 @@ app = graph.compile(checkpointer=memory)`
     {
       file: 'rag_pipeline.py',
       lang: 'python',
-      code: `# RAG pipeline — Docling + ChromaDB
+      code: `RAG pipeline — Docling + ChromaDB
 import chromadb
 from docling.document_converter import DocumentConverter
 
@@ -120,7 +120,7 @@ def build_rag(pdf_path: str) -> None:
     {
       file: 'model_router.py',
       lang: 'python',
-      code: `# tiered model selection — Apr 2026
+      code: `tiered model selection — Apr 2026
 from enum import Enum
 
 class TaskType(Enum):
@@ -155,7 +155,7 @@ def route_model(task: TaskType) -> str:
     {
       file: 'eval_pipeline.py',
       lang: 'python',
-      code: `# RAGAS eval — ship with confidence
+      code: `RAGAS eval — ship with confidence
 from ragas import evaluate
 from ragas.metrics import (
     faithfulness,
