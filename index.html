@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>akriceus</title>
+  <meta name="description" content="GenAI engineer. Building agents, RAG pipelines, and multi-agent systems. Notes, resources, and real projects by akriceus.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<canvas id="warp"></canvas>
+<div class="vignette"></div>
+
+<div class="wrap">
+
+<!-- ══════════════════════════════════════════
+     NAV
+══════════════════════════════════════════ -->
+<nav>
+  <div class="nav-logo">
+    <span class="ndot"></span>akriceus
+  </div>
+  <div class="nav-links">
+    <a data-section="roadmap"     onclick="goTo('roadmap')">roadmap</a>
+    <a data-section="concepts"    onclick="goTo('concepts')">concepts</a>
+    <a data-section="resources"   onclick="goTo('resources')">resources</a>
+    <a data-section="projects"    onclick="goTo('projects')">projects</a>
+    <a data-section="newsletters" onclick="goTo('newsletters')">newsletters</a>
+    <a data-section="cheatsheet"  onclick="goTo('cheatsheet')">cheatsheet</a>
+    <a data-section="contact"     onclick="goTo('contact')">contact</a>
+    <a href="https://github.com/divergent99" target="_blank" class="nav-gh">github ↗</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-split">
+    <div class="hero-left">
+      <div class="hero-eyebrow">open knowledge drop — free forever</div>
+      <h1>
+        <span class="h1-l1">learn.</span>
+        <span class="h1-l2">build. ship.</span>
+      </h1>
+      <p class="hero-sub">
+        raw notes. real code. actual experience.<br>
+        by <span class="hl">akriceus</span> — ai engineer @ <span class="hl2">a&amp;m gcc</span>.<br>
+        no fluff. no paywalls. just the signal.
+      </p>
+      <div class="cta-row">
+        <button class="btn-p" onclick="goTo('roadmap')">start learning</button>
+        <button class="btn-g" onclick="goTo('projects')">see projects</button>
+      </div>
+      <div class="hero-scroll">
+        <span class="scroll-line"></span>scroll<span class="scroll-line"></span>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-code-window">
+        <div class="hcw-bar">
+          <span class="hcw-dot" style="background:#ff5f57"></span>
+          <span class="hcw-dot" style="background:#ffbd2e"></span>
+          <span class="hcw-dot" style="background:#28c840"></span>
+          <span class="hcw-file" id="hcw-filename">agent_state.py</span>
+        </div>
+        <div class="hcw-body" id="hcw-body">
+          <pre id="hcw-code"></pre>
+        </div>
+        <div class="hcw-footer">
+          <span class="hcw-lang" id="hcw-lang">python</span>
+          <span class="hcw-status">● live</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat"><span class="stat-num">4</span><span class="stat-lbl">levels</span></div>
+    <div class="stat"><span class="stat-num">16</span><span class="stat-lbl">concepts</span></div>
+    <div class="stat"><span class="stat-num">50+</span><span class="stat-lbl">resources</span></div>
+    <div class="stat"><span class="stat-num">4</span><span class="stat-lbl">projects</span></div>
+    <div class="stat"><span class="stat-num">0</span><span class="stat-lbl">paywalls</span></div>
+  </div>
+</div>
+<div class="glow-line"></div>
+
+<!-- ══════════════════════════════════════════
+     00 — ROADMAP
+══════════════════════════════════════════ -->
+<div class="sec" id="roadmap">
+<div class="container">
+  <div class="sec-tag">00 — start here</div>
+  <h2 class="sec-title">learning roadmap</h2>
+  <p class="sec-sub">click a level to expand. follow this order. don't skip.</p>
+
+  <div class="roadmap">
+
+    <div class="rm-level">
+      <div class="rm-header" onclick="toggleRM(this)">
+        <span class="rm-badge badge-beg">beginner</span>
+        <span class="rm-title">foundations — what is GenAI?</span>
+        <span class="rm-toggle">+</span>
+      </div>
+      <div class="rm-body">
+        <div class="rm-topics">
+          <span class="topic-chip">how LLMs work</span><span class="topic-chip">tokens &amp; context windows</span>
+          <span class="topic-chip">temperature &amp; sampling</span><span class="topic-chip">transformers &amp; attention</span>
+          <span class="topic-chip">prompt engineering basics</span><span class="topic-chip">zero-shot vs few-shot</span>
+          <span class="topic-chip">chain-of-thought</span><span class="topic-chip">hallucinations &amp; why they happen</span>
+          <span class="topic-chip">OpenAI / Anthropic API 101</span><span class="topic-chip">system prompts &amp; roles</span>
+        </div>
+        <p class="rm-note"><strong>start here:</strong> Karpathy "Intro to LLMs" (YouTube, 1hr) → DeepLearning.AI "ChatGPT Prompt Engineering for Devs" → Anthropic Prompt Engineering docs</p>
+      </div>
+    </div>
+
+    <div class="rm-level">
+      <div class="rm-header" onclick="toggleRM(this)">
+        <span class="rm-badge badge-int">intermediate</span>
+        <span class="rm-title">building — RAG, embeddings &amp; APIs</span>
+        <span class="rm-toggle">+</span>
+      </div>
+      <div class="rm-body">
+        <div class="rm-topics">
+          <span class="topic-chip">vector embeddings</span><span class="topic-chip">cosine similarity</span>
+          <span class="topic-chip">vector databases (chromadb, pgvector, qdrant)</span><span class="topic-chip">RAG pipeline architecture</span>
+          <span class="topic-chip">chunking strategies</span><span class="topic-chip">docling &amp; unstructured</span>
+          <span class="topic-chip">LangChain basics</span><span class="topic-chip">FastAPI + LLM backend</span>
+          <span class="topic-chip">streaming SSE</span><span class="topic-chip">structured output / Pydantic</span>
+          <span class="topic-chip">RAGAS eval basics</span><span class="topic-chip">Azure OpenAI vs OpenAI API</span>
+        </div>
+        <p class="rm-note"><span class="c">key project:</span> RAG chatbot over your own docs. FastAPI + ChromaDB + Dash. build this before touching agents.</p>
+      </div>
+    </div>
+
+    <div class="rm-level">
+      <div class="rm-header" onclick="toggleRM(this)">
+        <span class="rm-badge badge-adv">advanced</span>
+        <span class="rm-title">agentic AI — agents, graphs &amp; orchestration</span>
+        <span class="rm-toggle">+</span>
+      </div>
+      <div class="rm-body">
+        <div class="rm-topics">
+          <span class="topic-chip">ReAct pattern</span><span class="topic-chip">tool calling</span>
+          <span class="topic-chip">LangGraph state machines</span><span class="topic-chip">multi-agent orchestration</span>
+          <span class="topic-chip">CrewAI roles &amp; tasks</span><span class="topic-chip">memory (short/long-term, episodic)</span>
+          <span class="topic-chip">corrective &amp; adaptive RAG</span><span class="topic-chip">human-in-the-loop (HITL)</span>
+          <span class="topic-chip">prompt injection defense</span><span class="topic-chip">LangSmith observability</span>
+          <span class="topic-chip">DeepEval / LLM-as-judge</span><span class="topic-chip">Amazon Bedrock / Nova</span>
+          <span class="topic-chip">MCP (Model Context Protocol)</span>
+        </div>
+        <p class="rm-note"><span class="v">key project:</span> multi-agent due diligence pipeline. supervisor routes to researcher, analyst, writer sub-agents. state in LangGraph.</p>
+      </div>
+    </div>
+
+    <div class="rm-level">
+      <div class="rm-header" onclick="toggleRM(this)">
+        <span class="rm-badge badge-exp">expert</span>
+        <span class="rm-title">production — fine-tuning, evals &amp; deployment</span>
+        <span class="rm-toggle">+</span>
+      </div>
+      <div class="rm-body">
+        <div class="rm-topics">
+          <span class="topic-chip">fine-tuning vs RAG</span><span class="topic-chip">LoRA / QLoRA</span>
+          <span class="topic-chip">RLHF &amp; DPO</span><span class="topic-chip">quantization (GGUF, GPTQ)</span>
+          <span class="topic-chip">vLLM inference</span><span class="topic-chip">eval pipelines in CI/CD</span>
+          <span class="topic-chip">cost optimization</span><span class="topic-chip">hybrid search (BM25 + semantic)</span>
+          <span class="topic-chip">graph RAG</span><span class="topic-chip">multimodal</span>
+          <span class="topic-chip">data leakage &amp; jailbreaks</span><span class="topic-chip">enterprise deployment</span>
+        </div>
+        <p class="rm-note"><span class="o">mindset shift:</span> bottleneck is now evals and iteration speed, not model capability. instrument everything. treat LLM calls like db queries.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════
+     01 — CORE CONCEPTS
+══════════════════════════════════════════ -->
+<div class="sec" id="concepts">
+<div class="container">
+  <div class="sec-tag">01 — foundations</div>
+  <h2 class="sec-title">core concepts</h2>
+  <p class="sec-sub">12 core concepts. click any card to go deeper. no shortcuts.</p>
+
+  <p class="concepts-hint">click any card to go deeper ↗</p>
+
+  <div class="concepts-grid">
+
+    <a class="c-card" href="https://www.youtube.com/watch?v=zjkBMFhNj_g" target="_blank" style="--grd:linear-gradient(90deg,#6366f1,#22d3ee)">
+      <div class="c-num">[ 001 ] LLMs</div>
+      <div class="c-title">Large Language Models</div>
+      <div class="c-desc">transformers trained on massive text to predict next tokens. probability distribution over vocabulary is everything. GPT-4, Claude, Llama — same architecture, different scale.</div>
+      <div class="c-tags"><span class="c-tag">transformers</span><span class="c-tag">attention</span><span class="c-tag">tokens</span><span class="c-tag">RLHF</span></div>
+      <div class="c-link-hint">Karpathy: Intro to LLMs ↗</div>
+    </a>
+
+    <a class="c-card" href="https://arxiv.org/abs/2005.11401" target="_blank" style="--grd:linear-gradient(90deg,#22d3ee,#4ade80)">
+      <div class="c-num">[ 002 ] RAG</div>
+      <div class="c-title">Retrieval-Augmented Generation</div>
+      <div class="c-desc">ground your LLM in real data at inference time. prevents hallucinations about domain knowledge. chunk → embed → store → retrieve → generate. that's the loop.</div>
+      <div class="c-tags"><span class="c-tag">embeddings</span><span class="c-tag">vector db</span><span class="c-tag">semantic search</span><span class="c-tag">chromadb</span></div>
+      <div class="c-link-hint">Original RAG paper — Lewis et al. ↗</div>
+    </a>
+
+    <a class="c-card" href="https://arxiv.org/abs/2210.11610" target="_blank" style="--grd:linear-gradient(90deg,#a78bfa,#f472b6)">
+      <div class="c-num">[ 003 ] Agents</div>
+      <div class="c-title">Agentic AI &amp; Tool Use</div>
+      <div class="c-desc">LLMs that call tools, take actions, loop until goal met. the model decides what to call. langgraph makes this stateful. crewai adds roles and collaboration.</div>
+      <div class="c-tags"><span class="c-tag">ReAct</span><span class="c-tag">tool calling</span><span class="c-tag">planning</span><span class="c-tag">LangGraph</span></div>
+      <div class="c-link-hint">ReAct paper — Yao et al. ↗</div>
+    </a>
+
+    <a class="c-card" href="https://platform.openai.com/docs/guides/embeddings" target="_blank" style="--grd:linear-gradient(90deg,#fb923c,#f472b6)">
+      <div class="c-num">[ 004 ] Embeddings</div>
+      <div class="c-title">Vector Embeddings</div>
+      <div class="c-desc">semantic compression of text into high-dimensional vectors. similar meaning = similar direction. text-embedding-3-small or bge-large are your go-to. dimensions matter.</div>
+      <div class="c-tags"><span class="c-tag">cosine sim</span><span class="c-tag">ada-002</span><span class="c-tag">bge</span><span class="c-tag">FAISS</span></div>
+      <div class="c-link-hint">OpenAI Embeddings Guide ↗</div>
+    </a>
+
+    <a class="c-card" href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" style="--grd:linear-gradient(90deg,#4ade80,#22d3ee)">
+      <div class="c-num">[ 005 ] Prompting</div>
+      <div class="c-title">Prompt Engineering</div>
+      <div class="c-desc">system prompts, few-shot, CoT, XML tags for Claude, JSON mode, output constraints. controlling model behavior without touching weights. massively underrated. master this first.</div>
+      <div class="c-tags"><span class="c-tag">CoT</span><span class="c-tag">few-shot</span><span class="c-tag">XML tags</span><span class="c-tag">structured output</span></div>
+      <div class="c-link-hint">Anthropic Prompt Engineering Guide ↗</div>
+    </a>
+
+    <a class="c-card" href="https://arxiv.org/abs/2106.09685" target="_blank" style="--grd:linear-gradient(90deg,#6366f1,#a78bfa)">
+      <div class="c-num">[ 006 ] Fine-Tuning</div>
+      <div class="c-title">Fine-Tuning &amp; PEFT</div>
+      <div class="c-desc">adapting a base model to your domain. LoRA injects low-rank matrices into attention layers. QLoRA at 4-bit. use when RAG + prompting isn't enough.</div>
+      <div class="c-tags"><span class="c-tag">LoRA</span><span class="c-tag">QLoRA</span><span class="c-tag">PEFT</span><span class="c-tag">unsloth</span></div>
+      <div class="c-link-hint">LoRA paper — Hu et al. ↗</div>
+    </a>
+
+    <a class="c-card" href="https://langchain-ai.github.io/langgraph/tutorials/" target="_blank" style="--grd:linear-gradient(90deg,#22d3ee,#6366f1)">
+      <div class="c-num">[ 007 ] Orchestration</div>
+      <div class="c-title">Multi-Agent Orchestration</div>
+      <div class="c-desc">routing tasks across specialized agents, managing state, handling failures. supervisor delegates to workers. LangGraph's graph state is the cleanest abstraction. harder than it looks.</div>
+      <div class="c-tags"><span class="c-tag">LangGraph</span><span class="c-tag">state machines</span><span class="c-tag">supervisor</span><span class="c-tag">routing</span></div>
+      <div class="c-link-hint">LangGraph Tutorials ↗</div>
+    </a>
+
+    <a class="c-card" href="https://docs.ragas.io/en/stable/" target="_blank" style="--grd:linear-gradient(90deg,#f472b6,#fb923c)">
+      <div class="c-num">[ 008 ] Evals</div>
+      <div class="c-title">LLM Evaluation</div>
+      <div class="c-desc">shipping without evals is shipping blind. RAGAS for RAG pipelines. DeepEval for LLM-as-judge. LangSmith for tracing. treat evals like unit tests — run them in CI.</div>
+      <div class="c-tags"><span class="c-tag">DeepEval</span><span class="c-tag">RAGAS</span><span class="c-tag">LangSmith</span><span class="c-tag">faithfulness</span></div>
+      <div class="c-link-hint">RAGAS Documentation ↗</div>
+    </a>
+
+    <a class="c-card" href="https://modelcontextprotocol.io/introduction" target="_blank" style="--grd:linear-gradient(90deg,#4ade80,#a78bfa)">
+      <div class="c-num">[ 009 ] MCP</div>
+      <div class="c-title">Model Context Protocol</div>
+      <div class="c-desc">Anthropic's open standard for giving AI models access to external tools and data. the USB-C of AI integrations. build once, works across Claude, Cursor, and custom apps.</div>
+      <div class="c-tags"><span class="c-tag">Anthropic</span><span class="c-tag">tools</span><span class="c-tag">servers</span><span class="c-tag">open standard</span></div>
+      <div class="c-link-hint">MCP Official Docs ↗</div>
+    </a>
+
+    <a class="c-card" href="https://github.com/docling-project/docling" target="_blank" style="--grd:linear-gradient(90deg,#fb923c,#6366f1)">
+      <div class="c-num">[ 010 ] Chunking</div>
+      <div class="c-title">Document Processing</div>
+      <div class="c-desc">how you split documents determines RAG quality more than model choice. recursive, semantic, parent-doc retriever. docling for structure-aware parsing of tables and headings.</div>
+      <div class="c-tags"><span class="c-tag">docling</span><span class="c-tag">recursive split</span><span class="c-tag">semantic chunking</span><span class="c-tag">overlap</span></div>
+      <div class="c-link-hint">Docling by IBM ↗</div>
+    </a>
+
+    <a class="c-card" href="https://langchain-ai.github.io/langgraph/concepts/memory/" target="_blank" style="--grd:linear-gradient(90deg,#22d3ee,#f472b6)">
+      <div class="c-num">[ 011 ] Memory</div>
+      <div class="c-title">Memory &amp; State</div>
+      <div class="c-desc">agents need memory. in-context (short-term), external db (long-term), episodic (past conversations). LangGraph manages state across nodes. mem0 and Zep for persistence.</div>
+      <div class="c-tags"><span class="c-tag">in-context</span><span class="c-tag">mem0</span><span class="c-tag">episodic</span><span class="c-tag">LangGraph state</span></div>
+      <div class="c-link-hint">LangGraph Memory Concepts ↗</div>
+    </a>
+
+    <a class="c-card" href="https://www.anthropic.com/research/building-effective-agents" target="_blank" style="--grd:linear-gradient(90deg,#a78bfa,#fb923c)">
+      <div class="c-num">[ 012 ] Guardrails</div>
+      <div class="c-title">Safety &amp; Guardrails</div>
+      <div class="c-desc">constitutional AI, RLHF, output filtering, prompt injection defense. production GenAI without guardrails is a liability. NeMo Guardrails, Llama Guard. think about it day one.</div>
+      <div class="c-tags"><span class="c-tag">RLHF</span><span class="c-tag">NeMo</span><span class="c-tag">prompt injection</span><span class="c-tag">alignment</span></div>
+      <div class="c-link-hint">Building Effective Agents — Anthropic ↗</div>
+    </a>
+
+  </div><!-- /.concepts-grid -->
+</div>
+</div>
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════
+     01.5 — BIGGER PICTURE
+══════════════════════════════════════════ -->
+<div class="sec" id="bigger-picture">
+<div class="container">
+  <div class="sec-tag">01.5 — bigger picture</div>
+  <h2 class="sec-title">things worth knowing</h2>
+  <p class="sec-sub">beyond the technical. the strategic, the philosophical, the stuff no course teaches you.</p>
+</div>
+
+<!-- DEPLOYMENT — contained card -->
+<div class="container">
+<div class="bp-banner">
+  <div class="bp-banner-inner">
+    <div class="bp-banner-left">
+      <a href="https://railway.app/docs" target="_blank" class="bp-num">[ 013 ] Deployment ↗</a>
+      <div class="bp-banner-title">Shipping to Production</div>
+      <p class="bp-banner-desc">a working agent on your laptop is worthless until it's live. this is the part most tutorials skip entirely.</p>
+    </div>
+    <div class="bp-banner-steps">
+      <div class="bp-step"><span class="bp-step-n">01</span><span class="bp-step-t">Dockerize your FastAPI app. pin your base image. use <code>python:3.11-slim</code>. multi-stage builds to keep image small.</span></div>
+      <div class="bp-step"><span class="bp-step-n">02</span><span class="bp-step-t">streaming needs ASGI. run <code>uvicorn app:app --workers 4</code>. don't use <code>--reload</code> in prod.</span></div>
+      <div class="bp-step"><span class="bp-step-n">03</span><span class="bp-step-t">env vars: <code>.env</code> locally, platform secrets in prod. never hardcode keys. use <code>python-dotenv</code>.</span></div>
+      <div class="bp-step"><span class="bp-step-n">04</span><span class="bp-step-t">Railway = fastest zero-config. connect github repo, add env vars, done. Cloud Run for enterprise / GCP shops.</span></div>
+    </div>
+    <div class="bp-tags">
+      <span class="c-tag">Railway</span><span class="c-tag">Docker</span><span class="c-tag">Cloud Run</span><span class="c-tag">uvicorn</span><span class="c-tag">env vars</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- USE CASE DESIGN + LLM COMPARISON — side by side -->
+<div class="container">
+<div class="bp-duo">
+
+  <a class="bp-card" href="https://www.anthropic.com/research/building-effective-agents" target="_blank">
+    <div class="bp-card-tag">[ 014 ] Use Case Design</div>
+    <div class="bp-card-title">How to approach any GenAI problem</div>
+    <div class="bp-steps-list">
+      <div class="bp-step-row">
+        <span class="bp-step-label" style="color:var(--cyan)">define the task</span>
+        <span class="bp-step-body">what's the input? what's the output? what does "correct" mean? if you can't answer these, don't write a line of code yet.</span>
+      </div>
+      <div class="bp-step-row">
+        <span class="bp-step-label" style="color:var(--violet)">pick the pattern</span>
+        <span class="bp-step-body">static data + Q&amp;A → RAG. multi-step autonomous task → agent. domain tone/style → fine-tune. most things are RAG. don't overengineer.</span>
+      </div>
+      <div class="bp-step-row">
+        <span class="bp-step-label" style="color:var(--green)">eval first</span>
+        <span class="bp-step-body">write 20 test cases before you write any code. if you can't measure it, you can't ship it. this is the hardest discipline to build.</span>
+      </div>
+      <div class="bp-step-row">
+        <span class="bp-step-label" style="color:var(--orange)">start minimal</span>
+        <span class="bp-step-body">one agent, one tool. add complexity only when evals break. the system that ships beats the system that's perfect.</span>
+      </div>
+    </div>
+    <div class="bp-card-link">Anthropic: Building Effective Agents ↗</div>
+  </a>
+
+  <a class="bp-card" href="https://artificialanalysis.ai/models" target="_blank">
+    <div class="bp-card-tag">[ 015 ] LLM Comparison — updated Apr 2026</div>
+    <div class="bp-card-title">Current model landscape</div>
+    <div class="bp-model-list">
+      <div class="bp-model">
+        <span class="bp-model-name" style="color:var(--violet)">Claude Sonnet 4.6 / Opus 4.6 (Anthropic)</span>
+        <span class="bp-model-badge">best for enterprise</span>
+        <p class="bp-model-desc">Sonnet 4.6 is the daily driver — best instruction following, doc analysis, XML tags work beautifully. Opus 4.6 for deep reasoning. Haiku 4.5 for fast routing. what I use in consulting work and A&M GCC.</p>
+      </div>
+      <div class="bp-model">
+        <span class="bp-model-name" style="color:var(--green)">GPT-5.4 / GPT-4.1 (OpenAI)</span>
+        <span class="bp-model-badge">best ecosystem</span>
+        <p class="bp-model-desc">GPT-5.4 is OpenAI's current flagship — complex reasoning + coding. GPT-4.1 is the coding specialist with 1M token context, best at precise instruction following. GPT-4.1 mini for cost-sensitive routing.</p>
+      </div>
+      <div class="bp-model">
+        <span class="bp-model-name" style="color:var(--cyan)">Gemini 2.5 Pro / 3 Flash (Google)</span>
+        <span class="bp-model-badge">best context + speed</span>
+        <p class="bp-model-desc">Gemini 2.5 Pro is stable production-ready, 1M context, deep reasoning. Gemini 3 Flash is now the default — next-gen speed + multimodal. Live API for realtime voice — used in Gemini VDR. free tier is genuinely generous.</p>
+      </div>
+      <div class="bp-model">
+        <span class="bp-model-name" style="color:var(--orange)">Llama 3.3 70b / o3 (Meta / OpenAI)</span>
+        <span class="bp-model-badge">open source + reasoning</span>
+        <p class="bp-model-desc">Llama 3.3 70b via Groq = free, ~300 tok/sec, great for dev and cost-sensitive prod. o3 for deep STEM reasoning when you need it — slower but unbeatable on math, science, hard coding.</p>
+      </div>
+    </div>
+    <div class="bp-card-link">Artificial Analysis — live benchmarks ↗</div>
+  </a>
+
+</div>
+</div>
+
+<!-- AI BUBBLE — contained card -->
+<div class="container">
+<div class="bp-bubble">
+  <div class="bp-bubble-inner">
+    <div class="bp-bubble-left">
+      <a href="https://www.sequoiacap.com/article/ais-600b-question/" target="_blank" class="bp-num">[ 016 ] The AI Bubble ↗</a>
+      <div class="bp-bubble-title">Hype vs Reality</div>
+      <p class="bp-bubble-sub">an honest take from someone building in it</p>
+    </div>
+    <div class="bp-bubble-cols">
+      <div class="bp-bubble-col">
+        <div class="bp-bubble-col-head" style="color:var(--red)">what's overvalued</div>
+        <p>GPT-4 wrappers with no moat. $100M valuations on 3-person teams with no proprietary data. "AI-powered" SaaS that's literally just a prompt + API call with a landing page.</p>
+      </div>
+      <div class="bp-bubble-col">
+        <div class="bp-bubble-col-head" style="color:var(--green)">what's actually real</div>
+        <p>companies with proprietary data + tight AI integration. the infra layer (Anthropic, OpenAI, Google). tooling. domain-specific apps with high switching costs and network effects.</p>
+      </div>
+      <div class="bp-bubble-col">
+        <div class="bp-bubble-col-head" style="color:var(--cyan)">where value actually sits</div>
+        <p>data flywheel + fine-tuned models + workflow integration. models are being commoditized fast. your moat is your data and your eval pipeline. build those.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</div><!-- /.sec#bigger-picture -->
+
+<!-- ══════════════════════════════════════════
+     USE CASE DECONSTRUCTOR
+══════════════════════════════════════════ -->
+<div class="sec" id="deconstructor">
+<div class="container">
+  <div class="sec-tag">01.6 — use case breakdown</div>
+  <h2 class="sec-title">PE Due Diligence Automation</h2>
+  <p class="sec-sub">a client comes to you with a problem. walk through how to deconstruct any GenAI use case — what to build, what to skip, and why.</p>
+
+  <!-- WHY THIS EXAMPLE (merged from #pipeline) -->
+  <div class="vp-why">
+    <div class="sec-tag">// real use case — why this example</div>
+    <div class="vp-why-grid">
+      <div class="vp-why-card">
+        <div class="vp-why-label">why this use case</div>
+        <p>PE due diligence is the ideal GenAI use case — structured inputs (PDFs), structured outputs (fixed report template), bounded reasoning, measurable quality. if you understand how this pipeline was built, you can build any enterprise document workflow.</p>
+      </div>
+      <div class="vp-why-card">
+        <div class="vp-why-label">what the diagram shows</div>
+        <p>this is the actual architecture of Verdikt — every node is a real agent or processing step. edges show real data flow. click any node to see the exact model, tools, inputs and outputs used in production.</p>
+      </div>
+      <div class="vp-why-card">
+        <div class="vp-why-label">apply it to your use case</div>
+        <p>swap "CIM Document" for any domain document. the supervisor → specialist → writer pattern works for legal contracts, medical records, financial filings, procurement docs — any structured document workflow.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PIPELINE CONTROLS + DIAGRAM (merged from #pipeline) -->
+  <div class="vp-controls">
+    <button class="vp-run-btn" id="vp-run-btn" onclick="vpRun()">
+      <span id="vp-run-label">run pipeline</span>
+    </button>
+    <button class="vp-reset-btn" onclick="vpReset()">reset</button>
+    <span class="vp-timer" id="vp-timer"></span>
+    <span class="vp-hint-inline">click any node to inspect</span>
+  </div>
+
+  <!-- SVG PIPELINE DIAGRAM -->
+  <div class="vp-svg-wrap">
+    <svg id="vp-svg" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arr-idle"   markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="rgba(99,102,241,0.35)"/></marker>
+        <marker id="arr-active" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#6366f1"/></marker>
+        <marker id="arr-done"   markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#4ade80"/></marker>
+        <filter id="glow-cyan" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3.5" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- start → input -->
+      <line class="vp-edge-line vp-edge-static" x1="84" y1="174" x2="99" y2="174" stroke-dasharray="4 3" marker-end="url(#arr-idle)"/>
+
+      <!-- input → docling -->
+      <line id="vpe-0" class="vp-edge-line" x1="211" y1="174" x2="253" y2="174" stroke-dasharray="5 4" marker-end="url(#arr-idle)"/>
+
+      <!-- docling → supervisor -->
+      <line id="vpe-1" class="vp-edge-line" x1="367" y1="174" x2="428" y2="174" stroke-dasharray="5 4" marker-end="url(#arr-idle)"/>
+
+      <!-- supervisor → researcher: down-left curve -->
+      <path id="vpe-2" class="vp-edge-path" d="M 470 210 Q 420 250 370 268" fill="none" stroke-dasharray="5 4" marker-end="url(#arr-idle)"/>
+
+      <!-- supervisor → analyst: down-right curve -->
+      <path id="vpe-3" class="vp-edge-path" d="M 530 210 Q 580 250 630 268" fill="none" stroke-dasharray="5 4" marker-end="url(#arr-idle)"/>
+
+      <!-- researcher → writer: up-right curve -->
+      <path id="vpe-4" class="vp-edge-path" d="M 446 268 Q 560 240 625 210" fill="none" stroke-dasharray="5 4" marker-end="url(#arr-idle)"/>
+
+      <!-- analyst → writer: up-right short -->
+      <path id="vpe-5" class="vp-edge-path" d="M 706 268 Q 720 240 692 210" fill="none" stroke-dasharray="5 4" marker-end="url(#arr-idle)"/>
+
+      <!-- writer → output -->
+      <line id="vpe-6" class="vp-edge-line" x1="757" y1="174" x2="798" y2="174" stroke-dasharray="5 4" marker-end="url(#arr-idle)"/>
+
+      <!-- output → end pill -->
+      <line class="vp-edge-line vp-edge-static" x1="911" y1="174" x2="935" y2="174" stroke-dasharray="4 3" marker-end="url(#arr-idle)"/>
+
+      <!-- ════ START PILL ════ -->
+      <g class="vp-svg-start">
+        <rect x="18" y="160" width="66" height="28" rx="14" class="vp-node-start-bg"/>
+        <text x="51" y="179" text-anchor="middle" class="vp-svg-label-start">start</text>
+      </g>
+
+      <!-- ════ MAIN ROW NODES ════ -->
+
+      <!-- input  cx=155, x=100, w=110 -->
+      <g id="vpn-input" class="vp-svg-node" data-id="input" onclick="vpSelect('input')">
+        <rect x="100" y="140" width="110" height="68" rx="10" class="vp-nrect"/>
+        <text x="155" y="161" text-anchor="middle" class="vp-nlabel-type">INPUT</text>
+        <text x="155" y="181" text-anchor="middle" class="vp-nlabel-name">CIM Doc</text>
+        <text x="155" y="198" text-anchor="middle" class="vp-nlabel-meta">PDF · 184 pages</text>
+      </g>
+
+      <!-- docling  cx=310, x=255, w=110 -->
+      <g id="vpn-docling" class="vp-svg-node" data-id="docling" onclick="vpSelect('docling')">
+        <rect x="255" y="140" width="110" height="68" rx="10" class="vp-nrect"/>
+        <text x="310" y="161" text-anchor="middle" class="vp-nlabel-type">PARSER</text>
+        <text x="310" y="181" text-anchor="middle" class="vp-nlabel-name">Docling</text>
+        <text x="310" y="198" text-anchor="middle" class="vp-nlabel-meta">342 chunks</text>
+      </g>
+
+      <!-- supervisor  cx=500, x=430, w=140 -->
+      <g id="vpn-supervisor" class="vp-svg-node vp-svg-super" data-id="supervisor" onclick="vpSelect('supervisor')">
+        <rect x="430" y="132" width="140" height="84" rx="10" class="vp-nrect"/>
+        <text x="500" y="155" text-anchor="middle" class="vp-nlabel-type">SUPERVISOR</text>
+        <text x="500" y="178" text-anchor="middle" class="vp-nlabel-name">LangGraph</text>
+        <text x="500" y="198" text-anchor="middle" class="vp-nlabel-meta">Claude Sonnet 4.6</text>
+      </g>
+
+      <!-- researcher  cx=370, x=295, w=150 -->
+      <g id="vpn-researcher" class="vp-svg-node vp-svg-spec" data-id="researcher" onclick="vpSelect('researcher')">
+        <rect x="295" y="268" width="150" height="70" rx="10" class="vp-nrect"/>
+        <text x="370" y="289" text-anchor="middle" class="vp-nlabel-type">SPECIALIST</text>
+        <text x="370" y="311" text-anchor="middle" class="vp-nlabel-name">Researcher</text>
+        <text x="370" y="328" text-anchor="middle" class="vp-nlabel-meta">Groq · Tavily · ChromaDB</text>
+      </g>
+
+      <!-- analyst  cx=630, x=555, w=150 -->
+      <g id="vpn-analyst" class="vp-svg-node vp-svg-spec" data-id="analyst" onclick="vpSelect('analyst')">
+        <rect x="555" y="268" width="150" height="70" rx="10" class="vp-nrect"/>
+        <text x="630" y="289" text-anchor="middle" class="vp-nlabel-type">SPECIALIST</text>
+        <text x="630" y="311" text-anchor="middle" class="vp-nlabel-name">Analyst</text>
+        <text x="630" y="328" text-anchor="middle" class="vp-nlabel-meta">Claude · Pydantic</text>
+      </g>
+
+      <!-- writer  cx=690, x=625, w=130 -->
+      <g id="vpn-writer" class="vp-svg-node" data-id="writer" onclick="vpSelect('writer')">
+        <rect x="625" y="140" width="130" height="68" rx="10" class="vp-nrect"/>
+        <text x="690" y="161" text-anchor="middle" class="vp-nlabel-type">WRITER</text>
+        <text x="690" y="181" text-anchor="middle" class="vp-nlabel-name">Writer Agent</text>
+        <text x="690" y="198" text-anchor="middle" class="vp-nlabel-meta">Claude Sonnet 4.6</text>
+      </g>
+
+      <!-- output  cx=855, x=800, w=110 -->
+      <g id="vpn-output" class="vp-svg-node vp-svg-out" data-id="output" onclick="vpSelect('output')">
+        <rect x="800" y="140" width="110" height="68" rx="10" class="vp-nrect"/>
+        <text x="855" y="161" text-anchor="middle" class="vp-nlabel-type">OUTPUT</text>
+        <text x="855" y="181" text-anchor="middle" class="vp-nlabel-name">DD Report</text>
+        <text x="855" y="198" text-anchor="middle" class="vp-nlabel-meta">~90 seconds</text>
+      </g>
+
+      <!-- ════ END PILL ════ -->
+      <g class="vp-svg-end">
+        <rect x="930" y="160" width="56" height="28" rx="14" class="vp-node-end-bg"/>
+        <text x="958" y="179" text-anchor="middle" class="vp-svg-label-end">end</text>
+      </g>
+
+      <!-- ════ PARALLEL LABEL ════ -->
+      <text x="500" y="258" text-anchor="middle" class="vp-parallel-label">[ parallel execution ]</text>
+
+      <!-- ════ STATE BAR ════ -->
+      <rect x="18" y="362" width="964" height="26" rx="4" fill="rgba(99,102,241,0.05)" stroke="rgba(99,102,241,0.18)" stroke-width="1"/>
+      <text x="36" y="380" class="vp-state-text">AgentState  {  messages,  cim_chunks,  researcher_output,  analyst_output,  report  }</text>
+
+    </svg>
+  </div>
+
+  <!-- DETAIL PANEL -->
+  <div class="vp-detail" id="vp-detail">
+    <div class="vp-detail-inner" id="vp-detail-inner">
+      <div class="vp-detail-empty">— click any node to inspect it —</div>
+    </div>
+  </div>
+
+  <!-- BUSINESS CONTEXT -->
+  <div class="decon-header">
+    <div class="decon-brief">
+      <div class="decon-label">the business problem</div>
+      <p>PE analysts spend 40–60 hrs per deal manually reading CIM documents, pulling news, checking financials, and writing the same structured due diligence report. the output format never changes. the work is high-volume, repetitive, and rule-driven.</p>
+    </div>
+    <div class="decon-brief">
+      <div class="decon-label">why GenAI fits here</div>
+      <p>the inputs are structured (PDFs, web data). the output is structured (a fixed report format). the reasoning is bounded — not open-ended creativity. there's domain knowledge that can be encoded. measurable quality. this is the sweet spot.</p>
+    </div>
+    <div class="decon-brief">
+      <div class="decon-label">what we shipped</div>
+      <p>multi-agent system (Verdikt). supervisor routes to researcher, analyst, writer. full report in ~90 seconds. the same architecture applies to any consulting, legal, or financial document workflow.</p>
+    </div>
+  </div>
+
+  <div class="decon-decisions">
+
+    <div class="dd-step" onclick="toggleDD(this)">
+      <div class="dd-step-header">
+        <span class="dd-step-num">decision 01</span>
+        <span class="dd-step-q">what pattern fits this use case?</span>
+        <span class="dd-step-ans chose">→ multi-agent</span>
+        <span class="dd-toggle">+</span>
+      </div>
+      <div class="dd-body">
+        <div class="dd-options">
+          <div class="dd-option dd-rejected">
+            <div class="dd-opt-label rejected">✗ fine-tune</div>
+            <div class="dd-opt-why">fine-tuning gives you style, not capability. you can't fine-tune a model to browse the web or query a vector DB. it's the wrong tool for tasks that require live data access and multi-step reasoning.</div>
+          </div>
+          <div class="dd-option dd-considered">
+            <div class="dd-opt-label considered">~ RAG only</div>
+            <div class="dd-opt-why">RAG handles "answer questions from documents" well. but this use case requires: search the web → pull the CIM → cross-reference financials → structure a report. RAG doesn't orchestrate across steps — it just retrieves. you need something that can plan.</div>
+          </div>
+          <div class="dd-option dd-chosen">
+            <div class="dd-opt-label chosen">✓ multi-agent with RAG inside</div>
+            <div class="dd-opt-why">the task decomposes cleanly: research (web + docs) → analyse (financial reasoning, risk) → write (structured output). each step is a specialist with its own tools. RAG lives inside the researcher agent. the supervisor orchestrates the flow. LangGraph manages state across all of them.</div>
+          </div>
+        </div>
+        <div class="dd-rule">rule: if a human would break the task into distinct phases with different skills — it's multi-agent. if it's one Q&amp;A interaction over documents — RAG is enough.</div>
+      </div>
+    </div>
+
+    <div class="dd-step" onclick="toggleDD(this)">
+      <div class="dd-step-header">
+        <span class="dd-step-num">decision 02</span>
+        <span class="dd-step-q">which model? cost vs quality tradeoff</span>
+        <span class="dd-step-ans chose">→ depends on the context</span>
+        <span class="dd-toggle">+</span>
+      </div>
+      <div class="dd-body">
+        <div class="dd-options">
+          <div class="dd-option dd-rejected">
+            <div class="dd-opt-label rejected">✗ one model for everything</div>
+            <div class="dd-opt-why">using GPT-4o for every step including simple routing and classification burns money and adds latency. a PE firm processing 50 deals/month can't afford $0.30 per report step multiplied across 200 LLM calls.</div>
+          </div>
+          <div class="dd-option dd-considered">
+            <div class="dd-opt-label considered">~ Claude for everything</div>
+            <div class="dd-opt-why">Claude Sonnet is excellent for document analysis and structured output. but using it for classification routing and simple transformations is overkill. reserve heavyweight models for heavyweight tasks.</div>
+          </div>
+          <div class="dd-option dd-chosen">
+            <div class="dd-opt-label chosen">✓ tiered model selection</div>
+            <div class="dd-opt-why">routing + classification → <strong style="color:var(--orange)">Claude Haiku 4.5 / GPT-4.1 mini</strong> (fast, cheap). document analysis → <strong style="color:var(--violet)">Claude Sonnet 4.6</strong>. deep financial reasoning → <strong style="color:var(--cyan)">Claude Opus 4.6 or o3</strong>. dev/prototyping → <strong style="color:var(--green)">Groq LLaMA 3.3 70b</strong> (free, ~300 tok/sec). the right model for the right step.</div>
+          </div>
+        </div>
+        <div class="dd-rule">rule: route cheap tasks to cheap models. only pay for reasoning power when the task actually needs reasoning.</div>
+      </div>
+    </div>
+
+    <div class="dd-step" onclick="toggleDD(this)">
+      <div class="dd-step-header">
+        <span class="dd-step-num">decision 03</span>
+        <span class="dd-step-q">how do you handle the input documents?</span>
+        <span class="dd-step-ans chose">→ docling + chromadb</span>
+        <span class="dd-toggle">+</span>
+      </div>
+      <div class="dd-body">
+        <div class="dd-options">
+          <div class="dd-option dd-rejected">
+            <div class="dd-opt-label rejected">✗ pypdf + naive chunking</div>
+            <div class="dd-opt-why">CIM documents have financial tables, section headers, and structured data. pypdf strips all of that and returns a flat blob of text. you lose 40% of the signal before the model even sees it. never use this for structured financial documents.</div>
+          </div>
+          <div class="dd-option dd-considered">
+            <div class="dd-opt-label considered">~ stuff everything in context</div>
+            <div class="dd-opt-why">works with Gemini's 1M context window, but expensive and slow. also doesn't scale when each deal has 200 pages of attachments. retrieval is still better architecture than long-context stuffing for production workloads.</div>
+          </div>
+          <div class="dd-option dd-chosen">
+            <div class="dd-opt-label chosen">✓ Docling → chunk → ChromaDB</div>
+            <div class="dd-opt-why">Docling preserves table structure, headings, and section hierarchy — critical for financials. semantic chunking at 512 tokens, 50 overlap. ChromaDB for local dev, pgvector or Qdrant for production scale. hybrid retrieval (BM25 + semantic) for best recall.</div>
+          </div>
+        </div>
+        <div class="dd-rule">rule: if your documents have tables or structured sections, use structure-aware parsing. docling &gt; everything else for financial and legal docs.</div>
+      </div>
+    </div>
+
+    <div class="dd-step" onclick="toggleDD(this)">
+      <div class="dd-step-header">
+        <span class="dd-step-num">decision 04</span>
+        <span class="dd-step-q">how many agents and what architecture?</span>
+        <span class="dd-step-ans chose">→ supervisor + 3 specialists</span>
+        <span class="dd-toggle">+</span>
+      </div>
+      <div class="dd-body">
+        <div class="dd-options">
+          <div class="dd-option dd-rejected">
+            <div class="dd-opt-label rejected">✗ single agent, all tools</div>
+            <div class="dd-opt-why">one agent with 8 tools, a massive prompt, and a multi-step task loses track of what it's doing. context gets bloated. the model starts confusing its own outputs. quality degrades hard past ~5k tokens in the agent loop.</div>
+          </div>
+          <div class="dd-option dd-chosen">
+            <div class="dd-opt-label chosen">✓ supervisor + 3 specialists</div>
+            <div class="dd-opt-why"><strong style="color:var(--cyan)">Researcher</strong> — Tavily web search + ChromaDB RAG. focused on finding information. 2 tools max.<br><strong style="color:var(--violet)">Analyst</strong> — financial ratio calculation, risk scoring, competitive positioning. gets researcher's output as context.<br><strong style="color:var(--green)">Writer</strong> — takes analyst output, generates structured Pydantic report. no tools, pure generation.<br>The supervisor routes between them. each has a tight prompt and a clear job. output quality is dramatically better.</div>
+          </div>
+        </div>
+        <div class="dd-rule">rule: specialisation beats generalisation in agents. a focused agent with 2 tools outperforms a god-agent with 10. decompose until each agent has one clear job.</div>
+      </div>
+    </div>
+
+    <div class="dd-step" onclick="toggleDD(this)">
+      <div class="dd-step-header">
+        <span class="dd-step-num">decision 05</span>
+        <span class="dd-step-q">how do you measure if it's actually working?</span>
+        <span class="dd-step-ans chose">→ structured output + RAGAS</span>
+        <span class="dd-toggle">+</span>
+      </div>
+      <div class="dd-body">
+        <div class="dd-options">
+          <div class="dd-option dd-rejected">
+            <div class="dd-opt-label rejected">✗ vibe check / manual review</div>
+            <div class="dd-opt-why">not scalable. when a PE analyst says "looks good", what exactly looks good? you have no baseline. you can't track regression. you don't know if a prompt change made things better or worse. subjective review is not an eval.</div>
+          </div>
+          <div class="dd-option dd-chosen">
+            <div class="dd-opt-label chosen">✓ pydantic schema + ragas metrics</div>
+            <div class="dd-opt-why">Pydantic output model validates structure on every call — if the agent produces a malformed report, it fails immediately. RAGAS measures faithfulness (are claims grounded in source docs?), context precision (did retrieval get the right chunks?), and answer relevancy. 20 golden test cases with known-good answers. run in CI on every prompt change.</div>
+          </div>
+        </div>
+        <div class="dd-rule">rule: Pydantic is your minimum eval. RAGAS is your baseline. LLM-as-judge is your ceiling. ship none of these and you're flying blind.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="decon-footer">
+    <div class="decon-footer-text">final stack for this use case:</div>
+    <div class="decon-stack">
+      <span class="ds-pill">LangGraph / CrewAI</span>
+      <span class="ds-sep">+</span>
+      <span class="ds-pill">Tiered model selection</span>
+      <span class="ds-sep">+</span>
+      <span class="ds-pill">Tavily web search</span>
+      <span class="ds-sep">+</span>
+      <span class="ds-pill">Docling</span>
+      <span class="ds-sep">+</span>
+      <span class="ds-pill">ChromaDB → pgvector</span>
+      <span class="ds-sep">+</span>
+      <span class="ds-pill">Pydantic output</span>
+      <span class="ds-sep">+</span>
+      <span class="ds-pill">RAGAS evals</span>
+    </div>
+  </div>
+
+</div>
+</div>
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════
+     02 — RESOURCES
+══════════════════════════════════════════ -->
+<div class="sec" id="resources">
+<div class="container">
+  <div class="sec-tag">02 — curated resources</div>
+  <h2 class="sec-title">the reading list</h2>
+  <p class="sec-sub">everything i actually used to learn and build. all links verified.</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('papers',this)">papers</button>
+    <button class="tab-btn" onclick="switchTab('courses',this)">courses</button>
+    <button class="tab-btn" onclick="switchTab('blogs',this)">blogs &amp; docs</button>
+    <button class="tab-btn" onclick="switchTab('repos',this)">repos</button>
+    <button class="tab-btn" onclick="switchTab('videos',this)">videos</button>
+    <button class="tab-btn" onclick="switchTab('tools',this)">tools</button>
+  </div>
+
+  <!-- PAPERS -->
+  <div class="tab-panel active" id="tab-papers">
+    <table class="res-table">
+      <thead><tr><th>paper</th><th>topic</th><th>why read it</th><th></th></tr></thead>
+      <tbody>
+        <tr><td><div class="res-name"><a href="https://arxiv.org/abs/1706.03762" target="_blank">Attention Is All You Need (2017)</a></div></td><td><span class="res-type t-paper">foundational</span></td><td><div class="res-desc">the transformer paper. read this once and everything makes sense.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://arxiv.org/abs/2005.11401" target="_blank">RAG for Knowledge-Intensive NLP (2020)</a></div></td><td><span class="res-type t-paper">RAG</span></td><td><div class="res-desc">the original RAG paper. foundational for understanding why retrieval matters.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://arxiv.org/abs/2210.11610" target="_blank">ReAct: Reasoning and Acting (2022)</a></div></td><td><span class="res-type t-paper">agents</span></td><td><div class="res-desc">the foundational agentic pattern. backbone of most agent frameworks today.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://arxiv.org/abs/2309.11495" target="_blank">Corrective RAG (CRAG) (2024)</a></div></td><td><span class="res-type t-paper">RAG</span></td><td><div class="res-desc">adds a retrieval evaluator that fixes bad retrievals before generation. major quality boost.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://arxiv.org/abs/2106.09685" target="_blank">LoRA: Low-Rank Adaptation (2021)</a></div></td><td><span class="res-type t-paper">fine-tuning</span></td><td><div class="res-desc">the PEFT paper that changed fine-tuning. inject trainable matrices, freeze everything else.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://arxiv.org/abs/2501.09136" target="_blank">Agentic RAG Survey (2025)</a></div></td><td><span class="res-type t-paper">agents + RAG</span></td><td><div class="res-desc">comprehensive 2025 survey. multi-agent retrieval, adaptive RAG, all current approaches.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://arxiv.org/abs/2303.11366" target="_blank">GPT-4 Technical Report (2023)</a></div></td><td><span class="res-type t-paper">LLMs</span></td><td><div class="res-desc">how OpenAI evaluated and aligned GPT-4. useful for understanding RLHF in practice.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://arxiv.org/abs/2312.10997" target="_blank">Mixtral of Experts (2024)</a></div></td><td><span class="res-type t-paper">architecture</span></td><td><div class="res-desc">mixture of experts architecture. explains how models scale efficiently.</div></td><td><span class="res-free">free</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- COURSES -->
+  <div class="tab-panel" id="tab-courses">
+    <table class="res-table">
+      <thead><tr><th>course</th><th>type</th><th>what you learn</th><th></th></tr></thead>
+      <tbody>
+        <tr><td><div class="res-name"><a href="https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/" target="_blank">ChatGPT Prompt Engineering for Developers</a></div></td><td><span class="res-type t-course">course</span></td><td><div class="res-desc">Andrew Ng + OpenAI. best practices, iterative development, summarization, chatbots. start here.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://www.deeplearning.ai/short-courses/ai-agents-in-langgraph/" target="_blank">AI Agents in LangGraph — DeepLearning.AI</a></div></td><td><span class="res-type t-course">course</span></td><td><div class="res-desc">state machines, tool use, HITL. the most practical agent course available.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://www.deeplearning.ai/short-courses/langchain-for-llm-application-development/" target="_blank">LangChain for LLM App Development</a></div></td><td><span class="res-type t-course">course</span></td><td><div class="res-desc">chains, memory, agents. foundation before jumping to LangGraph.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://www.deeplearning.ai/short-courses/knowledge-graphs-rag/" target="_blank">Knowledge Graphs for RAG</a></div></td><td><span class="res-type t-course">course</span></td><td><div class="res-desc">graph RAG with Neo4j. structured + unstructured retrieval. growing area.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://huggingface.co/learn/nlp-course/chapter1/1" target="_blank">HuggingFace NLP Course</a></div></td><td><span class="res-type t-course">course</span></td><td><div class="res-desc">transformers library from the people who built it. tokenizers, models, fine-tuning.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://learn.microsoft.com/en-us/training/paths/introduction-generative-ai/" target="_blank">Intro to Generative AI — Microsoft Learn</a></div></td><td><span class="res-type t-course">course</span></td><td><div class="res-desc">Azure OpenAI, responsible AI. good for enterprise / Azure-focused work.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://www.deeplearning.ai/short-courses/evaluating-debugging-generative-ai/" target="_blank">Evaluating &amp; Debugging GenAI — W&amp;B</a></div></td><td><span class="res-type t-course">course</span></td><td><div class="res-desc">evals, debugging, experiment tracking. most engineers skip this too long.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://www.deeplearning.ai/short-courses/building-agentic-rag-with-llamaindex/" target="_blank">Agentic RAG with LlamaIndex</a></div></td><td><span class="res-type t-course">course</span></td><td><div class="res-desc">router, tool, multi-document agents. LlamaIndex approach. good complement to LangGraph course.</div></td><td><span class="res-free">free</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- BLOGS -->
+  <div class="tab-panel" id="tab-blogs">
+    <table class="res-table">
+      <thead><tr><th>blog / docs</th><th>type</th><th>why</th><th></th></tr></thead>
+      <tbody>
+        <tr><td><div class="res-name"><a href="https://lilianweng.github.io/posts/2023-06-23-agent/" target="_blank">LLM Powered Autonomous Agents — Lilian Weng</a></div></td><td><span class="res-type t-blog">blog</span></td><td><div class="res-desc">definitive survey on agentic systems. read before building any agent.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank">Building Effective Agents — Anthropic</a></div></td><td><span class="res-type t-blog">blog</span></td><td><div class="res-desc">patterns, antipatterns, when NOT to use agents. essential reading.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank">Anthropic Prompt Engineering Guide</a></div></td><td><span class="res-type t-blog">docs</span></td><td><div class="res-desc">XML tags, CoT, structured outputs. canonical reference for Claude prompting.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://langchain-ai.github.io/langgraph/tutorials/" target="_blank">LangGraph Tutorials</a></div></td><td><span class="res-type t-blog">docs</span></td><td><div class="res-desc">official tutorials. actually great docs. read them top-to-bottom once.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://docs.ragas.io/" target="_blank">RAGAS Documentation</a></div></td><td><span class="res-type t-blog">docs</span></td><td><div class="res-desc">context precision, faithfulness, answer relevancy. learn the eval metrics deeply.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://huggingface.co/docs/peft/index" target="_blank">HuggingFace PEFT Docs</a></div></td><td><span class="res-type t-blog">docs</span></td><td><div class="res-desc">LoRA, QLoRA, adapters. canonical fine-tuning reference. consumer hardware friendly.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://github.com/docling-project/docling" target="_blank">Docling by IBM</a></div></td><td><span class="res-type t-blog">docs</span></td><td><div class="res-desc">structure-aware document parsing. tables, headings, figures. use this not pypdf.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://aws.amazon.com/blogs/machine-learning/" target="_blank">AWS ML Blog</a></div></td><td><span class="res-type t-blog">blog</span></td><td><div class="res-desc">production GenAI on Bedrock. real case studies. good for enterprise patterns.</div></td><td><span class="res-free">free</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- REPOS -->
+  <div class="tab-panel" id="tab-repos">
+    <table class="res-table">
+      <thead><tr><th>repo</th><th>type</th><th>what's inside</th><th></th></tr></thead>
+      <tbody>
+        <tr><td><div class="res-name"><a href="https://github.com/NirDiamant/GenAI_Agents" target="_blank">NirDiamant / GenAI_Agents</a></div></td><td><span class="res-type t-repo">repo</span></td><td><div class="res-desc">comprehensive agent tutorials from basic to advanced. LangGraph, tools, multi-agent. gold mine.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://github.com/aishwaryanr/awesome-generative-ai-guide" target="_blank">awesome-generative-ai-guide</a></div></td><td><span class="res-type t-repo">repo</span></td><td><div class="res-desc">interview prep, research updates, RAG papers table, notebooks. consistently maintained.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://github.com/GiovanniPasq/agentic-rag-for-dummies" target="_blank">agentic-rag-for-dummies</a></div></td><td><span class="res-type t-repo">repo</span></td><td><div class="res-desc">modular agentic RAG with LangGraph, conversation memory, HITL. cleanest beginner repo.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://github.com/langchain-ai/langgraph" target="_blank">LangChain-AI / LangGraph</a></div></td><td><span class="res-type t-repo">repo</span></td><td><div class="res-desc">the source. read examples/. agentic RAG, CRAG, adaptive RAG notebooks are essential.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://github.com/confident-ai/deepeval" target="_blank">DeepEval</a></div></td><td><span class="res-type t-repo">repo</span></td><td><div class="res-desc">pytest for LLMs. LLM-as-judge, hallucination detection, RAG metrics. integrates with CI/CD.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://github.com/karpathy/nanoGPT" target="_blank">karpathy / nanoGPT</a></div></td><td><span class="res-type t-repo">repo</span></td><td><div class="res-desc">minimal GPT-2 in ~300 lines of pytorch. best way to understand LLM internals.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://github.com/DavidZWZ/Awesome-RAG-Reasoning" target="_blank">Awesome-RAG-Reasoning</a></div></td><td><span class="res-type t-repo">repo</span></td><td><div class="res-desc">every major RAG paper 2023–2025. EMNLP 2025. go here for deep RAG research.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://github.com/run-llama/llama_index" target="_blank">LlamaIndex</a></div></td><td><span class="res-type t-repo">repo</span></td><td><div class="res-desc">alternative to LangChain for data-heavy RAG. better for complex ingestion pipelines.</div></td><td><span class="res-free">free</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- VIDEOS -->
+  <div class="tab-panel" id="tab-videos">
+    <table class="res-table">
+      <thead><tr><th>video / channel</th><th>type</th><th>what you get</th><th></th></tr></thead>
+      <tbody>
+        <tr><td><div class="res-name"><a href="https://www.youtube.com/watch?v=kCc8FmEb1nY" target="_blank">Let's Build GPT from Scratch — Karpathy</a></div></td><td><span class="res-type t-video">video</span></td><td><div class="res-desc">builds GPT-2 from zero. no better way to understand transformers. watch before any framework.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://www.youtube.com/watch?v=zjkBMFhNj_g" target="_blank">Intro to LLMs — Karpathy (1hr)</a></div></td><td><span class="res-type t-video">video</span></td><td><div class="res-desc">non-technical intro to LLM capabilities and limitations. best beginner video.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://www.youtube.com/@AndrejKarpathy" target="_blank">Andrej Karpathy — Channel</a></div></td><td><span class="res-type t-video">channel</span></td><td><div class="res-desc">former OpenAI, former Tesla AI. every video is essential.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://www.youtube.com/@samwitteveenai" target="_blank">Sam Witteveen — LangChain/Agents</a></div></td><td><span class="res-type t-video">channel</span></td><td><div class="res-desc">practical LangChain and LangGraph tutorials. best applied agent engineering channel.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://www.youtube.com/@3blue1brown" target="_blank">3Blue1Brown — Neural Networks</a></div></td><td><span class="res-type t-video">channel</span></td><td><div class="res-desc">visual explanations of backprop, attention, transformers. understand the actual math.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://www.youtube.com/watch?v=hVNDkwV5aIE" target="_blank">Stanford CS324 — LLMs Full Course</a></div></td><td><span class="res-type t-video">lecture</span></td><td><div class="res-desc">Stanford's academic LLM course. architecture, capabilities, harms, social impact.</div></td><td><span class="res-free">free</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TOOLS -->
+  <div class="tab-panel" id="tab-tools">
+    <table class="res-table">
+      <thead><tr><th>tool</th><th>type</th><th>use it for</th><th></th></tr></thead>
+      <tbody>
+        <tr><td><div class="res-name"><a href="https://langchain-ai.github.io/langgraph/" target="_blank">LangGraph</a></div></td><td><span class="res-type t-code">framework</span></td><td><div class="res-desc">stateful multi-agent orchestration as graphs. best abstraction for complex workflows.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://docs.crewai.com/" target="_blank">CrewAI</a></div></td><td><span class="res-type t-code">framework</span></td><td><div class="res-desc">role-based multi-agent. agents have roles, goals, backstories. crew-style collaboration.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://docs.trychroma.com/" target="_blank">ChromaDB</a></div></td><td><span class="res-type t-code">vector db</span></td><td><div class="res-desc">easiest vector db locally. persistent, Python-native. great for dev and hackathons.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://fastapi.tiangolo.com/" target="_blank">FastAPI</a></div></td><td><span class="res-type t-code">framework</span></td><td><div class="res-desc">async Python APIs. standard for LLM backends. pairs perfectly with LangGraph.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://docs.confident-ai.com/" target="_blank">DeepEval</a></div></td><td><span class="res-type t-code">eval</span></td><td><div class="res-desc">pytest for LLMs. LLM-as-judge, RAG metrics, hallucination detection. runs in CI/CD.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://console.groq.com/" target="_blank">Groq</a></div></td><td><span class="res-type t-code">inference</span></td><td><div class="res-desc">fast LLaMA inference via LPU chips. free tier is generous. good for hackathons.</div></td><td><span class="res-free">free tier</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://github.com/docling-project/docling" target="_blank">Docling</a></div></td><td><span class="res-type t-code">parsing</span></td><td><div class="res-desc">structure-aware doc parsing. tables, headings, figures. use instead of pypdf.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://railway.app/" target="_blank">Railway</a></div></td><td><span class="res-type t-code">deploy</span></td><td><div class="res-desc">easiest deploy for FastAPI + LangGraph. github integration, auto-redeploy. what I use.</div></td><td><span class="res-free">free tier</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</div>
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════
+     TERMINAL
+══════════════════════════════════════════ -->
+<div class="container">
+  <div class="terminal">
+    <div class="term-bar"><div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div></div>
+    <div class="t-line"><span class="t-prompt">akriceus@dev:~$ </span><span class="t-cmd">ls ./projects --filter=hackathon</span></div>
+    <div class="t-line"><span class="t-out">vaultdesk/   </span><span class="t-cmt">— auth0 + langgraph + amazon nova lite | live</span></div>
+    <div class="t-line"><span class="t-out">novaDD/      </span><span class="t-cmt">— m&amp;a agent | bedrock nova 2 lite + extended thinking</span></div>
+    <div class="t-line"><span class="t-out">verdikt/     </span><span class="t-cmt">— multi-agent pe due diligence | groq llama-3.3-70b</span></div>
+    <div class="t-line"><span class="t-out">gemini-vdr/  </span><span class="t-cmt">— voice intelligence | gemini live api + websockets</span></div>
+    <div class="t-line" style="margin-top:6px;"><span class="t-prompt">akriceus@dev:~$ </span><span id="typed-cmd"></span><span class="t-cur" id="tcur">▋</span></div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════
+     03 — PROJECTS
+══════════════════════════════════════════ -->
+<div class="sec" id="projects">
+<div class="container">
+  <div class="sec-tag">03 — shipped</div>
+  <h2 class="sec-title">projects</h2>
+  <p class="sec-sub">not tutorials. real code, real architecture decisions, real tradeoffs.</p>
+
+  <div class="proj-grid">
+
+    <div class="proj-card" style="--grd:linear-gradient(90deg,#6366f1,#22d3ee)">
+      <span class="proj-status status-live">live ↗</span>
+      <div class="proj-title">VaultDesk</div>
+      <div class="proj-desc">auth0 "authorized to act" hackathon. LangGraph multi-agent system with Amazon Nova Lite. Auth0 Token Vault + CIBA for delegated authorization flows. 28-file modular architecture on Railway.</div>
+      <div class="proj-stack"><span class="pst">LangGraph</span><span class="pst">Amazon Nova Lite</span><span class="pst">Auth0 CIBA</span><span class="pst">Plotly Dash</span><span class="pst">Railway</span></div>
+      <a class="proj-link" href="https://github.com/divergent99" target="_blank">github ↗</a>
+    </div>
+
+    <div class="proj-card" style="--grd:linear-gradient(90deg,#22d3ee,#4ade80)">
+      <span class="proj-status status-built">hackathon</span>
+      <div class="proj-title">NovaDD</div>
+      <div class="proj-desc">amazon nova AI hackathon. m&amp;a due diligence agent. Bedrock Nova 2 Lite with Extended Thinking for deep analysis. ChromaDB for document retrieval. 4-engineer team project.</div>
+      <div class="proj-stack"><span class="pst">Amazon Bedrock</span><span class="pst">Nova Extended Thinking</span><span class="pst">ChromaDB</span><span class="pst">LangGraph</span></div>
+      <a class="proj-link" href="https://github.com/divergent99" target="_blank">github ↗</a>
+    </div>
+
+    <div class="proj-card" style="--grd:linear-gradient(90deg,#a78bfa,#f472b6)">
+      <span class="proj-status status-built">hackathon</span>
+      <div class="proj-title">Verdikt</div>
+      <div class="proj-desc">HackHazards '26. multi-agent PE due diligence. supervisor + specialist agents (researcher, analyst, writer). Groq for fast inference, Tavily for web search, ChromaDB for docs.</div>
+      <div class="proj-stack"><span class="pst">Groq LLaMA-3.3-70b</span><span class="pst">CrewAI</span><span class="pst">Tavily</span><span class="pst">ChromaDB</span></div>
+      <a class="proj-link" href="https://github.com/divergent99" target="_blank">github ↗</a>
+    </div>
+
+    <div class="proj-card" style="--grd:linear-gradient(90deg,#fb923c,#f472b6)">
+      <span class="proj-status status-built">hackathon</span>
+      <div class="proj-title">Gemini VDR</div>
+      <div class="proj-desc">Gemini Live API hackathon. voice-powered VDR intelligence — ask questions about deal documents by voice in real time. Gemini Live API + WebSocket pipeline + Cloud Run deployment.</div>
+      <div class="proj-stack"><span class="pst">Gemini Live API</span><span class="pst">WebSockets</span><span class="pst">PyAudio</span><span class="pst">Cloud Run</span></div>
+      <a class="proj-link" href="https://github.com/divergent99" target="_blank">github ↗</a>
+    </div>
+
+  </div>
+</div>
+</div>
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════
+     DEVPOST CALLOUT
+══════════════════════════════════════════ -->
+<div class="devpost-block">
+  <div class="container">
+    <div class="devpost-inner">
+      <div class="devpost-left">
+        <div class="devpost-tag">// hackathons</div>
+        <h3 class="devpost-title">build on Devpost</h3>
+        <p class="devpost-desc">Devpost is where hackathons live. free to join, thousands of prizes, and genuinely the fastest way to go from idea → shipped product → portfolio piece in 48–72 hours. every project above started as a hackathon submission. the quality bar is lower than you think. just ship.</p>
+        <div class="devpost-stats">
+          <div class="dp-stat"><span class="dp-num">5</span><span class="dp-lbl">submissions</span></div>
+          <div class="dp-stat"><span class="dp-num">48h</span><span class="dp-lbl">avg build time</span></div>
+          <div class="dp-stat"><span class="dp-num">4</span><span class="dp-lbl">live projects</span></div>
+        </div>
+      </div>
+      <div class="devpost-right">
+        <div class="devpost-tips">
+          <div class="dp-tip"><span class="dp-tip-num">01</span><span class="dp-tip-text">pick a hackathon with a sponsor whose API you want to learn (Auth0, AWS, Google) — the constraint forces you to actually ship</span></div>
+          <div class="dp-tip"><span class="dp-tip-num">02</span><span class="dp-tip-text">build the demo video first. judges watch 90 seconds max. demo &gt; code quality</span></div>
+          <div class="dp-tip"><span class="dp-tip-num">03</span><span class="dp-tip-text">modular architecture from day 1. you will refactor at 3am. make it survivable</span></div>
+          <div class="dp-tip"><span class="dp-tip-num">04</span><span class="dp-tip-text">agents assemble (healthcare AI) is running through may 2026 — still accepting submissions</span></div>
+        </div>
+        <a href="https://devpost.com" target="_blank" class="devpost-cta">browse hackathons on devpost ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════
+     04 — NEWSLETTERS
+══════════════════════════════════════════ -->
+<div class="sec" id="newsletters">
+<div class="container">
+  <div class="sec-tag">04 — stay current</div>
+  <h2 class="sec-title">newsletters worth reading</h2>
+  <p class="sec-sub">the ones that actually keep you ahead. all free to subscribe.</p>
+
+  <div class="news-grid">
+
+    <div class="news-card" style="--grd:linear-gradient(90deg,#6366f1,#a78bfa)">
+      <div class="news-freq">daily</div>
+      <div class="news-title">Alpha Signal</div>
+      <div class="news-desc">curated AI research papers, repos, and tools. signal-to-noise ratio is actually high. best for staying on top of what's shipping.</div>
+      <a class="news-link" href="https://alphasignal.ai/" target="_blank">alphasignal.ai ↗</a>
+    </div>
+
+    <div class="news-card" style="--grd:linear-gradient(90deg,#22d3ee,#6366f1)">
+      <div class="news-freq">daily</div>
+      <div class="news-title">TLDR AI</div>
+      <div class="news-desc">3-minute daily brief on AI/ML. papers, product launches, funding. great for busy mornings when you can't read everything.</div>
+      <a class="news-link" href="https://tldr.tech/ai" target="_blank">tldr.tech/ai ↗</a>
+    </div>
+
+    <div class="news-card" style="--grd:linear-gradient(90deg,#4ade80,#22d3ee)">
+      <div class="news-freq">weekly</div>
+      <div class="news-title">The Batch — DeepLearning.AI</div>
+      <div class="news-desc">Andrew Ng's weekly. covers research, applications, and the business of AI. consistent quality. good for the broader picture.</div>
+      <a class="news-link" href="https://www.deeplearning.ai/the-batch/" target="_blank">deeplearning.ai/the-batch ↗</a>
+    </div>
+
+    <div class="news-card" style="--grd:linear-gradient(90deg,#a78bfa,#f472b6)">
+      <div class="news-freq">weekly</div>
+      <div class="news-title">Import AI — Jack Clark</div>
+      <div class="news-desc">Jack Clark (Anthropic co-founder). deep analysis of AI research and policy. technical but accessible. some of the best takes in the field.</div>
+      <a class="news-link" href="https://importai.substack.com/" target="_blank">importai.substack.com ↗</a>
+    </div>
+
+    <div class="news-card" style="--grd:linear-gradient(90deg,#fb923c,#6366f1)">
+      <div class="news-freq">weekly</div>
+      <div class="news-title">Interconnects</div>
+      <div class="news-desc">Nathan Lambert (Ai2). deep dives on alignment, RLHF, and open-source models. technical depth without the hype. best writing on model training.</div>
+      <a class="news-link" href="https://www.interconnects.ai/" target="_blank">interconnects.ai ↗</a>
+    </div>
+
+    <div class="news-card" style="--grd:linear-gradient(90deg,#f472b6,#fb923c)">
+      <div class="news-freq">daily</div>
+      <div class="news-title">Ben's Bites</div>
+      <div class="news-desc">Ben Tossell's daily AI news digest. covers tools, products, and use cases. more product-focused than research-focused. good for the applied side.</div>
+      <a class="news-link" href="https://bensbites.com/" target="_blank">bensbites.com ↗</a>
+    </div>
+
+    <div class="news-card" style="--grd:linear-gradient(90deg,#22d3ee,#4ade80)">
+      <div class="news-freq">weekly</div>
+      <div class="news-title">Last Week in AI</div>
+      <div class="news-desc">comprehensive weekly roundup of AI news. covers research, industry, policy. great for catching up if you missed the week.</div>
+      <a class="news-link" href="https://lastweekin.ai/" target="_blank">lastweekin.ai ↗</a>
+    </div>
+
+    <div class="news-card" style="--grd:linear-gradient(90deg,#6366f1,#22d3ee)">
+      <div class="news-freq">weekly</div>
+      <div class="news-title">The Rundown AI</div>
+      <div class="news-desc">500k+ readers. covers the biggest AI developments of the week in plain english. good onboarding read for people new to the space.</div>
+      <a class="news-link" href="https://www.therundown.ai/" target="_blank">therundown.ai ↗</a>
+    </div>
+
+  </div>
+</div>
+</div>
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════
+     05 — CHEATSHEET
+══════════════════════════════════════════ -->
+<div class="sec" id="cheatsheet">
+<div class="container">
+  <div class="sec-tag">05 — quick reference</div>
+  <h2 class="sec-title">engineer's cheatsheet</h2>
+  <p class="sec-sub">the things you forget and google at 2am.</p>
+
+  <div class="cheat-grid">
+
+    <div class="cheat-card">
+      <div class="cheat-title">[ RAG pipeline ]</div>
+      <div class="cheat-item"><span class="cheat-key">1. load</span><span class="cheat-val">parse with Docling (not pypdf). preserve structure.</span></div>
+      <div class="cheat-item"><span class="cheat-key">2. chunk</span><span class="cheat-val">recursive, 512 tokens, 50 overlap. semantic > fixed for complex docs.</span></div>
+      <div class="cheat-item"><span class="cheat-key">3. embed</span><span class="cheat-val">text-embedding-3-small (fast) or bge-large (quality).</span></div>
+      <div class="cheat-item"><span class="cheat-key">4. store</span><span class="cheat-val">ChromaDB (local), pgvector (prod), Qdrant (scale).</span></div>
+      <div class="cheat-item"><span class="cheat-key">5. retrieve</span><span class="cheat-val">hybrid: BM25 + semantic + reranker = best results.</span></div>
+      <div class="cheat-item"><span class="cheat-key">6. generate</span><span class="cheat-val">inject context, instruct no hallucination. stream it.</span></div>
+      <div class="cheat-item"><span class="cheat-key">7. eval</span><span class="cheat-val">RAGAS: faithfulness + ctx_precision + answer_relevancy.</span></div>
+    </div>
+
+    <div class="cheat-card">
+      <div class="cheat-title">[ LangGraph patterns ]</div>
+      <div class="cheat-item"><span class="cheat-key">StateGraph</span><span class="cheat-val">define state schema with TypedDict or Pydantic.</span></div>
+      <div class="cheat-item"><span class="cheat-key">add_node</span><span class="cheat-val">each node is a function: state → updated state.</span></div>
+      <div class="cheat-item"><span class="cheat-key">add_edge</span><span class="cheat-val">deterministic. add_conditional_edges for dynamic routing.</span></div>
+      <div class="cheat-item"><span class="cheat-key">HITL</span><span class="cheat-val">interrupt_before=["node"] + checkpointer.</span></div>
+      <div class="cheat-item"><span class="cheat-key">memory</span><span class="cheat-val">MemorySaver in-memory, SqliteSaver persistent.</span></div>
+      <div class="cheat-item"><span class="cheat-key">streaming</span><span class="cheat-val">graph.astream_events() for token-level SSE in FastAPI.</span></div>
+    </div>
+
+    <div class="cheat-card">
+      <div class="cheat-title">[ prompt engineering ]</div>
+      <div class="cheat-item"><span class="cheat-key">system</span><span class="cheat-val">role + context + constraints + output format. be explicit.</span></div>
+      <div class="cheat-item"><span class="cheat-key">CoT</span><span class="cheat-val">"think step by step" or &lt;thinking&gt; for complex reasoning.</span></div>
+      <div class="cheat-item"><span class="cheat-key">XML (Claude)</span><span class="cheat-val">wrap context in &lt;context&gt;, docs in &lt;document&gt;.</span></div>
+      <div class="cheat-item"><span class="cheat-key">few-shot</span><span class="cheat-val">3–5 examples beats zero-shot for structured output.</span></div>
+      <div class="cheat-item"><span class="cheat-key">structured</span><span class="cheat-val">Pydantic + .with_structured_output() = reliable JSON.</span></div>
+      <div class="cheat-item"><span class="cheat-key">temperature</span><span class="cheat-val">0 for extraction/SQL/code. 0.7+ for creative outputs.</span></div>
+    </div>
+
+    <div class="cheat-card">
+      <div class="cheat-title">[ model selection ]</div>
+      <div class="cheat-item"><span class="cheat-key">reasoning</span><span class="cheat-val">Claude Opus 4.6 / o3 / GPT-5.4. use for complex analysis.</span></div>
+      <div class="cheat-item"><span class="cheat-key">fast + cheap</span><span class="cheat-val">Claude Haiku 4.5 / GPT-4.1 mini / Gemini 3 Flash. routing.</span></div>
+      <div class="cheat-item"><span class="cheat-key">open source</span><span class="cheat-val">Llama 3.3 70b via Groq for speed.</span></div>
+      <div class="cheat-item"><span class="cheat-key">code</span><span class="cheat-val">GPT-4.1 (SWE-bench leader) / Claude Sonnet 4.6.</span></div>
+      <div class="cheat-item"><span class="cheat-key">embeddings</span><span class="cheat-val">text-embedding-3-small or bge-m3 (multilingual).</span></div>
+      <div class="cheat-item"><span class="cheat-key">vision</span><span class="cheat-val">Claude Sonnet 4.6 / Gemini 2.5 Pro. both handle docs well.</span></div>
+    </div>
+
+    <div class="cheat-card">
+      <div class="cheat-title">[ evals checklist ]</div>
+      <div class="cheat-item"><span class="cheat-key">faithfulness</span><span class="cheat-val">answer grounded in retrieved context? (RAGAS)</span></div>
+      <div class="cheat-item"><span class="cheat-key">ctx_precision</span><span class="cheat-val">retrieved chunks actually relevant? (RAGAS)</span></div>
+      <div class="cheat-item"><span class="cheat-key">answer_rel</span><span class="cheat-val">answer addresses the question? (RAGAS)</span></div>
+      <div class="cheat-item"><span class="cheat-key">hallucination</span><span class="cheat-val">LLM-as-judge: claim unsupported by context?</span></div>
+      <div class="cheat-item"><span class="cheat-key">latency</span><span class="cheat-val">p50/p95/p99. budget: &lt;2s simple, &lt;8s agentic.</span></div>
+      <div class="cheat-item"><span class="cheat-key">cost</span><span class="cheat-val">track tokens per request. cache aggressively.</span></div>
+    </div>
+
+    <div class="cheat-card">
+      <div class="cheat-title">[ deployment ]</div>
+      <div class="cheat-item"><span class="cheat-key">Railway</span><span class="cheat-val">push to github → auto-deploy. free tier. what I use.</span></div>
+      <div class="cheat-item"><span class="cheat-key">Docker</span><span class="cheat-val">pin base image. slim variants. multi-stage builds.</span></div>
+      <div class="cheat-item"><span class="cheat-key">env vars</span><span class="cheat-val">never hardcode keys. .env local, secrets in prod.</span></div>
+      <div class="cheat-item"><span class="cheat-key">caching</span><span class="cheat-val">semantic cache with Redis. huge cost saver.</span></div>
+      <div class="cheat-item"><span class="cheat-key">rate limits</span><span class="cheat-val">exponential backoff + jitter. tenacity in Python.</span></div>
+      <div class="cheat-item"><span class="cheat-key">monitoring</span><span class="cheat-val">LangSmith traces. Sentry errors. log everything.</span></div>
+    </div>
+
+  </div>
+</div>
+</div>
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════
+     06 — STACK
+══════════════════════════════════════════ -->
+<div class="sec" id="stack">
+<div class="container">
+  <div class="sec-tag">06 — battle-tested</div>
+  <h2 class="sec-title">the stack</h2>
+  <p class="sec-sub">earned through production systems, hackathons, and 2am debugging sessions.</p>
+  <div class="stack-grid">
+    <div class="sp">Azure OpenAI</div><div class="sp">LangGraph</div><div class="sp">LangChain</div>
+    <div class="sp">CrewAI</div><div class="sp">Amazon Bedrock</div><div class="sp">FastAPI</div>
+    <div class="sp">Plotly Dash</div><div class="sp">ChromaDB</div><div class="sp">DuckDB</div>
+    <div class="sp">Docling</div><div class="sp">python-pptx</div><div class="sp">Pydantic</div>
+    <div class="sp">Auth0</div><div class="sp">Railway</div><div class="sp">Groq</div>
+    <div class="sp">Tavily</div><div class="sp">DeepEval</div><div class="sp">RAGAS</div>
+    <div class="sp">LangSmith</div><div class="sp">Bright Data</div><div class="sp">Gemini</div>
+    <div class="sp">HuggingFace</div><div class="sp">Qdrant</div><div class="sp">Unsloth</div>
+  </div>
+</div>
+</div>
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════
+     07 — CONTACT
+══════════════════════════════════════════ -->
+<div class="sec" id="contact">
+<div class="container">
+  <div class="sec-tag">07 — get in touch</div>
+  <h2 class="sec-title">book a call</h2>
+  <p class="sec-sub">freelance GenAI consulting — RAG, agents, LLM pipelines, architecture reviews.</p>
+
+  <div class="contact-wrap">
+
+    <div class="contact-info">
+      <h3>what I can help with</h3>
+      <p>building production GenAI systems from scratch, reviewing existing architectures, designing eval pipelines, picking the right stack for your use case, or just a call to talk through what you're building.</p>
+      <div class="contact-chips">
+        <span class="contact-chip">RAG pipelines</span>
+        <span class="contact-chip">multi-agent systems</span>
+        <span class="contact-chip">LLM evals</span>
+        <span class="contact-chip">architecture review</span>
+        <span class="contact-chip">Azure OpenAI</span>
+        <span class="contact-chip">Amazon Bedrock</span>
+        <span class="contact-chip">LangGraph</span>
+        <span class="contact-chip">doc processing</span>
+      </div>
+      <div class="contact-links">
+        <a class="c-link" href="https://github.com/divergent99" target="_blank">
+          <span class="cl">// github</span> divergent99
+        </a>
+        <a class="c-link" href="https://promptbase.com/profile/akriceus" target="_blank">
+          <span class="cl">// promptbase</span> akriceus
+        </a>
+        <a class="c-link" href="mailto:abhineetsharma77@gmail.com">
+          <span class="cl">// email</span> abhineetsharma77@gmail.com
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <form id="contact-form">
+        <div class="form-row">
+          <label for="cf-name">name</label>
+          <input type="text" id="cf-name" placeholder="your name" required>
+        </div>
+        <div class="form-row">
+          <label for="cf-email">email</label>
+          <input type="email" id="cf-email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-row">
+          <label for="cf-topic">topic</label>
+          <select id="cf-topic">
+            <option value="RAG pipeline">RAG pipeline</option>
+            <option value="Multi-agent system">Multi-agent system</option>
+            <option value="Architecture review">Architecture review</option>
+            <option value="LLM evals">LLM evals</option>
+            <option value="General consulting">General consulting</option>
+            <option value="Something else">Something else</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="cf-message">message</label>
+          <textarea id="cf-message" placeholder="tell me what you're building and what you need help with..." required></textarea>
+        </div>
+        <p class="form-note">
+          this opens your email client pre-filled. no backend needed.<br>
+          once I get a cal.com link I'll swap this for a booking embed.
+        </p>
+        <button type="submit" class="btn-submit">send message ↗</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<div class="glow-line"></div>
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-left">akri<span>ceus</span></div>
+        <div class="footer-copy">ai engineer · a&amp;m gcc · giving back · 2026</div>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/divergent99" target="_blank">github ↗</a>
+        <a href="https://promptbase.com/profile/akriceus" target="_blank">promptbase ↗</a>
+        <a href="mailto:abhineetsharma77@gmail.com">email ↗</a>
+        <a onclick="goTo('roadmap')" style="cursor:pointer">back to top</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /.wrap -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/warp.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
