@@ -191,25 +191,45 @@ print("✓ evals passed — ready to ship")`
   if (!codeEl) return;
 
   // syntax highlight a plain text python snippet into HTML
-  function highlight(code) {
-    // escape HTML first
-    let s = code
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
+const SPAN = /(<span[^>]*>[^<]*<\/span>)/g;
 
-    // order matters — comments first, then strings, then keywords
-    s = s.replace(/(#[^\n]*)/g,                           '<span class="cm">$1</span>');
-    s = s.replace(/("""[\s\S]*?"""|'''[\s\S]*?'''|"[^"\n]*"|'[^'\n]*')/g, '<span class="st">$1</span>');
-    s = s.replace(/\b(from|import|def|class|return|if|elif|else|for|in|not|and|or|True|False|None|match|case|assert|print)\b/g, '<span class="kw">$1</span>');
-    s = s.replace(/\b([A-Z][A-Za-z0-9_]+)\b/g,           '<span class="cl">$1</span>');
-    s = s.replace(/\b(str|int|float|bool|list|dict|List|Dict|Optional|Any)\b/g, '<span class="nm">$1</span>');
-    s = s.replace(/\b(\d+(\.\d+)?)\b/g,                  '<span class="nm">$1</span>');
-    // function calls — word followed by (
-    s = s.replace(/\b([a-z_][a-z0-9_]*)(?=\()/g,         '<span class="fn">$1</span>');
+function skipSpans(s, pattern, replacement) {
+  return s.replace(new RegExp(`(<span[^>]*>[^<]*<\\/span>)|${pattern}`, 'g'),
+    (m, span) => span ? span : replacement(m)
+  );
+}
 
-    return s;
-  }
+function highlight(code) {
+  let s = code
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+
+  // 1. comments — capture to end of line only
+  s = s.replace(/(#[^\n]*)/g, '<span class="cm">$1</span>');
+
+  // 2. strings
+  s = skipSpans(s, `("""[\\s\\S]*?"""|'''[\\s\\S]*?'''|"[^"\\n]*"|'[^'\\n]*')`,
+    m => `<span class="st">${m}</span>`);
+
+  // 3. keywords
+  s = skipSpans(s, `\\b(from|import|def|class|return|if|elif|else|for|in|not|and|or|True|False|None|match|case|assert|print)\\b`,
+    m => `<span class="kw">${m}</span>`);
+
+  // 4. class names (PascalCase)
+  s = skipSpans(s, `\\b([A-Z][A-Za-z0-9_]+)\\b`,
+    m => `<span class="cl">${m}</span>`);
+
+  // 5. builtins + numbers
+  s = skipSpans(s, `\\b(str|int|float|bool|list|dict|List|Dict|Optional|Any|\\d+(?:\\.\\d+)?)\\b`,
+    m => `<span class="nm">${m}</span>`);
+
+  // 6. function calls
+  s = skipSpans(s, `\\b([a-z_][a-z0-9_]*)(?=\\()`,
+    m => `<span class="fn">${m}</span>`);
+
+  return s;
+}
 
   let currentSnippet = 0;
   let typeInterval   = null;
