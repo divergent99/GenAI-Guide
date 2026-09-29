@@ -1,10 +1,14 @@
 /* ─────────────────────────────────────────────
    genai.hub // divergent99
    js/warp.js — hyperspeed Three.js background
+   dark theme only: pauses (and CSS hides it) in light theme
 ────────────────────────────────────────────── */
 
 (function () {
+  if (typeof THREE === 'undefined') return;
+
   const canvas = document.getElementById('warp');
+  const root = document.documentElement;
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -42,15 +46,13 @@
   geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
   geo.setAttribute('color',    new THREE.BufferAttribute(col, 3));
 
-  const mat = new THREE.PointsMaterial({
+  scene.add(new THREE.Points(geo, new THREE.PointsMaterial({
     size: 1.1,
     vertexColors: true,
     transparent: true,
     opacity: 0.9,
     sizeAttenuation: true,
-  });
-
-  scene.add(new THREE.Points(geo, mat));
+  })));
 
   /* ── STREAK LINES ── */
   const SN = 300;
@@ -84,13 +86,15 @@
   /* ── ANIMATE ── */
   let speed = 0;
   let targetSpeed = 8;
+  let running = false;
 
   window.addEventListener('scroll', () => {
     targetSpeed = 8 + window.scrollY * 0.0008;
-  });
+  }, { passive: true });
 
-  (function animate() {
-    requestAnimationFrame(animate);
+  function frame() {
+    if (!running) return;
+    requestAnimationFrame(frame);
     speed += (targetSpeed - speed) * 0.05;
 
     // move star points
@@ -121,7 +125,16 @@
     sgeo.attributes.position.needsUpdate = true;
 
     renderer.render(scene, camera);
-  })();
+  }
+
+  // run only in dark theme; the canvas is hidden in light, so don't spend GPU on it
+  function sync() {
+    const shouldRun = root.getAttribute('data-theme') !== 'light';
+    if (shouldRun && !running) { running = true; requestAnimationFrame(frame); }
+    else if (!shouldRun) { running = false; }
+  }
+  sync();
+  new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
 
   /* ── RESIZE ── */
   window.addEventListener('resize', () => {
