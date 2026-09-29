@@ -467,9 +467,11 @@ nav {
 /* ── DEVPOST BLOCK ── */
 .devpost-block {
   background: var(--s1);
-  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-  padding: 56px 0;
+  border: 1px solid var(--border);
+  width: calc(100% - 56px); max-width: 1044px; margin: 0 auto;
+  padding: 44px 0;
 }
+.devpost-block .container { padding: 0 36px; }
 .devpost-inner {
   display: grid; grid-template-columns: 1fr 1.2fr;
   gap: 52px; align-items: start;
@@ -494,7 +496,7 @@ nav {
   transition: all .15s;
 }
 .devpost-cta:hover { background: rgba(34,211,238,.07); transform: translateY(-1px); }
-@media (max-width: 768px) { .devpost-inner { grid-template-columns: 1fr; gap: 32px; } }
+@media (max-width: 768px) { .devpost-inner { grid-template-columns: 1fr; gap: 32px; } .devpost-block { width: calc(100% - 56px); padding: 32px 0; } .devpost-block .container { padding: 0 20px; } }
 
 /* ── CONTACT ── */
 .contact-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; }
@@ -762,8 +764,18 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; background: var(-
   color-scheme: light;
 }
 :root[data-theme="light"] #warp { display: none; }
+/* light backdrop: faint dot grid fading out downward + soft indigo/teal glow up top */
 :root[data-theme="light"] .vignette {
-  background: radial-gradient(ellipse at 50% 0%, rgba(79,70,229,0.08) 0%, transparent 60%);
+  background:
+    radial-gradient(ellipse 70% 50% at 30% 0%, rgba(79,70,229,0.09) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 85% 10%, rgba(14,116,144,0.07) 0%, transparent 70%);
+}
+:root[data-theme="light"] .vignette::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(79,70,229,0.16) 1px, transparent 1.2px);
+  background-size: 24px 24px;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.55) 45%, transparent 90%);
+          mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.55) 45%, transparent 90%);
 }
 :root[data-theme="light"] .hero-code-window,
 :root[data-theme="light"] .proj-card,
@@ -776,7 +788,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; background: var(-
 body { transition: background-color .2s, color .2s; }
 
 @media (max-width: 768px) {
-  .stats-bar { width: calc(100% - 32px); }
+  .stats-bar { width: calc(100% - 56px); }
   .stat { flex: 1 1 33%; }
   .bp-picker-row { flex-direction: column; gap: 2px; }
   .bp-picker-a { text-align: left; }
