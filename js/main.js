@@ -41,7 +41,7 @@ function switchTab(id, btn) {
 
 /* ── NAV SCROLL SPY ── */
 (function () {
-  const sections = ['roadmap','concepts','resources','projects','newsletters','cheatsheet','stack','contact'];
+  const sections = ['roadmap','concepts','jev','resources','projects','newsletters','cheatsheet','stack','contact'];
   const links = document.querySelectorAll('.nav-links a[data-section]');
   window.addEventListener('scroll', () => {
     let current = '';
@@ -120,7 +120,7 @@ def build_rag(pdf_path: str) -> None:
     {
       file: 'model_router.py',
       lang: 'python',
-      code: `tiered model selection — Apr 2026
+      code: `tiered model selection — Sep 2026
 from enum import Enum
 
 class TaskType(Enum):
@@ -133,24 +133,24 @@ class TaskType(Enum):
 def route_model(task: TaskType) -> str:
     match task:
         case TaskType.ROUTING:
-            # fast, cheap — classification only
-            return "claude-haiku-4-5-20251001"
+            # typed decision, ~100ms, not an LLM
+            return "jev-latest"
 
         case TaskType.ANALYSIS:
-            # doc analysis, long context
-            return "claude-sonnet-4-6"
+            # doc analysis, agent loops
+            return "claude-sonnet-5-5"
 
         case TaskType.CODE:
-            # best for agentic coding
-            return "gpt-4.1"  # 1M ctx, top SWE-bench
+            # long agentic coding runs
+            return "claude-opus-5-5"  # or GPT-6 Sol
 
         case TaskType.REASONING:
-            # math, science, hard problems
-            return "o3"  # or claude-opus-4-6
+            # the hardest problems
+            return "claude-fable-5-1"
 
         case _:
-            # open source, cost = $0
-            return "llama-3.3-70b-groq"`
+            # open weights, near-zero cost
+            return "deepseek-v4-flash"`
     },
     {
       file: 'eval_pipeline.py',
@@ -290,13 +290,13 @@ function highlight(code) {
 (function () {
   const lines = [
     'ls ./projects --filter=hackathon',
-    '> vaultdesk/  novaDD/  verdikt/  gemini-vdr/',
+    '> novaDD/  flightcheck/  vaultdesk/  verdikt/  +9 more',
     'cat ./stack | head -5',
-    '> langgraph  chromadb  bedrock  fastapi  docling',
+    '> langgraph  fastapi  claude  jev  phoenix',
     'python -m pytest tests/evals/ -v --tb=short',
     '> 47 passed, 0 failed  —  ship it.',
     'git push origin main && railway up',
-    '> deployed in 18s  —  live at akriceus.dev',
+    '> deployed in 18s  —  live on railway',
   ];
   let li = 0, ci = 0, phase = 'type';
   const el  = document.getElementById('typed-cmd');
