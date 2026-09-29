@@ -39,6 +39,24 @@ function switchTab(id, btn) {
   btn.classList.add('active');
 }
 
+/* ── THEME TOGGLE ── */
+(function () {
+  const btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  const root = document.documentElement;
+  const sync = () => {
+    const light = root.getAttribute('data-theme') === 'light';
+    btn.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
+  };
+  btn.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    sync();
+  });
+  sync();
+})();
+
 /* ── NAV SCROLL SPY ── */
 (function () {
   const sections = ['roadmap','concepts','jev','resources','projects','newsletters','cheatsheet','stack','contact'];
