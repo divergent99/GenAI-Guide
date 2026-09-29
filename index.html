@@ -24,6 +24,7 @@
   <div class="nav-links">
     <a data-section="roadmap"     onclick="goTo('roadmap')">roadmap</a>
     <a data-section="concepts"    onclick="goTo('concepts')">concepts</a>
+    <a data-section="jev"         onclick="goTo('jev')">jev</a>
     <a data-section="resources"   onclick="goTo('resources')">resources</a>
     <a data-section="projects"    onclick="goTo('projects')">projects</a>
     <a data-section="newsletters" onclick="goTo('newsletters')">newsletters</a>
@@ -46,7 +47,7 @@
       </h1>
       <p class="hero-sub">
         raw notes. real code. actual experience.<br>
-        by <span class="hl">akriceus</span> — ai engineer @ <span class="hl2">a&amp;m gcc</span>.<br>
+        by <span class="hl">akriceus</span> — data scientist @ <span class="hl2">gedu</span>.<br>
         no fluff. no paywalls. just the signal.
       </p>
       <div class="cta-row">
@@ -83,8 +84,8 @@
   <div class="stats-inner">
     <div class="stat"><span class="stat-num">4</span><span class="stat-lbl">levels</span></div>
     <div class="stat"><span class="stat-num">16</span><span class="stat-lbl">concepts</span></div>
-    <div class="stat"><span class="stat-num">50+</span><span class="stat-lbl">resources</span></div>
-    <div class="stat"><span class="stat-num">4</span><span class="stat-lbl">projects</span></div>
+    <div class="stat"><span class="stat-num">75+</span><span class="stat-lbl">resources</span></div>
+    <div class="stat"><span class="stat-num">13</span><span class="stat-lbl">projects</span></div>
     <div class="stat"><span class="stat-num">0</span><span class="stat-lbl">paywalls</span></div>
   </div>
 </div>
@@ -152,7 +153,8 @@
           <span class="topic-chip">corrective &amp; adaptive RAG</span><span class="topic-chip">human-in-the-loop (HITL)</span>
           <span class="topic-chip">prompt injection defense</span><span class="topic-chip">LangSmith observability</span>
           <span class="topic-chip">DeepEval / LLM-as-judge</span><span class="topic-chip">Amazon Bedrock / Nova</span>
-          <span class="topic-chip">MCP (Model Context Protocol)</span>
+          <span class="topic-chip">MCP (Model Context Protocol)</span><span class="topic-chip">context engineering</span>
+          <span class="topic-chip">agent skills</span><span class="topic-chip">System One models (Jev) for routing &amp; gating</span>
         </div>
         <p class="rm-note"><span class="v">key project:</span> multi-agent due diligence pipeline. supervisor routes to researcher, analyst, writer sub-agents. state in LangGraph.</p>
       </div>
@@ -172,6 +174,7 @@
           <span class="topic-chip">cost optimization</span><span class="topic-chip">hybrid search (BM25 + semantic)</span>
           <span class="topic-chip">graph RAG</span><span class="topic-chip">multimodal</span>
           <span class="topic-chip">data leakage &amp; jailbreaks</span><span class="topic-chip">enterprise deployment</span>
+          <span class="topic-chip">agent observability (Phoenix, Langfuse)</span><span class="topic-chip">open-weight MoE serving</span>
         </div>
         <p class="rm-note"><span class="o">mindset shift:</span> bottleneck is now evals and iteration speed, not model capability. instrument everything. treat LLM calls like db queries.</p>
       </div>
@@ -198,7 +201,7 @@
     <a class="c-card" href="https://www.youtube.com/watch?v=zjkBMFhNj_g" target="_blank" style="--grd:linear-gradient(90deg,#6366f1,#22d3ee)">
       <div class="c-num">[ 001 ] LLMs</div>
       <div class="c-title">Large Language Models</div>
-      <div class="c-desc">transformers trained on massive text to predict next tokens. probability distribution over vocabulary is everything. GPT-4, Claude, Llama — same architecture, different scale.</div>
+      <div class="c-desc">transformers trained on massive text to predict next tokens. probability distribution over vocabulary is everything. GPT, Claude, Gemini, Qwen — same core architecture, different scale, data and post-training.</div>
       <div class="c-tags"><span class="c-tag">transformers</span><span class="c-tag">attention</span><span class="c-tag">tokens</span><span class="c-tag">RLHF</span></div>
       <div class="c-link-hint">Karpathy: Intro to LLMs ↗</div>
     </a>
@@ -357,28 +360,33 @@
   </a>
 
   <a class="bp-card" href="https://artificialanalysis.ai/models" target="_blank">
-    <div class="bp-card-tag">[ 015 ] LLM Comparison — updated Apr 2026</div>
+    <div class="bp-card-tag">[ 015 ] LLM Comparison — updated Sep 2026</div>
     <div class="bp-card-title">Current model landscape</div>
     <div class="bp-model-list">
       <div class="bp-model">
-        <span class="bp-model-name" style="color:var(--violet)">Claude Sonnet 4.6 / Opus 4.6 (Anthropic)</span>
+        <span class="bp-model-name" style="color:var(--violet)">Claude Fable 5.1 / Opus 5.5 / Sonnet 5.5 (Anthropic)</span>
         <span class="bp-model-badge">best for enterprise</span>
-        <p class="bp-model-desc">Sonnet 4.6 is the daily driver — best instruction following, doc analysis, XML tags work beautifully. Opus 4.6 for deep reasoning. Haiku 4.5 for fast routing. what I use in consulting work and A&M GCC.</p>
+        <p class="bp-model-desc">Sonnet 5.5 is the daily driver for doc analysis and agent loops. Opus 5.5 for hard reasoning and long agentic runs. Fable 5.1 is the new Mythos-class tier on top, with extra safety gating. Haiku 4.5 still the cheap router. what I build with at work.</p>
       </div>
       <div class="bp-model">
-        <span class="bp-model-name" style="color:var(--green)">GPT-5.4 / GPT-4.1 (OpenAI)</span>
+        <span class="bp-model-name" style="color:var(--green)">GPT-6 Astra / Sol / Luna (OpenAI)</span>
         <span class="bp-model-badge">best ecosystem</span>
-        <p class="bp-model-desc">GPT-5.4 is OpenAI's current flagship — complex reasoning + coding. GPT-4.1 is the coding specialist with 1M token context, best at precise instruction following. GPT-4.1 mini for cost-sensitive routing.</p>
+        <p class="bp-model-desc">Astra is the flagship (early Sep). Sol is the coding / complex-task workhorse, Luna the high-volume cheap tier (both Sep 22). the 6 series is priced at half of 5.6. Codex + Responses API is the agent story.</p>
       </div>
       <div class="bp-model">
-        <span class="bp-model-name" style="color:var(--cyan)">Gemini 2.5 Pro / 3 Flash (Google)</span>
+        <span class="bp-model-name" style="color:var(--cyan)">Gemini 3.1 Pro / 3.8 Flash (Google)</span>
         <span class="bp-model-badge">best context + speed</span>
-        <p class="bp-model-desc">Gemini 2.5 Pro is stable production-ready, 1M context, deep reasoning. Gemini 3 Flash is now the default — next-gen speed + multimodal. Live API for realtime voice — used in Gemini VDR. free tier is genuinely generous.</p>
+        <p class="bp-model-desc">Pro hasn't moved since Feb (3.1), 3.5 Pro slipped and Gemini 4 is teased. the action is in Flash: 3.8 Flash (Sep) targets long-horizon coding, 3.5 Flash-Lite is the budget pick. 3.8 Live for realtime voice. free tier still generous.</p>
       </div>
       <div class="bp-model">
-        <span class="bp-model-name" style="color:var(--orange)">Llama 3.3 70b / o3 (Meta / OpenAI)</span>
-        <span class="bp-model-badge">open source + reasoning</span>
-        <p class="bp-model-desc">Llama 3.3 70b via Groq = free, ~300 tok/sec, great for dev and cost-sensitive prod. o3 for deep STEM reasoning when you need it — slower but unbeatable on math, science, hard coding.</p>
+        <span class="bp-model-name" style="color:var(--orange)">DeepSeek V4 / Kimi K3 / GLM-5.2 / Qwen 3.8 (open weights)</span>
+        <span class="bp-model-badge">open weights</span>
+        <p class="bp-model-desc">DeepSeek V4 Flash + Pro (MIT, 1M ctx) for cheap reasoning. GLM-5.2 tops open coding benchmarks. Kimi K3 is the biggest open model out there. Qwen 3.8 27B runs on a laptop and punches way above its size. Llama 3.3 is retired from my stack.</p>
+      </div>
+      <div class="bp-model">
+        <span class="bp-model-name" style="color:var(--pink)">Jev (TypeSafe) — not an LLM</span>
+        <span class="bp-model-badge">decisions, not text</span>
+        <p class="bp-model-desc">System One model: typed Choice / Score / yes-no answers with calibrated probabilities in ~100ms. stop burning frontier tokens on routing and classification. full breakdown in the jev section below.</p>
       </div>
     </div>
     <div class="bp-card-link">Artificial Analysis — live benchmarks ↗</div>
@@ -415,6 +423,131 @@
 </div>
 
 </div><!-- /.sec#bigger-picture -->
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════
+     01.7 — JEV
+══════════════════════════════════════════ -->
+<div class="sec" id="jev">
+<div class="container">
+  <div class="sec-tag">01.7 — new model class</div>
+  <h2 class="sec-title">Jev: the model that doesn't talk</h2>
+  <p class="sec-sub">TypeSafe's "System One" model, launched Sep 2026. it doesn't generate text. it answers typed questions with calibrated probabilities. think of it as a smart <code class="jev-inline">if</code> statement for your agent graph.</p>
+
+  <!-- top banner: what + numbers -->
+  <div class="jev-banner">
+    <div class="jev-banner-left">
+      <div class="jev-kicker">// the one-line pitch</div>
+      <p class="jev-lede">most of the LLM calls in an agent pipeline aren't generation. they're decisions: which branch, is this safe, how urgent, is the answer grounded. Jev does only that, and does it fast and cheap.</p>
+      <p class="jev-lede jev-lede-muted">System 1 vs System 2 (Kahneman): fast intuitive judgement vs slow deliberate reasoning. Jev is the fast one. your frontier LLM stays the slow one.</p>
+    </div>
+    <div class="jev-stats">
+      <div class="jev-stat"><span class="jev-num">~100ms</span><span class="jev-lbl">typical latency<br>(70–500ms range)</span></div>
+      <div class="jev-stat"><span class="jev-num">$0.042</span><span class="jev-lbl">per 1M input tokens<br>output is free</span></div>
+      <div class="jev-stat"><span class="jev-num">0</span><span class="jev-lbl">off-schema answers<br>it can't hallucinate a type</span></div>
+      <div class="jev-stat"><span class="jev-num">64k</span><span class="jev-lbl">token budget across<br>state + questions</span></div>
+    </div>
+  </div>
+
+  <!-- three primitives -->
+  <div class="jev-prims">
+    <div class="jev-prim" style="--grd:linear-gradient(90deg,#6366f1,#22d3ee)">
+      <div class="jev-prim-tag">Choice</div>
+      <div class="jev-prim-title">pick one of N</div>
+      <p>labeled options with descriptions, up to 255. returns the pick, the full probability distribution and a confidence score.</p>
+      <div class="jev-prim-eg">→ which agent handles this? which department? which tool?</div>
+    </div>
+    <div class="jev-prim" style="--grd:linear-gradient(90deg,#a78bfa,#f472b6)">
+      <div class="jev-prim-tag">Score</div>
+      <div class="jev-prim-title">place on a scale</div>
+      <p>ordered levels (2–10). returns a probability-weighted score plus confidence. combine several into composite rankings.</p>
+      <div class="jev-prim-eg">→ how frustrated is the user? how risky is this diff? how relevant is this chunk?</div>
+    </div>
+    <div class="jev-prim" style="--grd:linear-gradient(90deg,#4ade80,#fb923c)">
+      <div class="jev-prim-tag">Noul</div>
+      <div class="jev-prim-title">yes / no as a probability</div>
+      <p>a single 0–1 probability. no confidence field, you set the threshold. that's the point: your code owns the cut-off.</p>
+      <div class="jev-prim-eg">→ is a refund requested? is this command destructive? is the answer grounded?</div>
+    </div>
+  </div>
+
+  <!-- code + where it fits -->
+  <div class="jev-duo">
+    <div class="jev-code-card">
+      <div class="jev-code-bar"><span>jev_router.py</span><span class="jev-code-lang">python · pip install typesafe-sdk</span></div>
+<pre class="jev-code"><span class="k">from</span> typesafe_sdk <span class="k">import</span> TypeSafeClient, Choice, Noul
+
+client = TypeSafeClient()  <span class="c"># reads TYPESAFE_API_KEY</span>
+
+res = client.system_one(
+    state=user_message,
+    questions={
+        <span class="s">"route"</span>: Choice(
+            instructions=<span class="s">"Which specialist should handle this?"</span>,
+            criteria={
+                <span class="s">"rag"</span>:    <span class="s">"Question answerable from our docs"</span>,
+                <span class="s">"sql"</span>:    <span class="s">"Needs numbers from the database"</span>,
+                <span class="s">"human"</span>:  <span class="s">"Complaint, legal, or account change"</span>,
+            },
+        ),
+        <span class="s">"urgent"</span>: Noul(instructions=<span class="s">"Does this need a reply today?"</span>),
+    },
+)
+
+route = res.answers[<span class="s">"route"</span>]
+<span class="k">if</span> route.confidence &lt; <span class="n">0.5</span>:
+    next_node = <span class="s">"human"</span>        <span class="c"># unsure → escalate, don't guess</span>
+<span class="k">else</span>:
+    next_node = route.choice
+urgent = res.answers[<span class="s">"urgent"</span>].noul &gt; <span class="n">0.7</span></pre>
+      <div class="jev-code-foot">ask every question you might need in one call. latency comes from the shared state, not the number of questions.</div>
+    </div>
+
+    <div class="jev-fit">
+      <div class="jev-fit-title">where it slots into a LangGraph pipeline</div>
+      <div class="jev-flow">
+        <span class="jev-node">user msg</span><span class="jev-arr">→</span>
+        <span class="jev-node jev-node-hl">Jev: route + urgency</span><span class="jev-arr">→</span>
+        <span class="jev-node">RAG / SQL / human</span><span class="jev-arr">→</span>
+        <span class="jev-node">Claude generates</span><span class="jev-arr">→</span>
+        <span class="jev-node jev-node-hl">Jev: grounded?</span><span class="jev-arr">→</span>
+        <span class="jev-node">reply</span>
+      </div>
+      <div class="jev-uses">
+        <div class="jev-use"><span class="jev-use-k">routing</span><span class="jev-use-v">conditional edges without a frontier call. cheapest win.</span></div>
+        <div class="jev-use"><span class="jev-use-k">tool gating</span><span class="jev-use-v">classify a tool call as read-only / reversible / destructive before it runs. LangChain ships an AutoModeMiddleware for this.</span></div>
+        <div class="jev-use"><span class="jev-use-k">guardrails</span><span class="jev-use-v">emergency / self-harm / PII / prompt-injection flags on every turn, at a cost you can actually afford per message.</span></div>
+        <div class="jev-use"><span class="jev-use-k">eval checks</span><span class="jev-use-v">"is this claim supported by the context?" as a Noul. a fast pre-filter before LLM-as-judge.</span></div>
+        <div class="jev-use"><span class="jev-use-k">bulk labeling</span><span class="jev-use-v">classify 100k tickets, reviews or papers for cents. TypeSafe's own demo labeled ~1k papers for $0.08.</span></div>
+        <div class="jev-use"><span class="jev-use-k">re-ranking</span><span class="jev-use-v">Score retrieved chunks for relevance before they hit the context window.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- when not to -->
+  <div class="jev-limits">
+    <div class="jev-limits-col">
+      <div class="jev-limits-head" style="color:var(--green)">use it when</div>
+      <p>the answer is one of a known set of options. you make the same decision thousands of times. latency matters (voice, chat, agent loops). you want a probability you can threshold instead of a string you have to parse.</p>
+    </div>
+    <div class="jev-limits-col">
+      <div class="jev-limits-head" style="color:var(--red)">don't use it for</div>
+      <p>writing prose or code. math, counting, or extracting dates and numbers (do that in code). images, audio or video (text in only, for now). anything needing more than ~32k tokens of state. open-ended reasoning: that's still your LLM's job.</p>
+    </div>
+    <div class="jev-limits-col">
+      <div class="jev-limits-head" style="color:var(--cyan)">honest caveats</div>
+      <p>brand new (Sep 2026), closed weights, architecture not published. the "40–400x cheaper" numbers are TypeSafe's own benchmarks on their own workflows. run it against your golden set before ripping out a working classifier.</p>
+    </div>
+  </div>
+
+  <div class="jev-links">
+    <a href="https://docs.typesafe.ai/concepts/system-one" target="_blank">system one docs ↗</a>
+    <a href="https://flaviocopes.com/jev/" target="_blank">flavio copes: deep dive ↗</a>
+    <a href="https://www.langchain.com/blog/building-a-harness-with-jev" target="_blank">langchain: building a harness with jev ↗</a>
+    <a href="https://en.wikipedia.org/wiki/Jev_(AI_model)" target="_blank">background ↗</a>
+  </div>
+</div>
+</div>
 
 <!-- ══════════════════════════════════════════
      USE CASE DECONSTRUCTOR
@@ -636,7 +769,7 @@
         <div class="dd-options">
           <div class="dd-option dd-rejected">
             <div class="dd-opt-label rejected">✗ one model for everything</div>
-            <div class="dd-opt-why">using GPT-4o for every step including simple routing and classification burns money and adds latency. a PE firm processing 50 deals/month can't afford $0.30 per report step multiplied across 200 LLM calls.</div>
+            <div class="dd-opt-why">using a frontier model for every step including simple routing and classification burns money and adds latency. a PE firm processing 50 deals/month can't afford $0.30 per report step multiplied across 200 LLM calls.</div>
           </div>
           <div class="dd-option dd-considered">
             <div class="dd-opt-label considered">~ Claude for everything</div>
@@ -644,7 +777,7 @@
           </div>
           <div class="dd-option dd-chosen">
             <div class="dd-opt-label chosen">✓ tiered model selection</div>
-            <div class="dd-opt-why">routing + classification → <strong style="color:var(--orange)">Claude Haiku 4.5 / GPT-4.1 mini</strong> (fast, cheap). document analysis → <strong style="color:var(--violet)">Claude Sonnet 4.6</strong>. deep financial reasoning → <strong style="color:var(--cyan)">Claude Opus 4.6 or o3</strong>. dev/prototyping → <strong style="color:var(--green)">Groq LLaMA 3.3 70b</strong> (free, ~300 tok/sec). the right model for the right step.</div>
+            <div class="dd-opt-why">routing + classification → <strong style="color:var(--pink)">Jev</strong> (typed decisions, ~100ms, fractions of a cent) or <strong style="color:var(--orange)">Claude Haiku 4.5 / GPT-6 Luna</strong>. document analysis → <strong style="color:var(--violet)">Claude Sonnet 5.5</strong>. deep financial reasoning → <strong style="color:var(--cyan)">Claude Opus 5.5 or GPT-6 Sol</strong>. dev/prototyping → <strong style="color:var(--green)">DeepSeek V4 Flash / Qwen 3.8 locally</strong>. the right model for the right step.</div>
           </div>
         </div>
         <div class="dd-rule">rule: route cheap tasks to cheap models. only pay for reasoning power when the task actually needs reasoning.</div>
@@ -772,11 +905,15 @@
         <tr><td><div class="res-name"><a href="https://arxiv.org/abs/1706.03762" target="_blank">Attention Is All You Need (2017)</a></div></td><td><span class="res-type t-paper">foundational</span></td><td><div class="res-desc">the transformer paper. read this once and everything makes sense.</div></td><td><span class="res-free">free</span></td></tr>
         <tr><td><div class="res-name"><a href="https://arxiv.org/abs/2005.11401" target="_blank">RAG for Knowledge-Intensive NLP (2020)</a></div></td><td><span class="res-type t-paper">RAG</span></td><td><div class="res-desc">the original RAG paper. foundational for understanding why retrieval matters.</div></td><td><span class="res-free">free</span></td></tr>
         <tr><td><div class="res-name"><a href="https://arxiv.org/abs/2210.11610" target="_blank">ReAct: Reasoning and Acting (2022)</a></div></td><td><span class="res-type t-paper">agents</span></td><td><div class="res-desc">the foundational agentic pattern. backbone of most agent frameworks today.</div></td><td><span class="res-free">free</span></td></tr>
-        <tr><td><div class="res-name"><a href="https://arxiv.org/abs/2309.11495" target="_blank">Corrective RAG (CRAG) (2024)</a></div></td><td><span class="res-type t-paper">RAG</span></td><td><div class="res-desc">adds a retrieval evaluator that fixes bad retrievals before generation. major quality boost.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://arxiv.org/abs/2401.15884" target="_blank">Corrective RAG (CRAG) (2024)</a></div></td><td><span class="res-type t-paper">RAG</span></td><td><div class="res-desc">adds a retrieval evaluator that fixes bad retrievals before generation. major quality boost.</div></td><td><span class="res-free">free</span></td></tr>
         <tr><td><div class="res-name"><a href="https://arxiv.org/abs/2106.09685" target="_blank">LoRA: Low-Rank Adaptation (2021)</a></div></td><td><span class="res-type t-paper">fine-tuning</span></td><td><div class="res-desc">the PEFT paper that changed fine-tuning. inject trainable matrices, freeze everything else.</div></td><td><span class="res-free">free</span></td></tr>
         <tr><td><div class="res-name"><a href="https://arxiv.org/abs/2501.09136" target="_blank">Agentic RAG Survey (2025)</a></div></td><td><span class="res-type t-paper">agents + RAG</span></td><td><div class="res-desc">comprehensive 2025 survey. multi-agent retrieval, adaptive RAG, all current approaches.</div></td><td><span class="res-free">free</span></td></tr>
-        <tr><td><div class="res-name"><a href="https://arxiv.org/abs/2303.11366" target="_blank">GPT-4 Technical Report (2023)</a></div></td><td><span class="res-type t-paper">LLMs</span></td><td><div class="res-desc">how OpenAI evaluated and aligned GPT-4. useful for understanding RLHF in practice.</div></td><td><span class="res-free">free</span></td></tr>
-        <tr><td><div class="res-name"><a href="https://arxiv.org/abs/2312.10997" target="_blank">Mixtral of Experts (2024)</a></div></td><td><span class="res-type t-paper">architecture</span></td><td><div class="res-desc">mixture of experts architecture. explains how models scale efficiently.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://arxiv.org/abs/2303.08774" target="_blank">GPT-4 Technical Report (2023)</a></div></td><td><span class="res-type t-paper">LLMs</span></td><td><div class="res-desc">how OpenAI evaluated and aligned GPT-4. useful for understanding RLHF in practice.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://arxiv.org/abs/2401.04088" target="_blank">Mixtral of Experts (2024)</a></div></td><td><span class="res-type t-paper">architecture</span></td><td><div class="res-desc">mixture of experts architecture. explains how models scale efficiently, and why every big open model is MoE now.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://arxiv.org/abs/2501.12948" target="_blank">DeepSeek-R1 (2025)</a></div></td><td><span class="res-type t-paper">reasoning</span></td><td><div class="res-desc">RL-trained reasoning without a mountain of human labels. explains why every model now "thinks" before answering.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://arxiv.org/abs/2307.03172" target="_blank">Lost in the Middle (2023)</a></div></td><td><span class="res-type t-paper">long context</span></td><td><div class="res-desc">models ignore stuff buried mid-context. still the best argument for retrieval + ordering over context stuffing.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://arxiv.org/abs/2310.11511" target="_blank">Self-RAG (2023)</a></div></td><td><span class="res-type t-paper">RAG</span></td><td><div class="res-desc">model decides when to retrieve and critiques its own output. the idea behind most adaptive RAG graphs.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://arxiv.org/abs/2404.16130" target="_blank">GraphRAG — From Local to Global (2024)</a></div></td><td><span class="res-type t-paper">graph RAG</span></td><td><div class="res-desc">Microsoft's community-summary approach. read it before bolting a knowledge graph onto your RAG.</div></td><td><span class="res-free">free</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -794,6 +931,10 @@
         <tr><td><div class="res-name"><a href="https://learn.microsoft.com/en-us/training/paths/introduction-generative-ai/" target="_blank">Intro to Generative AI — Microsoft Learn</a></div></td><td><span class="res-type t-course">course</span></td><td><div class="res-desc">Azure OpenAI, responsible AI. good for enterprise / Azure-focused work.</div></td><td><span class="res-free">free</span></td></tr>
         <tr><td><div class="res-name"><a href="https://www.deeplearning.ai/short-courses/evaluating-debugging-generative-ai/" target="_blank">Evaluating &amp; Debugging GenAI — W&amp;B</a></div></td><td><span class="res-type t-course">course</span></td><td><div class="res-desc">evals, debugging, experiment tracking. most engineers skip this too long.</div></td><td><span class="res-free">free</span></td></tr>
         <tr><td><div class="res-name"><a href="https://www.deeplearning.ai/short-courses/building-agentic-rag-with-llamaindex/" target="_blank">Agentic RAG with LlamaIndex</a></div></td><td><span class="res-type t-course">course</span></td><td><div class="res-desc">router, tool, multi-document agents. LlamaIndex approach. good complement to LangGraph course.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://learn.deeplearning.ai/courses/agentic-ai" target="_blank">Agentic AI — Andrew Ng</a></div></td><td><span class="res-type t-course">course</span></td><td><div class="res-desc">reflection, tool use, planning, multi-agent. framework-agnostic, so the patterns stick after the libraries change.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://www.deeplearning.ai/courses/agent-skills-with-anthropic" target="_blank">Agent Skills with Anthropic</a></div></td><td><span class="res-type t-course">course</span></td><td><div class="res-desc">packaging instructions + scripts as reusable skills. the cleanest way to give agents procedural knowledge.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://huggingface.co/learn/agents-course" target="_blank">Hugging Face Agents Course</a></div></td><td><span class="res-type t-course">course</span></td><td><div class="res-desc">agents from first principles with smolagents, LangGraph and LlamaIndex. certificate if you care.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://huggingface.co/learn/mcp-course" target="_blank">Hugging Face MCP Course</a></div></td><td><span class="res-type t-course">course</span></td><td><div class="res-desc">build and consume MCP servers end to end. do this before writing your own integrations.</div></td><td><span class="res-free">free</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -811,6 +952,11 @@
         <tr><td><div class="res-name"><a href="https://huggingface.co/docs/peft/index" target="_blank">HuggingFace PEFT Docs</a></div></td><td><span class="res-type t-blog">docs</span></td><td><div class="res-desc">LoRA, QLoRA, adapters. canonical fine-tuning reference. consumer hardware friendly.</div></td><td><span class="res-free">free</span></td></tr>
         <tr><td><div class="res-name"><a href="https://github.com/docling-project/docling" target="_blank">Docling by IBM</a></div></td><td><span class="res-type t-blog">docs</span></td><td><div class="res-desc">structure-aware document parsing. tables, headings, figures. use this not pypdf.</div></td><td><span class="res-free">free</span></td></tr>
         <tr><td><div class="res-name"><a href="https://aws.amazon.com/blogs/machine-learning/" target="_blank">AWS ML Blog</a></div></td><td><span class="res-type t-blog">blog</span></td><td><div class="res-desc">production GenAI on Bedrock. real case studies. good for enterprise patterns.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank">Effective Context Engineering — Anthropic</a></div></td><td><span class="res-type t-blog">blog</span></td><td><div class="res-desc">prompt engineering grew up. what goes in the window, what gets compacted, what lives in memory.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://www.anthropic.com/engineering/multi-agent-research-system" target="_blank">How We Built a Multi-Agent Research System — Anthropic</a></div></td><td><span class="res-type t-blog">blog</span></td><td><div class="res-desc">real orchestrator-worker lessons from production: token budgets, delegation prompts, evals.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://hamel.dev/blog/posts/evals-faq/" target="_blank">LLM Evals FAQ — Hamel Husain</a></div></td><td><span class="res-type t-blog">blog</span></td><td><div class="res-desc">error analysis first, metrics second. the most practical eval writing out there.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://simonwillison.net/2026/Sep/27/2026-in-llms-so-far/" target="_blank">2026 in LLMs (so far) — Simon Willison</a></div></td><td><span class="res-type t-blog">blog</span></td><td><div class="res-desc">the whole year in one read: Fable, GPT-6, open-weight surge, coding agents. best catch-up post.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://docs.typesafe.ai/concepts/system-one" target="_blank">TypeSafe System One Docs</a></div></td><td><span class="res-type t-blog">docs</span></td><td><div class="res-desc">how Jev thinks: Choice, Score, Noul primitives, confidence, when to escalate to a human.</div></td><td><span class="res-free">free</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -828,6 +974,10 @@
         <tr><td><div class="res-name"><a href="https://github.com/karpathy/nanoGPT" target="_blank">karpathy / nanoGPT</a></div></td><td><span class="res-type t-repo">repo</span></td><td><div class="res-desc">minimal GPT-2 in ~300 lines of pytorch. best way to understand LLM internals.</div></td><td><span class="res-free">free</span></td></tr>
         <tr><td><div class="res-name"><a href="https://github.com/DavidZWZ/Awesome-RAG-Reasoning" target="_blank">Awesome-RAG-Reasoning</a></div></td><td><span class="res-type t-repo">repo</span></td><td><div class="res-desc">every major RAG paper 2023–2025. EMNLP 2025. go here for deep RAG research.</div></td><td><span class="res-free">free</span></td></tr>
         <tr><td><div class="res-name"><a href="https://github.com/run-llama/llama_index" target="_blank">LlamaIndex</a></div></td><td><span class="res-type t-repo">repo</span></td><td><div class="res-desc">alternative to LangChain for data-heavy RAG. better for complex ingestion pipelines.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://github.com/anthropics/claude-cookbooks" target="_blank">anthropics / claude-cookbooks</a></div></td><td><span class="res-type t-repo">repo</span></td><td><div class="res-desc">official recipes: tool use, RAG, sub-agents, prompt caching, skills. copy-paste ready.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://github.com/modelcontextprotocol/servers" target="_blank">modelcontextprotocol / servers</a></div></td><td><span class="res-type t-repo">repo</span></td><td><div class="res-desc">reference MCP servers. read two of these and you can write your own in an afternoon.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://github.com/vllm-project/vllm" target="_blank">vllm-project / vllm</a></div></td><td><span class="res-type t-repo">repo</span></td><td><div class="res-desc">the default for serving open-weight models. paged attention, batching, OpenAI-compatible API.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://github.com/unslothai/unsloth" target="_blank">unslothai / unsloth</a></div></td><td><span class="res-type t-repo">repo</span></td><td><div class="res-desc">fastest LoRA / QLoRA fine-tuning on a single GPU. notebooks for basically every open model.</div></td><td><span class="res-free">free</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -839,6 +989,7 @@
       <tbody>
         <tr><td><div class="res-name"><a href="https://www.youtube.com/watch?v=kCc8FmEb1nY" target="_blank">Let's Build GPT from Scratch — Karpathy</a></div></td><td><span class="res-type t-video">video</span></td><td><div class="res-desc">builds GPT-2 from zero. no better way to understand transformers. watch before any framework.</div></td><td><span class="res-free">free</span></td></tr>
         <tr><td><div class="res-name"><a href="https://www.youtube.com/watch?v=zjkBMFhNj_g" target="_blank">Intro to LLMs — Karpathy (1hr)</a></div></td><td><span class="res-type t-video">video</span></td><td><div class="res-desc">non-technical intro to LLM capabilities and limitations. best beginner video.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://www.youtube.com/watch?v=7xTGNNLPyMI" target="_blank">Deep Dive into LLMs like ChatGPT — Karpathy</a></div></td><td><span class="res-type t-video">video</span></td><td><div class="res-desc">3.5 hours: pretraining, SFT, RL, tool use, why models hallucinate. the modern successor to Intro to LLMs.</div></td><td><span class="res-free">free</span></td></tr>
         <tr><td><div class="res-name"><a href="https://www.youtube.com/@AndrejKarpathy" target="_blank">Andrej Karpathy — Channel</a></div></td><td><span class="res-type t-video">channel</span></td><td><div class="res-desc">former OpenAI, former Tesla AI. every video is essential.</div></td><td><span class="res-free">free</span></td></tr>
         <tr><td><div class="res-name"><a href="https://www.youtube.com/@samwitteveenai" target="_blank">Sam Witteveen — LangChain/Agents</a></div></td><td><span class="res-type t-video">channel</span></td><td><div class="res-desc">practical LangChain and LangGraph tutorials. best applied agent engineering channel.</div></td><td><span class="res-free">free</span></td></tr>
         <tr><td><div class="res-name"><a href="https://www.youtube.com/@3blue1brown" target="_blank">3Blue1Brown — Neural Networks</a></div></td><td><span class="res-type t-video">channel</span></td><td><div class="res-desc">visual explanations of backprop, attention, transformers. understand the actual math.</div></td><td><span class="res-free">free</span></td></tr>
@@ -860,6 +1011,11 @@
         <tr><td><div class="res-name"><a href="https://console.groq.com/" target="_blank">Groq</a></div></td><td><span class="res-type t-code">inference</span></td><td><div class="res-desc">fast LLaMA inference via LPU chips. free tier is generous. good for hackathons.</div></td><td><span class="res-free">free tier</span></td></tr>
         <tr><td><div class="res-name"><a href="https://github.com/docling-project/docling" target="_blank">Docling</a></div></td><td><span class="res-type t-code">parsing</span></td><td><div class="res-desc">structure-aware doc parsing. tables, headings, figures. use instead of pypdf.</div></td><td><span class="res-free">free</span></td></tr>
         <tr><td><div class="res-name"><a href="https://railway.app/" target="_blank">Railway</a></div></td><td><span class="res-type t-code">deploy</span></td><td><div class="res-desc">easiest deploy for FastAPI + LangGraph. github integration, auto-redeploy. what I use.</div></td><td><span class="res-free">free tier</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://docs.typesafe.ai/" target="_blank">TypeSafe (Jev)</a></div></td><td><span class="res-type t-code">decisions</span></td><td><div class="res-desc">typed routing, gating and labeling at ~100ms. $0.042 per million input tokens, output free.</div></td><td><span class="res-paid">usage-based</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://phoenix.arize.com/" target="_blank">Arize Phoenix</a></div></td><td><span class="res-type t-code">observability</span></td><td><div class="res-desc">open-source tracing + evals for agents. OpenTelemetry native. what Flightcheck runs on.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://langfuse.com/" target="_blank">Langfuse</a></div></td><td><span class="res-type t-code">observability</span></td><td><div class="res-desc">self-hostable LangSmith alternative. traces, prompt versions, datasets, cost tracking.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://ollama.com/" target="_blank">Ollama</a></div></td><td><span class="res-type t-code">local LLMs</span></td><td><div class="res-desc">one command to run Qwen, DeepSeek, Mistral locally. perfect for offline dev and cost-free prototyping.</div></td><td><span class="res-free">free</span></td></tr>
+        <tr><td><div class="res-name"><a href="https://artificialanalysis.ai/models" target="_blank">Artificial Analysis</a></div></td><td><span class="res-type t-code">benchmarks</span></td><td><div class="res-desc">independent quality / speed / price comparisons. check here before trusting a launch blog.</div></td><td><span class="res-free">free</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -875,10 +1031,12 @@
   <div class="terminal">
     <div class="term-bar"><div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div></div>
     <div class="t-line"><span class="t-prompt">akriceus@dev:~$ </span><span class="t-cmd">ls ./projects --filter=hackathon</span></div>
-    <div class="t-line"><span class="t-out">vaultdesk/   </span><span class="t-cmt">— auth0 + langgraph + amazon nova lite | live</span></div>
-    <div class="t-line"><span class="t-out">novaDD/      </span><span class="t-cmt">— m&amp;a agent | bedrock nova 2 lite + extended thinking</span></div>
-    <div class="t-line"><span class="t-out">verdikt/     </span><span class="t-cmt">— multi-agent pe due diligence | groq llama-3.3-70b</span></div>
-    <div class="t-line"><span class="t-out">gemini-vdr/  </span><span class="t-cmt">— voice intelligence | gemini live api + websockets</span></div>
+    <div class="t-line"><span class="t-out">novaDD/          </span><span class="t-cmt">— m&amp;a due diligence | bedrock nova · 🏆 winner</span></div>
+    <div class="t-line"><span class="t-out">flightcheck/     </span><span class="t-cmt">— agent that monitors agents | arize phoenix</span></div>
+    <div class="t-line"><span class="t-out">tribal-knowledge/</span><span class="t-cmt">— slack history → cited answers</span></div>
+    <div class="t-line"><span class="t-out">blast-radius/    </span><span class="t-cmt">— MR impact review | gitlab knowledge graph</span></div>
+    <div class="t-line"><span class="t-out">vaultdesk/       </span><span class="t-cmt">— auth0 token vault + langgraph | live</span></div>
+    <div class="t-line"><span class="t-out">...8 more       </span><span class="t-cmt">— scroll down</span></div>
     <div class="t-line" style="margin-top:6px;"><span class="t-prompt">akriceus@dev:~$ </span><span id="typed-cmd"></span><span class="t-cur" id="tcur">▋</span></div>
   </div>
 </div>
@@ -891,42 +1049,69 @@
 <div class="container">
   <div class="sec-tag">03 — shipped</div>
   <h2 class="sec-title">projects</h2>
-  <p class="sec-sub">not tutorials. real code, real architecture decisions, real tradeoffs.</p>
+  <p class="sec-sub">not tutorials. real code, real architecture decisions, real tradeoffs. 13 builds, 21 hackathons, 1 win so far.</p>
 
   <div class="proj-grid">
 
-    <div class="proj-card" style="--grd:linear-gradient(90deg,#6366f1,#22d3ee)">
-      <span class="proj-status status-live">live ↗</span>
-      <div class="proj-title">VaultDesk</div>
-      <div class="proj-desc">auth0 "authorized to act" hackathon. LangGraph multi-agent system with Amazon Nova Lite. Auth0 Token Vault + CIBA for delegated authorization flows. 28-file modular architecture on Railway.</div>
-      <div class="proj-stack"><span class="pst">LangGraph</span><span class="pst">Amazon Nova Lite</span><span class="pst">Auth0 CIBA</span><span class="pst">Plotly Dash</span><span class="pst">Railway</span></div>
-      <a class="proj-link" href="https://github.com/divergent99/vaultdesk" target="_blank">github ↗</a>
+    <div class="proj-card" style="--grd:linear-gradient(90deg,#fbbf24,#fb923c)">
+      <span class="proj-status status-win">🏆 winner</span>
+      <div class="proj-title">NovaDD</div>
+      <div class="proj-desc">amazon nova AI hackathon winner. four agents work a whole data room: financials, contracts, compliance. outputs a weighted deal score with a proceed / pass call. 4-engineer team.</div>
+      <div class="proj-stack"><span class="pst">Amazon Bedrock</span><span class="pst">Nova Extended Thinking</span><span class="pst">ChromaDB</span><span class="pst">LangGraph</span></div>
+      <div class="proj-links"><a class="proj-link" href="https://devpost.com/software/deallens-ai-powered-m-a-due-diligence-orchestrator" target="_blank">devpost ↗</a> <a class="proj-link" href="https://github.com/divergent99/VDR-Intelligence" target="_blank">github ↗</a></div>
     </div>
-
     <div class="proj-card" style="--grd:linear-gradient(90deg,#22d3ee,#4ade80)">
       <span class="proj-status status-built">hackathon</span>
-      <div class="proj-title">NovaDD</div>
-      <div class="proj-desc">amazon nova AI hackathon. m&amp;a due diligence agent. Bedrock Nova 2 Lite with Extended Thinking for deep analysis. ChromaDB for document retrieval. 4-engineer team project.</div>
-      <div class="proj-stack"><span class="pst">Amazon Bedrock</span><span class="pst">Nova Extended Thinking</span><span class="pst">ChromaDB</span><span class="pst">LangGraph</span></div>
-      <a class="proj-link" href="https://github.com/divergent99/VDR-Intelligence" target="_blank">github ↗</a>
+      <div class="proj-title">Flightcheck</div>
+      <div class="proj-desc">an autonomous agent that watches your other agents. reads live traces from Arize Phoenix, catches quality degradation and files alerts with no human in the loop.</div>
+      <div class="proj-stack"><span class="pst">Arize Phoenix</span><span class="pst">OpenTelemetry</span><span class="pst">LLM-as-judge</span><span class="pst">agents</span></div>
+      <div class="proj-links"><a class="proj-link" href="https://devpost.com/software/flightcheck-an-agent-that-monitors-your-ai-agents" target="_blank">devpost ↗</a></div>
     </div>
-
+    <div class="proj-card" style="--grd:linear-gradient(90deg,#a78bfa,#6366f1)">
+      <span class="proj-status status-built">hackathon</span>
+      <div class="proj-title">Tribal Knowledge Agent</div>
+      <div class="proj-desc">turns scattered Slack history into direct answers with citations. detects conflicting answers across threads and says so when there is no answer at all.</div>
+      <div class="proj-stack"><span class="pst">Slack API</span><span class="pst">RAG</span><span class="pst">citations</span><span class="pst">conflict detection</span></div>
+      <div class="proj-links"><a class="proj-link" href="https://devpost.com/software/tribal-knowledge-agent-for-slack" target="_blank">devpost ↗</a></div>
+    </div>
+    <div class="proj-card" style="--grd:linear-gradient(90deg,#f472b6,#fb923c)">
+      <span class="proj-status status-built">hackathon</span>
+      <div class="proj-title">Blast Radius Reviewer</div>
+      <div class="proj-desc">know what breaks before you merge. uses GitLab Orbit's knowledge graph to map merge-request impact, visualise dependency risk and post AI review comments.</div>
+      <div class="proj-stack"><span class="pst">GitLab Orbit</span><span class="pst">knowledge graph</span><span class="pst">code review</span><span class="pst">agents</span></div>
+      <div class="proj-links"><a class="proj-link" href="https://devpost.com/software/blast-radius-reviewer" target="_blank">devpost ↗</a></div>
+    </div>
+    <div class="proj-card" style="--grd:linear-gradient(90deg,#6366f1,#22d3ee)">
+      <span class="proj-status status-live">live</span>
+      <div class="proj-title">VaultDesk</div>
+      <div class="proj-desc">auth0 "authorized to act" hackathon. M&amp;A deal agent that searches Gmail and drafts replies, but only sends after you approve via Auth0 Guardian push. Token Vault keeps credentials off the agent.</div>
+      <div class="proj-stack"><span class="pst">LangGraph</span><span class="pst">Amazon Nova Lite</span><span class="pst">Auth0 CIBA</span><span class="pst">Token Vault</span><span class="pst">Railway</span></div>
+      <div class="proj-links"><a class="proj-link" href="https://devpost.com/software/vaultdesk" target="_blank">devpost ↗</a> <a class="proj-link" href="https://github.com/divergent99/vaultdesk" target="_blank">github ↗</a></div>
+    </div>
     <div class="proj-card" style="--grd:linear-gradient(90deg,#a78bfa,#f472b6)">
       <span class="proj-status status-built">hackathon</span>
       <div class="proj-title">Verdikt</div>
-      <div class="proj-desc">HackHazards '26. multi-agent PE due diligence. supervisor + specialist agents (researcher, analyst, writer). Groq for fast inference, Tavily for web search, ChromaDB for docs.</div>
-      <div class="proj-stack"><span class="pst">Groq LLaMA-3.3-70b</span><span class="pst">CrewAI</span><span class="pst">Tavily</span><span class="pst">ChromaDB</span></div>
-      <a class="proj-link" href="https://github.com/divergent99/verdikt" target="_blank">github ↗</a>
+      <div class="proj-desc">HackHazards '26. multi-agent PE due diligence. five agents on financials, risk, market and ops, ending in a GO / NO-GO investment report. the pipeline deconstructed above.</div>
+      <div class="proj-stack"><span class="pst">Groq</span><span class="pst">CrewAI</span><span class="pst">Tavily</span><span class="pst">ChromaDB</span></div>
+      <div class="proj-links"><a class="proj-link" href="https://devpost.com/software/verdikt-ai-powered-m-a-due-diligence" target="_blank">devpost ↗</a> <a class="proj-link" href="https://github.com/divergent99/verdikt" target="_blank">github ↗</a></div>
     </div>
-
     <div class="proj-card" style="--grd:linear-gradient(90deg,#fb923c,#f472b6)">
       <span class="proj-status status-built">hackathon</span>
       <div class="proj-title">Gemini VDR</div>
-      <div class="proj-desc">Gemini Live API hackathon. voice-powered VDR intelligence — ask questions about deal documents by voice in real time. Gemini Live API + WebSocket pipeline + Cloud Run deployment.</div>
+      <div class="proj-desc">Gemini Live API hackathon. ask questions about deal documents by voice in real time. Live API + WebSocket pipeline + Cloud Run.</div>
       <div class="proj-stack"><span class="pst">Gemini Live API</span><span class="pst">WebSockets</span><span class="pst">PyAudio</span><span class="pst">Cloud Run</span></div>
-      <a class="proj-link" href="https://github.com/divergent99/gemini-vdr" target="_blank">github ↗</a>
+      <div class="proj-links"><a class="proj-link" href="https://github.com/divergent99/gemini-vdr" target="_blank">github ↗</a></div>
     </div>
 
+  </div>
+  <div class="proj-more-head">// more builds</div>
+  <div class="proj-more">
+    <a class="proj-mini" href="https://devpost.com/software/run-the-trade" target="_blank"><span class="proj-mini-title">Run The Trade ↗</span><span class="proj-mini-desc">agent that researches and grades basketball trades live. real rosters, real stats, reasoning streamed as it thinks.</span></a>
+    <a class="proj-mini" href="https://devpost.com/software/enough-a-gentle-ai-companion" target="_blank"><span class="proj-mini-title">Enough ↗</span><span class="proj-mini-desc">privacy-first companion for grief and panic days. realtime voice grounding, private reflection, one manageable next step.</span></a>
+    <a class="proj-mini" href="https://devpost.com/software/coremap-cut-through-the-genai-noise" target="_blank"><span class="proj-mini-title">Coremap ↗</span><span class="proj-mini-desc">personal GenAI command center: learning roadmap, news filtered by signal vs hype, architecture simulator.</span></a>
+    <a class="proj-mini" href="https://devpost.com/software/torched-roast-my-portfolio" target="_blank"><span class="proj-mini-title">Torched ↗</span><span class="proj-mini-desc">upload a portfolio screenshot, pick a roaster and a language, get brutally honest AI feedback.</span></a>
+    <a class="proj-mini" href="https://devpost.com/software/pitchread-ai-due-diligence-briefs-in-60-seconds" target="_blank"><span class="proj-mini-title">PitchRead ↗</span><span class="proj-mini-desc">paste a company description, get a structured PE / VC brief with sizing, risks, competitors and a verdict in 60s.</span></a>
+    <a class="proj-mini" href="https://devpost.com/software/quantpulse-know-your-risk-beat-the-market" target="_blank"><span class="proj-mini-title">QuantPulse ↗</span><span class="proj-mini-desc">institutional-style quant risk analysis on your portfolio, explained in plain English.</span></a>
   </div>
 </div>
 </div>
@@ -941,11 +1126,11 @@
       <div class="devpost-left">
         <div class="devpost-tag">// hackathons</div>
         <h3 class="devpost-title">build on Devpost</h3>
-        <p class="devpost-desc">Devpost is where hackathons live. free to join, thousands of prizes, and genuinely the fastest way to go from idea → shipped product → portfolio piece in 48–72 hours. every project above started as a hackathon submission. the quality bar is lower than you think. just ship.</p>
+        <p class="devpost-desc">Devpost is where hackathons live. free to join, thousands of prizes, and genuinely the fastest way to go from idea → shipped product → portfolio piece in 48–72 hours. almost every project above started as a hackathon submission. the quality bar is lower than you think. just ship.</p>
         <div class="devpost-stats">
-          <div class="dp-stat"><span class="dp-num">5</span><span class="dp-lbl">submissions</span></div>
-          <div class="dp-stat"><span class="dp-num">48h</span><span class="dp-lbl">avg build time</span></div>
-          <div class="dp-stat"><span class="dp-num">4</span><span class="dp-lbl">live projects</span></div>
+          <div class="dp-stat"><span class="dp-num">21</span><span class="dp-lbl">hackathons</span></div>
+          <div class="dp-stat"><span class="dp-num">12</span><span class="dp-lbl">submissions</span></div>
+          <div class="dp-stat"><span class="dp-num">1</span><span class="dp-lbl">win</span></div>
         </div>
       </div>
       <div class="devpost-right">
@@ -953,9 +1138,10 @@
           <div class="dp-tip"><span class="dp-tip-num">01</span><span class="dp-tip-text">pick a hackathon with a sponsor whose API you want to learn (Auth0, AWS, Google) — the constraint forces you to actually ship</span></div>
           <div class="dp-tip"><span class="dp-tip-num">02</span><span class="dp-tip-text">build the demo video first. judges watch 90 seconds max. demo &gt; code quality</span></div>
           <div class="dp-tip"><span class="dp-tip-num">03</span><span class="dp-tip-text">modular architecture from day 1. you will refactor at 3am. make it survivable</span></div>
-          <div class="dp-tip"><span class="dp-tip-num">04</span><span class="dp-tip-text">agents assemble (healthcare AI) is running through may 2026 — still accepting submissions</span></div>
+          <div class="dp-tip"><span class="dp-tip-num">04</span><span class="dp-tip-text">build something you would actually use. the ones that win solve a real annoyance with a sharp demo, not the biggest architecture diagram</span></div>
         </div>
-        <a href="https://devpost.com" target="_blank" class="devpost-cta">browse hackathons on devpost ↗</a>
+        <a href="https://devpost.com/hackathons" target="_blank" class="devpost-cta">browse hackathons on devpost ↗</a>
+        <a href="https://devpost.com/abhineetsharma77" target="_blank" class="devpost-cta devpost-cta-2">my devpost ↗</a>
       </div>
     </div>
   </div>
@@ -1029,6 +1215,20 @@
       <a class="news-link" href="https://www.therundown.ai/" target="_blank">therundown.ai ↗</a>
     </div>
 
+    <div class="news-card" style="--grd:linear-gradient(90deg,#a78bfa,#22d3ee)">
+      <div class="news-freq">weekly</div>
+      <div class="news-title">Latent Space</div>
+      <div class="news-desc">swyx + Alessio. the AI engineer's podcast and newsletter. deep interviews with people shipping agents, evals and infra.</div>
+      <a class="news-link" href="https://www.latent.space/" target="_blank">latent.space ↗</a>
+    </div>
+
+    <div class="news-card" style="--grd:linear-gradient(90deg,#fb923c,#4ade80)">
+      <div class="news-freq">daily</div>
+      <div class="news-title">Simon Willison's Weblog</div>
+      <div class="news-desc">hands-on notes on every model launch, usually within hours. skeptical, practical, and he actually runs the stuff.</div>
+      <a class="news-link" href="https://simonwillison.net/" target="_blank">simonwillison.net ↗</a>
+    </div>
+
   </div>
 </div>
 </div>
@@ -1077,13 +1277,13 @@
     </div>
 
     <div class="cheat-card">
-      <div class="cheat-title">[ model selection ]</div>
-      <div class="cheat-item"><span class="cheat-key">reasoning</span><span class="cheat-val">Claude Opus 4.6 / o3 / GPT-5.4. use for complex analysis.</span></div>
-      <div class="cheat-item"><span class="cheat-key">fast + cheap</span><span class="cheat-val">Claude Haiku 4.5 / GPT-4.1 mini / Gemini 3 Flash. routing.</span></div>
-      <div class="cheat-item"><span class="cheat-key">open source</span><span class="cheat-val">Llama 3.3 70b via Groq for speed.</span></div>
-      <div class="cheat-item"><span class="cheat-key">code</span><span class="cheat-val">GPT-4.1 (SWE-bench leader) / Claude Sonnet 4.6.</span></div>
-      <div class="cheat-item"><span class="cheat-key">embeddings</span><span class="cheat-val">text-embedding-3-small or bge-m3 (multilingual).</span></div>
-      <div class="cheat-item"><span class="cheat-key">vision</span><span class="cheat-val">Claude Sonnet 4.6 / Gemini 2.5 Pro. both handle docs well.</span></div>
+      <div class="cheat-title">[ model selection · sep 2026 ]</div>
+      <div class="cheat-item"><span class="cheat-key">reasoning</span><span class="cheat-val">Claude Opus 5.5 / Fable 5.1 / GPT-6 Astra. complex analysis.</span></div>
+      <div class="cheat-item"><span class="cheat-key">daily driver</span><span class="cheat-val">Claude Sonnet 5.5 / GPT-6 Sol. docs, agents, tool use.</span></div>
+      <div class="cheat-item"><span class="cheat-key">fast + cheap</span><span class="cheat-val">Claude Haiku 4.5 / GPT-6 Luna / Gemini 3.5 Flash-Lite.</span></div>
+      <div class="cheat-item"><span class="cheat-key">decisions</span><span class="cheat-val">Jev for routing, gating, labeling. typed + calibrated.</span></div>
+      <div class="cheat-item"><span class="cheat-key">open weights</span><span class="cheat-val">DeepSeek V4 Flash, GLM-5.2 (code), Qwen 3.8 (local).</span></div>
+      <div class="cheat-item"><span class="cheat-key">voice</span><span class="cheat-val">Gemini 3.8 Live / OpenAI Realtime.</span></div>
     </div>
 
     <div class="cheat-card">
@@ -1128,6 +1328,8 @@
     <div class="sp">Tavily</div><div class="sp">DeepEval</div><div class="sp">RAGAS</div>
     <div class="sp">LangSmith</div><div class="sp">Bright Data</div><div class="sp">Gemini</div>
     <div class="sp">HuggingFace</div><div class="sp">Qdrant</div><div class="sp">Unsloth</div>
+    <div class="sp">Claude API</div><div class="sp">Arize Phoenix</div><div class="sp">Jev</div>
+    <div class="sp">React + Vite</div><div class="sp">Vercel</div><div class="sp">MCP</div>
   </div>
 </div>
 </div>
@@ -1160,6 +1362,9 @@
       <div class="contact-links">
         <a class="c-link" href="https://github.com/divergent99" target="_blank">
           <span class="cl">// github</span> divergent99
+        </a>
+        <a class="c-link" href="https://devpost.com/abhineetsharma77" target="_blank">
+          <span class="cl">// devpost</span> abhineetsharma77
         </a>
         <a class="c-link" href="https://promptbase.com/profile/akriceus" target="_blank">
           <span class="cl">// promptbase</span> akriceus
@@ -1212,10 +1417,11 @@
     <div class="footer-inner">
       <div>
         <div class="footer-left">akri<span>ceus</span></div>
-        <div class="footer-copy">ai engineer · a&amp;m gcc · giving back · 2026</div>
+        <div class="footer-copy">data scientist · gedu · giving back · 2026</div>
       </div>
       <div class="footer-links">
         <a href="https://github.com/divergent99" target="_blank">github ↗</a>
+        <a href="https://devpost.com/abhineetsharma77" target="_blank">devpost ↗</a>
         <a href="https://promptbase.com/profile/akriceus" target="_blank">promptbase ↗</a>
         <a href="mailto:abhineetsharma77@gmail.com">email ↗</a>
         <a onclick="goTo('roadmap')" style="cursor:pointer">back to top</a>
