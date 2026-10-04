@@ -940,7 +940,7 @@ nav.menu-open .nav-menu-btn span:nth-child(3) { transform: translateY(-5.5px) ro
   /* nav → hamburger dropdown */
   nav { padding: 0 12px 0 16px; height: 56px; }
   .nav-right { gap: 8px; }
-  .nav-menu-btn { display: inline-flex; }
+  .nav-menu-btn { display: inline-flex !important; }
   .theme-toggle { width: 40px; height: 40px; }
   .nav-links {
     display: none; position: absolute; top: 56px; left: 0; right: 0;
