@@ -7,7 +7,31 @@
 function goTo(id) {
   const el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  closeMenu();
 }
+
+/* ── MOBILE MENU ── */
+function closeMenu() {
+  const nav = document.querySelector('nav');
+  const btn = document.getElementById('nav-menu-btn');
+  if (!nav || !nav.classList.contains('menu-open')) return;
+  nav.classList.remove('menu-open');
+  if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-label', 'Open menu'); }
+}
+(function () {
+  const nav = document.querySelector('nav');
+  const btn = document.getElementById('nav-menu-btn');
+  if (!nav || !btn) return;
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = nav.classList.toggle('menu-open');
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  document.addEventListener('click', (e) => { if (!nav.contains(e.target)) closeMenu(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 768) closeMenu(); });
+})();
 
 /* ── ROADMAP ACCORDION ── */
 function toggleRM(header) {
