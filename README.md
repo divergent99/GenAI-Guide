@@ -33,7 +33,7 @@ free forever. no paywalls. no email gates. just the signal.
 
 **Jev** — a dedicated breakdown of TypeSafe's System One model: typed Choice / Score / Noul decisions, where it fits in a LangGraph pipeline, code, limits and caveats.
 
-**the Nov 2026 update** - everything that shipped Sep to Nov 2026 by lab, what to change in your stack this week, plus Google's Harness² (self-improving agent harness) and pydot for drawing LangGraph graphs as code.
+**new updates** - new model releases by lab (latest batch: Sep to Nov 2026), what to change in your stack this week, plus Google's Harness² (self-improving agent harness) and pydot for drawing LangGraph graphs as code.
 
 **activation steering** - steering vectors / contrastive activation addition: how they're extracted, a runnable PyTorch hook, steering vs prompting vs fine-tuning, and where it's actually useful.
 

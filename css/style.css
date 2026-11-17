@@ -1000,9 +1000,8 @@ nav.menu-open .nav-menu-btn span:nth-child(3) { transform: translateY(-5.5px) ro
   .ds-pill { font-size: 10.5px; }
 
   /* resources: tabs scroll, rows become cards */
-  .tabs { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-  .tabs::-webkit-scrollbar { display: none; }
-  .tab-btn { padding: 14px 16px; white-space: nowrap; flex-shrink: 0; }
+  .tabs { flex-wrap: wrap; overflow-x: visible; }
+  .tab-btn { padding: 12px 14px; white-space: nowrap; }
   .res-table thead { display: none; }
   .res-table, .res-table tbody { display: block; }
   .res-table tr {
@@ -1018,9 +1017,9 @@ nav.menu-open .nav-menu-btn span:nth-child(3) { transform: translateY(-5.5px) ro
   .res-name a { font-size: 13px; }
   .res-desc { font-size: 11.5px; }
 
-  /* terminal: no ugly wrapping, scroll instead */
-  .terminal { padding: 16px; margin: 32px 0; overflow-x: auto; }
-  .terminal .t-line { white-space: nowrap; }
+  /* terminal: wrap long lines, no sideways scroll */
+  .terminal { padding: 16px; margin: 32px 0; overflow-x: hidden; }
+  .terminal .t-line { white-space: normal; overflow-wrap: anywhere; }
 
   /* projects / devpost */
   .proj-card { padding: 20px; }
@@ -1100,3 +1099,6 @@ nav.menu-open .nav-menu-btn span:nth-child(3) { transform: translateY(-5.5px) ro
   .rp-name { font-size: 12.5px; }
   .upd-sub-title { font-size: 19px; }
 }
+
+/* no horizontal scroll in code cards: wrap long lines instead */
+.jev-code { white-space: pre-wrap; overflow-wrap: anywhere; overflow-x: hidden; }
