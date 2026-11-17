@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>akriceus</title>
   <meta name="description" content="GenAI engineer. Building agents, RAG pipelines, and multi-agent systems. Notes, resources, and real projects by akriceus.">
-  <link rel="stylesheet" href="css/style.css?v=20261004">
+  <link rel="stylesheet" href="css/style.css?v=20261117">
   <script>
     (function () {
       try {
@@ -34,6 +34,8 @@
     <a data-section="roadmap"     onclick="goTo('roadmap')">roadmap</a>
     <a data-section="concepts"    onclick="goTo('concepts')">concepts</a>
     <a data-section="jev"         onclick="goTo('jev')">jev</a>
+    <a data-section="update"      onclick="goTo('update')">nov update</a>
+    <a data-section="retrieval"   onclick="goTo('retrieval')">retrieval</a>
     <a data-section="resources"   onclick="goTo('resources')">resources</a>
     <a data-section="projects"    onclick="goTo('projects')">projects</a>
     <a data-section="newsletters" onclick="goTo('newsletters')">newsletters</a>
@@ -386,31 +388,31 @@
   </a>
 
   <a class="bp-card" href="https://artificialanalysis.ai/models" target="_blank">
-    <div class="bp-card-tag">[ 015 ] LLM Comparison — updated Sep 2026</div>
+    <div class="bp-card-tag">[ 015 ] LLM Comparison · updated Nov 2026</div>
     <div class="bp-card-title">Current model landscape</div>
     <div class="bp-model-list">
       <div class="bp-model">
-        <span class="bp-model-name" style="color:var(--violet)">Claude Fable 5.1 / Opus 5.5 / Sonnet 5.5 (Anthropic)</span>
+        <span class="bp-model-name" style="color:var(--violet)">Claude Fable 5.2 / Opus 5.5 / Sonnet 5.5 / Haiku 5.5 (Anthropic)</span>
         <span class="bp-model-badge">best for enterprise</span>
-        <p class="bp-model-desc">Sonnet 5.5 is the daily driver for doc analysis and agent loops. Opus 5.5 for hard reasoning and long agentic runs. Fable 5.1 is the new Mythos-class tier on top, with extra safety gating. Haiku 4.5 still the cheap router. what I build with at work.</p>
+        <p class="bp-model-desc">Fable 5.2 (Nov 9) is the new #1 on the Artificial Analysis index, now $8/$40, but it rejects temperature / top_p. Opus 5.5 is still the recommended heavy default, Sonnet 5.5 the daily driver. Haiku 5.5 finally replaced 4.5: $0.10/$0.50 and good enough to run agents. what I build with at work.</p>
       </div>
       <div class="bp-model">
-        <span class="bp-model-name" style="color:var(--green)">GPT-6 Astra / Sol / Luna (OpenAI)</span>
+        <span class="bp-model-name" style="color:var(--green)">GPT-6 Astra / 6.1 Sol / 6.1 Terra / 6 Luna (OpenAI)</span>
         <span class="bp-model-badge">best ecosystem</span>
-        <p class="bp-model-desc">Astra is the flagship (early Sep). Sol is the coding / complex-task workhorse, Luna the high-volume cheap tier (both Sep 22). the 6 series is priced at half of 5.6. Codex + Responses API is the agent story.</p>
+        <p class="bp-model-desc">Astra is the flagship. 6.1 Sol (DevDay) is the agent workhorse. 6.1 Terra (Oct 26) is the value pick: $1/$5 and 3x faster at computer use. gated specialists on the side: Rosalind for science, GPT-6 Cyber. Codex + Responses API is the agent story.</p>
       </div>
       <div class="bp-model">
-        <span class="bp-model-name" style="color:var(--cyan)">Gemini 3.1 Pro / 3.8 Flash (Google)</span>
-        <span class="bp-model-badge">best context + speed</span>
-        <p class="bp-model-desc">Pro hasn't moved since Feb (3.1), 3.5 Pro slipped and Gemini 4 is teased. the action is in Flash: 3.8 Flash (Sep) targets long-horizon coding, 3.5 Flash-Lite is the budget pick. 3.8 Live for realtime voice. free tier still generous.</p>
+        <span class="bp-model-name" style="color:var(--cyan)">Gemini 4 Argon / Carbon · 3.8 Flash (Google)</span>
+        <span class="bp-model-badge">best context + output</span>
+        <p class="bp-model-desc">Gemini 4 finally landed. Argon went to cyber defenders first, then general, with 1M <i>output</i> tokens. Carbon is #2 on the index but still Vertex-only. 3.8 Flash stays the speed pick, but its price doubles on Jan 1. also shipped: Harness², see the update section.</p>
       </div>
       <div class="bp-model">
-        <span class="bp-model-name" style="color:var(--orange)">DeepSeek V4 / Kimi K3 / GLM-5.2 / Qwen 3.8 (open weights)</span>
+        <span class="bp-model-name" style="color:var(--orange)">Kimi K3.1 Pro / Qwen 4 / Muse Spark Open / Mistral Large 4 (open weights)</span>
         <span class="bp-model-badge">open weights</span>
-        <p class="bp-model-desc">DeepSeek V4 Flash + Pro (MIT, 1M ctx) for cheap reasoning. GLM-5.2 tops open coding benchmarks. Kimi K3 is the biggest open model out there. Qwen 3.8 27B runs on a laptop and punches way above its size. Llama 3.3 is retired from my stack.</p>
+        <p class="bp-model-desc">Kimi K3.1 Pro (Apache 2.0) is the best open model right now. Qwen 4 is API-only until weights drop (promised Dec 20). Meta is back with Muse Spark Open (816B, own license). Mistral Large 4 is GA. DeepSeek V4.1 Flash is the cheap multimodal pick. Qwen 3.8 27B is still my laptop model.</p>
       </div>
       <div class="bp-model">
-        <span class="bp-model-name" style="color:var(--pink)">Jev (TypeSafe) — not an LLM</span>
+        <span class="bp-model-name" style="color:var(--pink)">Jev (TypeSafe), not an LLM</span>
         <span class="bp-model-badge">decisions, not text</span>
         <p class="bp-model-desc">System One model: typed Choice / Score / yes-no answers with calibrated probabilities in ~100ms. stop burning frontier tokens on routing and classification. full breakdown in the jev section below.</p>
       </div>
@@ -574,6 +576,516 @@ urgent = res.answers[<span class="s">"urgent"</span>].noul &gt; <span class="n">
   </div>
 </div>
 </div>
+
+<!-- ══════════════════════════════════════════
+     01.8 · THE UPDATE (NOV 2026)
+══════════════════════════════════════════ -->
+<div class="sec" id="update">
+<div class="container">
+  <div class="sec-tag">01.8 · the update, nov 2026</div>
+  <h2 class="sec-title">what shipped since september</h2>
+  <p class="sec-sub">ten weeks, four labs, one new leaderboard leader. here's the stuff that actually changes what you build with. dates are public release dates, prices are per 1M input / output tokens.</p>
+
+  <div class="upd-ledger">
+    <div class="upd-lab" style="--lab:var(--violet)">
+      <div class="upd-lab-head">anthropic</div>
+      <div class="upd-row"><span class="upd-date">nov 09</span><span class="upd-name">Claude Fable 5.2</span><span class="upd-note">new #1 on the Artificial Analysis index (65). 1M ctx, 128k out. $8/$40, first price cut on the Fable line. <b>breaking:</b> temperature / top_p / top_k now error, forced tool choice is gone. Mythos 5.2 stays restricted.</span></div>
+      <div class="upd-row"><span class="upd-date">oct 07</span><span class="upd-name">Claude Haiku 5.5</span><span class="upd-note">the router got good. $0.10/$0.50 under 100k tokens (5x above), effort levels low → max, first Haiku that works as an actual agent.</span></div>
+      <div class="upd-row"><span class="upd-date">sep 28</span><span class="upd-name">Claude Sonnet 5.5</span><span class="upd-note">replaces Sonnet 5 at the same price. daily driver for docs + tool loops.</span></div>
+      <div class="upd-row"><span class="upd-date">sep 22</span><span class="upd-name">Claude Opus 5.5</span><span class="upd-note">beats Fable 5.1 on most coding evals at a fraction of the price. still the recommended heavy default.</span></div>
+    </div>
+
+    <div class="upd-lab" style="--lab:var(--green)">
+      <div class="upd-lab-head">openai</div>
+      <div class="upd-row"><span class="upd-date">nov 05</span><span class="upd-name">GPT-6 Cyber</span><span class="upd-note">restricted, approval only. same story as Rosalind (oct 30) for science orgs. gated specialist models are now a pattern, not a one-off.</span></div>
+      <div class="upd-row"><span class="upd-date">nov 04</span><span class="upd-name">GPT Image 2.6</span><span class="upd-note">Sunburst + Flare image models.</span></div>
+      <div class="upd-row"><span class="upd-date">oct 26</span><span class="upd-name">GPT-6.1 Terra</span><span class="upd-note">the sleeper. $1/$5, built for computer use + screenshots, 3x+ faster than Astra / 6.1 Sol on those tasks. <code>gpt-6.1-terra</code>.</span></div>
+      <div class="upd-row"><span class="upd-date">sep 29</span><span class="upd-name">GPT-6.1 Sol</span><span class="upd-note">DevDay. mid-tier agent workhorse that fixes Astra's cost problem. lineup is now Astra → Sol → Terra → Luna.</span></div>
+    </div>
+
+    <div class="upd-lab" style="--lab:var(--cyan)">
+      <div class="upd-lab-head">google</div>
+      <div class="upd-row"><span class="upd-date">nov 10–12</span><span class="upd-name">Gemini 4 Carbon / Hydrogen</span><span class="upd-note">on Vertex. Carbon sits #2 on the AA index (60). no clean public purchase path yet, watch this space.</span></div>
+      <div class="upd-row"><span class="upd-date">sep 30 → oct 13</span><span class="upd-name">Gemini 4 Argon</span><span class="upd-note">the long-delayed flagship (replaced the 3.5 Pro plan). cyber defenders first, then general. <b>1M output tokens</b>, up from 64k. intro $2/$10 doubles to $4/$20 on dec 1.</span></div>
+      <div class="upd-row"><span class="upd-date">oct 09</span><span class="upd-name">Harness²</span><span class="upd-note">open-source agent self-improvement framework. full breakdown below.</span></div>
+      <div class="upd-row"><span class="upd-date">heads up</span><span class="upd-name">3.8 Flash price</span><span class="upd-note">doubles to $1.50/$7.50 on jan 1, 2027. re-run your cost model.</span></div>
+    </div>
+
+    <div class="upd-lab" style="--lab:var(--orange)">
+      <div class="upd-lab-head">open weights + others</div>
+      <div class="upd-row"><span class="upd-date">nov 11</span><span class="upd-name">Qwen 4 (Alibaba)</span><span class="upd-note">1.2T sparse MoE, API at $1/$4. Apache 2.0 weights promised by dec 20, not out yet.</span></div>
+      <div class="upd-row"><span class="upd-date">nov 05</span><span class="upd-name">Mistral Large 4</span><span class="upd-note">GA with open weights per the model card, after an oct 6 preview.</span></div>
+      <div class="upd-row"><span class="upd-date">nov 04</span><span class="upd-name">Kimi K3.1 Pro</span><span class="upd-note">Apache 2.0, 2.8T total / 104B active. best open model on the index right now.</span></div>
+      <div class="upd-row"><span class="upd-date">oct 15</span><span class="upd-name">Muse Spark Open (Meta)</span><span class="upd-note">816B / 42B active, 1M ctx. Meta is back in open weights, but under its own Muse license, not Apache. runs on two M5 Ultra Mac Studios.</span></div>
+      <div class="upd-row"><span class="upd-date">sep–oct</span><span class="upd-name">DeepSeek V4.1 Flash · GLM 5.3 · Grok 4.7</span><span class="upd-note">V4.1 Flash went native multimodal (refreshed oct 17, same price). DeepSeek also started billing search/fetch APIs.</span></div>
+    </div>
+  </div>
+
+  <div class="jev-limits upd-take">
+    <div class="jev-limits-col">
+      <div class="jev-limits-head" style="color:var(--green)">what I'd change this week</div>
+      <p>swap Haiku 4.5 → 5.5 for routing and extraction, it's cheaper and smarter. try GPT-6.1 Terra for anything that reads screenshots or drives a UI. keep Opus 5.5 / Sonnet 5.5 as the default stack.</p>
+    </div>
+    <div class="jev-limits-col">
+      <div class="jev-limits-head" style="color:var(--red)">what will bite you</div>
+      <p>Fable 5.2 rejects sampling params, so any wrapper that hardcodes <code>temperature=0</code> breaks. Gemini price doubles in dec / jan. model IDs churn fast: DeepSeek V4 Flash lived six weeks. pin IDs, wrap them in config.</p>
+    </div>
+    <div class="jev-limits-col">
+      <div class="jev-limits-head" style="color:var(--cyan)">the actual trend</div>
+      <p>the frontier is splitting into public models and gated specialists (Mythos, Rosalind, Cyber, Argon-for-defenders). and the gains people are chasing are moving out of the weights and into the harness. which brings us to...</p>
+    </div>
+  </div>
+
+  <!-- HARNESS² -->
+  <div class="upd-sub" id="harness2">
+    <div class="upd-sub-tag">[ 017 ] google research · apache 2.0 · oct 2026</div>
+    <h3 class="upd-sub-title">Harness²: agents that rewrite their own harness</h3>
+    <p class="upd-sub-desc">the harness is everything around the model: system prompt, tools, memory, skills, guardrails. Harness² keeps the weights frozen and lets the agent edit that layer, but only keeps an edit if a side-by-side run proves it changed behaviour. no ground-truth labels needed. it's a research framework, not a supported Google product.</p>
+  </div>
+
+  <div class="jev-prims">
+    <div class="jev-prim" style="--grd:linear-gradient(90deg,#6366f1,#22d3ee)">
+      <div class="jev-prim-tag">01 · propose</div>
+      <div class="jev-prim-title">two candidate edits</div>
+      <p>after a reference run of the current harness, the editor proposes one general fix (better tool use, say) and one task-specific fix (a checking step for spreadsheets, say).</p>
+      <div class="jev-prim-eg">→ diffs to markdown / python / ts files, not to weights</div>
+    </div>
+    <div class="jev-prim" style="--grd:linear-gradient(90deg,#a78bfa,#f472b6)">
+      <div class="jev-prim-tag">02 · probe</div>
+      <div class="jev-prim-title">run both, same conditions</div>
+      <p>each candidate runs on the same task with the same model and environment. behaviour gets compared against the reference run.</p>
+      <div class="jev-prim-eg">→ evidence over vibes: a plausible explanation isn't enough</div>
+    </div>
+    <div class="jev-prim" style="--grd:linear-gradient(90deg,#4ade80,#fb923c)">
+      <div class="jev-prim-tag">03 · compose</div>
+      <div class="jev-prim-title">keep what's proven</div>
+      <p>only edits with observed behavioural differences make it into the composed harness. then a reflector writes lessons to <code>EXPERIENCE.md</code> in a per-domain library for future tasks.</p>
+      <div class="jev-prim-eg">→ level 2 recursion: learning across tasks, not just within one</div>
+    </div>
+  </div>
+
+  <div class="jev-duo">
+    <div class="jev-code-card">
+      <div class="jev-code-bar"><span>the 8 editable components</span><span class="jev-code-lang">what Harness² is allowed to touch</span></div>
+<pre class="jev-code">harness/
+├── systemprompt.md          <span class="c"># overarching instructions</span>
+├── guardrails.md            <span class="c"># written constraints (NOT a security boundary)</span>
+├── LongTermMEMORY.md        <span class="c"># persistent context</span>
+├── tool_guidance.md         <span class="c"># how to pick + use tools</span>
+├── sub_agents/<span class="s">&lt;name&gt;</span>/AGENT.md  <span class="c"># delegated roles</span>
+├── skills/<span class="s">&lt;name&gt;</span>/SKILL.md      <span class="c"># reusable procedures</span>
+├── scripts/<span class="s">&lt;name&gt;</span>.py          <span class="c"># executable helpers</span>
+└── plugin/<span class="s">&lt;name&gt;</span>.ts           <span class="c"># middleware around execution</span>
+
+<span class="c"># try the credential-free demo (shows the mechanics, not benchmark gains)</span>
+<span class="k">git clone</span> https://github.com/google-research/harness2.git
+<span class="k">cd</span> harness2 &amp;&amp; uv venv --python <span class="n">3.12</span> .venv &amp;&amp; <span class="k">source</span> .venv/bin/activate
+uv pip install -e <span class="s">'.[render]'</span>
+harness2-demo --output runs/demo --k <span class="n">2</span></pre>
+      <div class="jev-code-foot">look familiar? it's the same shape as a Claude Code / Agent SDK project: CLAUDE.md, skills, subagents, hooks. Harness² is basically automated harness engineering for that layout.</div>
+    </div>
+
+    <div class="jev-fit">
+      <div class="jev-fit-title">numbers + the bill</div>
+      <div class="jev-uses">
+        <div class="jev-use"><span class="jev-use-k">WorkBuddy</span><span class="jev-use-v">64.2 → 75.7 (+11.5) with GLM-5 under OpenCode. +5.1 with Gemini 3.5 Flash.</span></div>
+        <div class="jev-use"><span class="jev-use-k">JobBench</span><span class="jev-use-v">31.5 → 36.0 (+4.5) with Gemini 3.5 Flash.</span></div>
+        <div class="jev-use"><span class="jev-use-k">LAB</span><span class="jev-use-v">59.6% → 71.4% partial pass with GLM-5. all author-reported, one improvement step.</span></div>
+        <div class="jev-use"><span class="jev-use-k">cost</span><span class="jev-use-v"><b>4k executor rollouts per task</b>: k reference + k general + k domain + k composed. 4 runs at k=1, 20 at k=5. plus editor, reflector and selector calls on top.</span></div>
+        <div class="jev-use"><span class="jev-use-k">metric</span><span class="jev-use-v">track cost per accepted outcome, not cost per token. a 10% better agent at 4x the runs can easily lose.</span></div>
+        <div class="jev-use"><span class="jev-use-k">safety</span><span class="jev-use-v">executor network isn't restricted and the Codex sandbox is off by default. one validation run fetched a grading rubric on its own. sandbox it, cap spend externally (<code>--max-tasks</code> caps tasks, not dollars).</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="jev-links">
+    <a href="https://github.com/google-research/harness2" target="_blank">google-research/harness2 ↗</a>
+    <a href="https://wavect.io/blog/google-harness2-setup-cost-safety/" target="_blank">setup, cost + safety notes ↗</a>
+  </div>
+
+  <!-- PYDOT -->
+  <div class="upd-sub" id="pydot">
+    <div class="upd-sub-tag">[ 018 ] tool · pip install pydot · MIT</div>
+    <h3 class="upd-sub-title">pydot: draw your agent graph as code</h3>
+    <p class="upd-sub-desc">pure-python interface to Graphviz's DOT language. build, parse and render graphs from code. the useful bit for us: turn a compiled LangGraph into a real diagram for docs, PRs and design reviews, with clusters, colours and conditional edges styled the way you want. Mermaid is fine for a README. DOT is what you reach for when the graph gets big.</p>
+  </div>
+
+  <div class="jev-duo">
+    <div class="jev-code-card">
+      <div class="jev-code-bar"><span>draw_graph.py</span><span class="jev-code-lang">python · needs graphviz binary (apt / brew install graphviz)</span></div>
+<pre class="jev-code"><span class="k">import</span> pydot
+
+<span class="k">def</span> langgraph_to_dot(app, name=<span class="s">"agent"</span>) -&gt; pydot.Dot:
+    g = app.get_graph()  <span class="c"># compiled StateGraph → drawable graph</span>
+    dot = pydot.Dot(name, graph_type=<span class="s">"digraph"</span>, rankdir=<span class="s">"LR"</span>,
+                    bgcolor=<span class="s">"transparent"</span>, fontname=<span class="s">"monospace"</span>)
+    <span class="k">for</span> node_id <span class="k">in</span> g.nodes:
+        terminal = node_id <span class="k">in</span> (<span class="s">"__start__"</span>, <span class="s">"__end__"</span>)
+        dot.add_node(pydot.Node(
+            <span class="s">f'"{node_id}"'</span>,  <span class="c"># quote ids: DOT chokes on some names</span>
+            shape=<span class="s">"circle"</span> <span class="k">if</span> terminal <span class="k">else</span> <span class="s">"box"</span>,
+            style=<span class="s">"rounded,filled"</span>, fillcolor=<span class="s">"#1e1b4b"</span>, fontcolor=<span class="s">"white"</span>))
+    <span class="k">for</span> e <span class="k">in</span> g.edges:
+        dot.add_edge(pydot.Edge(
+            <span class="s">f'"{e.source}"'</span>, <span class="s">f'"{e.target}"'</span>,
+            style=<span class="s">"dashed"</span> <span class="k">if</span> e.conditional <span class="k">else</span> <span class="s">"solid"</span>,
+            color=<span class="s">"#a78bfa"</span> <span class="k">if</span> e.conditional <span class="k">else</span> <span class="s">"#22d3ee"</span>))
+    <span class="k">return</span> dot
+
+dot = langgraph_to_dot(app)
+dot.write_svg(<span class="s">"agent.svg"</span>)       <span class="c"># or write_png / write_pdf</span>
+print(dot.to_string())         <span class="c"># raw DOT: diff it in PRs</span></pre>
+      <div class="jev-code-foot">conditional edges dashed, normal edges solid. commit the .dot next to the code and your architecture diagram can't drift from reality.</div>
+    </div>
+
+    <div class="jev-fit">
+      <div class="jev-fit-title">pydot cheatsheet</div>
+      <div class="jev-uses">
+        <div class="jev-use"><span class="jev-use-k">build</span><span class="jev-use-v"><code>pydot.Dot(graph_type="digraph")</code>, then <code>add_node</code> / <code>add_edge</code>. any Graphviz attribute is a kwarg.</span></div>
+        <div class="jev-use"><span class="jev-use-k">parse</span><span class="jev-use-v"><code>pydot.graph_from_dot_data(s)</code> returns a <b>list</b> of graphs. take <code>[0]</code>.</span></div>
+        <div class="jev-use"><span class="jev-use-k">group</span><span class="jev-use-v"><code>pydot.Cluster("rag", label="retrieval")</code> draws a box around a subgraph. great for supervisor / worker layouts.</span></div>
+        <div class="jev-use"><span class="jev-use-k">render</span><span class="jev-use-v"><code>write_svg</code>, <code>write_png</code>, <code>create_png()</code> for bytes (e.g. streamed from FastAPI).</span></div>
+        <div class="jev-use"><span class="jev-use-k">networkx</span><span class="jev-use-v"><code>nx.drawing.nx_pydot.to_pydot(G)</code> and back. handy for knowledge graphs in GraphRAG.</span></div>
+        <div class="jev-use"><span class="jev-use-k">gotchas</span><span class="jev-use-v">"dot not found" means the Graphviz binary is missing, not pydot. names with <code>:</code> or spaces need quoting. DEBUG logging can dump graph contents, so watch it with sensitive data.</span></div>
+        <div class="jev-use"><span class="jev-use-k">vs others</span><span class="jev-use-v"><code>graphviz</code> pkg = thinner wrapper, no parser. <code>pygraphviz</code> = C bindings, painful installs. pydot = pure python, easiest to ship.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="jev-links">
+    <a href="https://github.com/pydot/pydot" target="_blank">pydot on github ↗</a>
+    <a href="https://graphviz.org/doc/info/attrs.html" target="_blank">graphviz attribute reference ↗</a>
+  </div>
+</div>
+</div>
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════
+     01.9 · ACTIVATION STEERING
+══════════════════════════════════════════ -->
+<div class="sec" id="steering">
+<div class="container">
+  <div class="sec-tag">01.9 · inside the model</div>
+  <h2 class="sec-title">activation steering</h2>
+  <p class="sec-sub">prompting changes the input. fine-tuning changes the weights. steering changes the model's internal activations at inference time: find the direction for a concept, add it to the residual stream, and the behaviour shifts. no training run, no prompt.</p>
+
+  <div class="jev-banner">
+    <div class="jev-banner-left">
+      <div class="jev-kicker">// the core idea in one line</div>
+      <p class="jev-lede">concepts look roughly linear inside a transformer. so take the mean activation on prompts that show a behaviour, subtract the mean on prompts that don't, and you get a vector. add <code class="jev-inline">α · v</code> at layer L and the model leans toward that behaviour. subtract it and it leans away.</p>
+      <p class="jev-lede jev-lede-muted">h′ = h + α·v, where v = mean(h | positive) − mean(h | negative). that's contrastive activation addition (CAA). Golden Gate Claude was the famous demo of the same family, using a sparse-autoencoder feature instead of a contrastive mean.</p>
+    </div>
+    <div class="jev-stats">
+      <div class="jev-stat"><span class="jev-num">0</span><span class="jev-lbl">gradient steps<br>no training</span></div>
+      <div class="jev-stat"><span class="jev-num">~100</span><span class="jev-lbl">contrast pairs is<br>often enough</span></div>
+      <div class="jev-stat"><span class="jev-num">1 vec</span><span class="jev-lbl">per behaviour<br>a few KB on disk</span></div>
+      <div class="jev-stat"><span class="jev-num">α</span><span class="jev-lbl">one dial for strength<br>too high = gibberish</span></div>
+    </div>
+  </div>
+
+  <div class="jev-prims">
+    <div class="jev-prim" style="--grd:linear-gradient(90deg,#6366f1,#22d3ee)">
+      <div class="jev-prim-tag">1 · collect</div>
+      <div class="jev-prim-title">contrast pairs</div>
+      <p>same prompt, two completions: one with the behaviour, one without. "answer honestly" vs "answer sycophantically". keep everything else identical so the difference is just the concept.</p>
+      <div class="jev-prim-eg">→ quality of the pairs = quality of the vector</div>
+    </div>
+    <div class="jev-prim" style="--grd:linear-gradient(90deg,#a78bfa,#f472b6)">
+      <div class="jev-prim-tag">2 · extract</div>
+      <div class="jev-prim-title">difference of means</div>
+      <p>run both sides through the model, grab residual-stream activations at a middle layer (roughly 30–60% depth works best), average the differences. PCA on the diffs is the common alternative.</p>
+      <div class="jev-prim-eg">→ sweep layers. the right one varies by model and concept</div>
+    </div>
+    <div class="jev-prim" style="--grd:linear-gradient(90deg,#4ade80,#fb923c)">
+      <div class="jev-prim-tag">3 · apply</div>
+      <div class="jev-prim-title">hook + scale</div>
+      <p>register a forward hook that adds α·v to that layer's output on every token. tune α on a small eval: watch the target metric and a fluency metric at the same time.</p>
+      <div class="jev-prim-eg">→ negative α ablates. same vector, both directions</div>
+    </div>
+  </div>
+
+  <div class="jev-duo">
+    <div class="jev-code-card">
+      <div class="jev-code-bar"><span>steer.py</span><span class="jev-code-lang">python · torch + transformers · open-weights models only</span></div>
+<pre class="jev-code"><span class="k">import</span> torch
+<span class="k">from</span> transformers <span class="k">import</span> AutoModelForCausalLM, AutoTokenizer
+
+name = <span class="s">"Qwen/Qwen2.5-7B-Instruct"</span>   <span class="c"># any llama-style decoder</span>
+tok = AutoTokenizer.from_pretrained(name)
+model = AutoModelForCausalLM.from_pretrained(name, torch_dtype=torch.bfloat16, device_map=<span class="s">"auto"</span>)
+LAYER = <span class="n">14</span>
+
+<span class="k">@torch.no_grad</span>()
+<span class="k">def</span> last_token_act(text):
+    ids = tok(text, return_tensors=<span class="s">"pt"</span>).to(model.device)
+    hs = model(**ids, output_hidden_states=<span class="k">True</span>).hidden_states
+    <span class="k">return</span> hs[LAYER + <span class="n">1</span>][<span class="n">0</span>, -<span class="n">1</span>]  <span class="c"># [0] is embeddings, so +1</span>
+
+<span class="c"># pairs: list of (positive_text, negative_text)</span>
+diffs = [last_token_act(p) - last_token_act(n) <span class="k">for</span> p, n <span class="k">in</span> pairs]
+v = torch.stack(diffs).mean(<span class="n">0</span>)
+v = v / v.norm()
+
+<span class="k">def</span> make_hook(alpha):
+    <span class="k">def</span> hook(module, inp, out):
+        h = out[<span class="n">0</span>] <span class="k">if</span> isinstance(out, tuple) <span class="k">else</span> out
+        h = h + alpha * v.to(h.dtype)
+        <span class="k">return</span> (h,) + out[<span class="n">1</span>:] <span class="k">if</span> isinstance(out, tuple) <span class="k">else</span> h
+    <span class="k">return</span> hook
+
+handle = model.model.layers[LAYER].register_forward_hook(make_hook(<span class="n">8.0</span>))
+<span class="k">try</span>:
+    out = model.generate(**tok(prompt, return_tensors=<span class="s">"pt"</span>).to(model.device), max_new_tokens=<span class="n">200</span>)
+<span class="k">finally</span>:
+    handle.remove()   <span class="c"># always unhook, or every later call stays steered</span></pre>
+      <div class="jev-code-foot">α depends on the residual norm at that layer. start around 4–12 for a unit vector on a 7B model and sweep. if you don't want to hand-roll it: <code>repeng</code> wraps this whole loop in about ten lines.</div>
+    </div>
+
+    <div class="jev-fit">
+      <div class="jev-fit-title">steering vs prompting vs fine-tuning</div>
+      <div class="jev-uses">
+        <div class="jev-use"><span class="jev-use-k">prompting</span><span class="jev-use-v">cheapest, works on closed APIs, but costs context every call and can be overridden by a clever user.</span></div>
+        <div class="jev-use"><span class="jev-use-k">steering</span><span class="jev-use-v">no tokens, no training, adjustable live via α, reversible. needs open weights and access to activations.</span></div>
+        <div class="jev-use"><span class="jev-use-k">fine-tuning</span><span class="jev-use-v">most robust for format and style, but it's a training run, a new artifact to host, and it's sticky.</span></div>
+      </div>
+      <div class="jev-fit-title" style="margin-top:18px">where it's actually useful</div>
+      <div class="jev-uses">
+        <div class="jev-use"><span class="jev-use-k">monitoring</span><span class="jev-use-v">dot-product live activations with a vector to detect a trait (sycophancy, refusal, "evil") before it shows in the text. Anthropic's persona vectors work does exactly this.</span></div>
+        <div class="jev-use"><span class="jev-use-k">behaviour dials</span><span class="jev-use-v">formality, verbosity, refusal rate, honesty, as a slider instead of a prompt rewrite.</span></div>
+        <div class="jev-use"><span class="jev-use-k">data vetting</span><span class="jev-use-v">score fine-tuning data by how hard it pushes along a bad direction, and drop the worst before training.</span></div>
+        <div class="jev-use"><span class="jev-use-k">research</span><span class="jev-use-v">if adding v changes behaviour, the concept is causally used there, not just correlated. that's the interpretability payoff.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="jev-limits">
+    <div class="jev-limits-col">
+      <div class="jev-limits-head" style="color:var(--green)">use it when</div>
+      <p>you self-host open weights (vLLM, TGI, local) and want a cheap, tunable behaviour knob. you want to monitor traits, not just filter outputs. you're doing interpretability or safety research.</p>
+    </div>
+    <div class="jev-limits-col">
+      <div class="jev-limits-head" style="color:var(--red)">don't bother when</div>
+      <p>you're on Claude / GPT / Gemini APIs: no activation access, full stop. you need precise facts or formats: steering shifts tendencies, it doesn't add knowledge. a two-line system prompt already does the job.</p>
+    </div>
+    <div class="jev-limits-col">
+      <div class="jev-limits-head" style="color:var(--cyan)">honest caveats</div>
+      <p>vectors are model- and layer-specific, they don't transfer. high α degrades fluency and general capability, so eval both. concepts aren't perfectly linear: you'll steer side effects too. it's a dial, not a guardrail.</p>
+    </div>
+  </div>
+
+  <div class="jev-links">
+    <a href="https://arxiv.org/abs/2308.10248" target="_blank">ActAdd: steering by activation addition ↗</a>
+    <a href="https://arxiv.org/abs/2312.06681" target="_blank">CAA: contrastive activation addition ↗</a>
+    <a href="https://arxiv.org/abs/2310.01405" target="_blank">representation engineering ↗</a>
+    <a href="https://www.anthropic.com/research/persona-vectors" target="_blank">anthropic: persona vectors ↗</a>
+    <a href="https://www.anthropic.com/news/golden-gate-claude" target="_blank">golden gate claude ↗</a>
+    <a href="https://github.com/vgel/repeng" target="_blank">repeng library ↗</a>
+  </div>
+</div>
+</div>
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════
+     01.10 · RETRIEVAL PLAYBOOK
+══════════════════════════════════════════ -->
+<div class="sec" id="retrieval">
+<div class="container">
+  <div class="sec-tag">01.10 · retrieval playbook</div>
+  <h2 class="sec-title">chunking, indexing, retrieval, reranking</h2>
+  <p class="sec-sub">most bad RAG answers are retrieval bugs, not model bugs. if the right chunk never reaches the context window, no model can save you. four stages, each with real trade-offs.</p>
+
+  <div class="rp-flow">
+    <span class="jev-node">parse</span><span class="jev-arr">→</span>
+    <span class="jev-node jev-node-hl">chunk</span><span class="jev-arr">→</span>
+    <span class="jev-node">embed</span><span class="jev-arr">→</span>
+    <span class="jev-node jev-node-hl">index</span><span class="jev-arr">→</span>
+    <span class="jev-node">rewrite query</span><span class="jev-arr">→</span>
+    <span class="jev-node jev-node-hl">retrieve top-50</span><span class="jev-arr">→</span>
+    <span class="jev-node jev-node-hl">rerank → top-5</span><span class="jev-arr">→</span>
+    <span class="jev-node">generate</span>
+  </div>
+
+  <!-- CHUNKING -->
+  <div class="rp-head"><span class="rp-num">01</span>chunking strategies<span class="rp-hint">how you cut decides what can be found</span></div>
+  <div class="rp-grid">
+    <div class="rp-card">
+      <div class="rp-name">fixed-size</div>
+      <p>split every N tokens with overlap. dumb, fast, predictable. cuts sentences and tables in half.</p>
+      <div class="rp-meta"><span class="rp-good">baseline / logs</span><span class="rp-cost">cost: none</span></div>
+    </div>
+    <div class="rp-card">
+      <div class="rp-name">recursive character</div>
+      <p>try paragraph breaks, then lines, then sentences, then words, until it fits. respects natural boundaries. the sane default: 400–800 tokens, 10–15% overlap.</p>
+      <div class="rp-meta"><span class="rp-good">default for prose</span><span class="rp-cost">cost: none</span></div>
+    </div>
+    <div class="rp-card">
+      <div class="rp-name">structure-aware</div>
+      <p>split on the document's own structure: headings, sections, tables, code blocks, slides. Docling / Unstructured / markdown header splitters. keep the heading path as metadata.</p>
+      <div class="rp-meta"><span class="rp-good">PDFs, policies, docs</span><span class="rp-cost">cost: parsing</span></div>
+    </div>
+    <div class="rp-card">
+      <div class="rp-name">semantic</div>
+      <p>embed each sentence, start a new chunk where similarity between neighbours drops. topic-coherent chunks, but uneven sizes and an embedding pass at ingest.</p>
+      <div class="rp-meta"><span class="rp-good">long unstructured text</span><span class="rp-cost">cost: embeddings</span></div>
+    </div>
+    <div class="rp-card">
+      <div class="rp-name">parent-child (small-to-big)</div>
+      <p>embed small chunks for precise matching, but return their larger parent section to the LLM. precision on search, context on generation. my default for real docs.</p>
+      <div class="rp-meta"><span class="rp-good">most production RAG</span><span class="rp-cost">cost: 2 stores</span></div>
+    </div>
+    <div class="rp-card">
+      <div class="rp-name">contextual chunks</div>
+      <p>prepend an LLM-written line to each chunk saying where it sits ("from the 2026 fees policy, refunds section") before embedding and BM25. Anthropic reported big cuts in failed retrievals, bigger with a reranker.</p>
+      <div class="rp-meta"><span class="rp-good">chunks that lose meaning alone</span><span class="rp-cost">cost: 1 LLM call / chunk (cache it)</span></div>
+    </div>
+    <div class="rp-card">
+      <div class="rp-name">late chunking</div>
+      <p>run the whole document through a long-context embedding model first, then pool token embeddings per chunk. every chunk vector "saw" the full doc, so pronouns and references survive.</p>
+      <div class="rp-meta"><span class="rp-good">cross-references, contracts</span><span class="rp-cost">cost: long-ctx embedder</span></div>
+    </div>
+    <div class="rp-card">
+      <div class="rp-name">propositions / agentic</div>
+      <p>an LLM rewrites text into atomic, self-contained facts, or decides the cut points itself. highest quality on dense material, slowest and most expensive ingest.</p>
+      <div class="rp-meta"><span class="rp-good">FAQs, knowledge bases</span><span class="rp-cost">cost: LLM over full corpus</span></div>
+    </div>
+  </div>
+
+  <!-- INDEXING -->
+  <div class="rp-head"><span class="rp-num">02</span>indexing techniques<span class="rp-hint">how you store decides how fast and how well you search</span></div>
+  <div class="rp-grid">
+    <div class="rp-card">
+      <div class="rp-name">flat (exact kNN)</div>
+      <p>compare the query to every vector. perfect recall, linear cost. totally fine up to ~100k vectors. don't over-engineer a small corpus.</p>
+      <div class="rp-meta"><span class="rp-good">&lt;100k chunks</span><span class="rp-cost">recall: 100%</span></div>
+    </div>
+    <div class="rp-card">
+      <div class="rp-name">HNSW</div>
+      <p>layered proximity graph, greedy search from the top layer down. the default ANN index in pgvector, Qdrant, Chroma, Weaviate. tune <code>M</code>, <code>ef_construction</code>, <code>ef_search</code>.</p>
+      <div class="rp-meta"><span class="rp-good">default ANN</span><span class="rp-cost">memory heavy</span></div>
+    </div>
+    <div class="rp-card">
+      <div class="rp-name">IVF + PQ</div>
+      <p>cluster vectors (IVF), only search the nearest clusters (<code>nprobe</code>), compress them with product quantization. FAISS / Milvus territory once you're into tens of millions.</p>
+      <div class="rp-meta"><span class="rp-good">10M+ vectors</span><span class="rp-cost">trades recall for RAM</span></div>
+    </div>
+    <div class="rp-card">
+      <div class="rp-name">quantization</div>
+      <p>store vectors as int8 or binary instead of float32. binary is ~32x smaller. search the cheap version first, rescore the top candidates with full precision.</p>
+      <div class="rp-meta"><span class="rp-good">cost / memory cuts</span><span class="rp-cost">small recall hit</span></div>
+    </div>
+    <div class="rp-card">
+      <div class="rp-name">inverted index (BM25)</div>
+      <p>classic keyword search. catches what embeddings miss: product codes, names, error strings, acronyms. never ship a production RAG without it.</p>
+      <div class="rp-meta"><span class="rp-good">exact terms, IDs</span><span class="rp-cost">cheap</span></div>
+    </div>
+    <div class="rp-card">
+      <div class="rp-name">learned sparse (SPLADE)</div>
+      <p>a model expands text into weighted vocabulary terms, then you search it like an inverted index. keyword precision with some synonym awareness.</p>
+      <div class="rp-meta"><span class="rp-good">hybrid without 2 systems</span><span class="rp-cost">model at ingest</span></div>
+    </div>
+    <div class="rp-card">
+      <div class="rp-name">multi-vector (ColBERT)</div>
+      <p>one vector per token, scored with late interaction (MaxSim). much better at fine-grained matching, much bigger index. ColPali does the same on page images, skipping parsing entirely.</p>
+      <div class="rp-meta"><span class="rp-good">hard / visual docs</span><span class="rp-cost">storage ×10–100</span></div>
+    </div>
+    <div class="rp-card">
+      <div class="rp-name">hierarchical / graph</div>
+      <p>RAPTOR builds a tree of cluster summaries for "what's this whole corpus about" questions. GraphRAG extracts entities + relations for multi-hop questions. also cheap and underrated: index LLM-generated questions per chunk.</p>
+      <div class="rp-meta"><span class="rp-good">global + multi-hop Qs</span><span class="rp-cost">heavy ingest</span></div>
+    </div>
+  </div>
+
+  <!-- RETRIEVAL -->
+  <div class="rp-head"><span class="rp-num">03</span>retrieval<span class="rp-hint">get high recall first. precision comes in step 04</span></div>
+  <div class="cheat-grid">
+    <div class="cheat-card">
+      <div class="cheat-title">[ search modes ]</div>
+      <div class="cheat-item"><span class="cheat-key">dense</span><span class="cheat-val">embedding similarity. great at meaning, bad at exact strings.</span></div>
+      <div class="cheat-item"><span class="cheat-key">sparse</span><span class="cheat-val">BM25 / SPLADE. great at exact strings, bad at paraphrase.</span></div>
+      <div class="cheat-item"><span class="cheat-key">hybrid</span><span class="cheat-val">run both, fuse with RRF. almost always beats either alone.</span></div>
+      <div class="cheat-item"><span class="cheat-key">RRF</span><span class="cheat-val">score = Σ 1/(k + rank), k≈60. rank-based, so no score normalising headaches.</span></div>
+      <div class="cheat-item"><span class="cheat-key">filters</span><span class="cheat-val">pre-filter on metadata (tenant, date, doc type) before vector search. also your access control.</span></div>
+    </div>
+    <div class="cheat-card">
+      <div class="cheat-title">[ query transforms ]</div>
+      <div class="cheat-item"><span class="cheat-key">rewrite</span><span class="cheat-val">turn chatty follow-ups into standalone queries using chat history. biggest win in chatbots.</span></div>
+      <div class="cheat-item"><span class="cheat-key">multi-query</span><span class="cheat-val">generate 3–5 phrasings, retrieve for each, fuse with RRF.</span></div>
+      <div class="cheat-item"><span class="cheat-key">HyDE</span><span class="cheat-val">have the LLM write a fake answer, embed that instead of the question. answers look like answers.</span></div>
+      <div class="cheat-item"><span class="cheat-key">decompose</span><span class="cheat-val">split multi-part questions into sub-queries. retrieve each separately.</span></div>
+      <div class="cheat-item"><span class="cheat-key">self-query</span><span class="cheat-val">LLM extracts metadata filters from the question ("2026 fees for MBA" → year, program).</span></div>
+    </div>
+    <div class="cheat-card">
+      <div class="cheat-title">[ agentic retrieval ]</div>
+      <div class="cheat-item"><span class="cheat-key">retrieval as tool</span><span class="cheat-val">let the agent decide when and what to search. skip retrieval for small talk.</span></div>
+      <div class="cheat-item"><span class="cheat-key">CRAG</span><span class="cheat-val">grade retrieved chunks. if they're weak, rewrite and search again, or fall back to web.</span></div>
+      <div class="cheat-item"><span class="cheat-key">iterative</span><span class="cheat-val">retrieve → read → retrieve again for multi-hop. cap the loops.</span></div>
+      <div class="cheat-item"><span class="cheat-key">MMR</span><span class="cheat-val">diversify results so top-5 isn't five near-duplicates.</span></div>
+      <div class="cheat-item"><span class="cheat-key">long context</span><span class="cheat-val">1M windows don't kill RAG. cost, latency and lost-in-the-middle still do.</span></div>
+    </div>
+  </div>
+
+  <!-- RERANKING -->
+  <div class="rp-head"><span class="rp-num">04</span>reranking<span class="rp-hint">the cheapest big quality jump in RAG</span></div>
+  <div class="jev-duo">
+    <div class="jev-code-card">
+      <div class="jev-code-bar"><span>hybrid_rerank.py</span><span class="jev-code-lang">python · retrieve wide, rerank narrow</span></div>
+<pre class="jev-code"><span class="k">from</span> sentence_transformers <span class="k">import</span> CrossEncoder
+
+reranker = CrossEncoder(<span class="s">"BAAI/bge-reranker-v2-m3"</span>)
+
+<span class="k">def</span> rrf(rank_lists, k=<span class="n">60</span>):
+    scores = {}
+    <span class="k">for</span> ranks <span class="k">in</span> rank_lists:
+        <span class="k">for</span> pos, doc_id <span class="k">in</span> enumerate(ranks):
+            scores[doc_id] = scores.get(doc_id, <span class="n">0</span>) + <span class="n">1</span> / (k + pos + <span class="n">1</span>)
+    <span class="k">return</span> sorted(scores, key=scores.get, reverse=<span class="k">True</span>)
+
+<span class="k">def</span> retrieve(query, top_n=<span class="n">5</span>):
+    dense  = vector_store.search(query, k=<span class="n">50</span>)   <span class="c"># ids by cosine</span>
+    sparse = bm25.search(query, k=<span class="n">50</span>)           <span class="c"># ids by BM25</span>
+    candidates = rrf([dense, sparse])[:<span class="n">50</span>]   <span class="c"># high recall</span>
+
+    pairs = [(query, docs[i].text) <span class="k">for</span> i <span class="k">in</span> candidates]
+    scores = reranker.predict(pairs)          <span class="c"># joint query+doc scoring</span>
+    ranked = sorted(zip(candidates, scores), key=<span class="k">lambda</span> x: x[<span class="n">1</span>], reverse=<span class="k">True</span>)
+
+    <span class="c"># drop junk instead of always stuffing top_n</span>
+    <span class="k">return</span> [docs[i] <span class="k">for</span> i, s <span class="k">in</span> ranked[:top_n] <span class="k">if</span> s &gt; <span class="n">0.2</span>]</pre>
+      <div class="jev-code-foot">bi-encoders embed query and doc separately (fast, fuzzy). cross-encoders read them together (slow, sharp). so: bi-encoder for 50, cross-encoder for 5. the 0.2 threshold is a placeholder, tune it on your golden set.</div>
+    </div>
+
+    <div class="jev-fit">
+      <div class="jev-fit-title">reranker options</div>
+      <div class="jev-uses">
+        <div class="jev-use"><span class="jev-use-k">cross-encoder</span><span class="jev-use-v">bge-reranker-v2-m3, mxbai, ms-marco MiniLM. self-hosted, multilingual options, ~20–100ms for 50 docs on GPU.</span></div>
+        <div class="jev-use"><span class="jev-use-k">hosted API</span><span class="jev-use-v">Cohere Rerank, Voyage, Jina. one call, no GPU. easiest upgrade to an existing pipeline.</span></div>
+        <div class="jev-use"><span class="jev-use-k">late interaction</span><span class="jev-use-v">ColBERT as a reranker over first-stage results. good middle ground on speed vs quality.</span></div>
+        <div class="jev-use"><span class="jev-use-k">LLM reranker</span><span class="jev-use-v">ask a small model (Haiku 5.5, Terra) to rank or score chunks listwise. best on reasoning-heavy relevance, slowest and priciest.</span></div>
+        <div class="jev-use"><span class="jev-use-k">Jev Score</span><span class="jev-use-v">typed relevance score with calibrated confidence, fast enough to run per chunk. see the Jev section.</span></div>
+      </div>
+      <div class="jev-fit-title" style="margin-top:18px">defaults I'd ship</div>
+      <div class="jev-uses">
+        <div class="jev-use"><span class="jev-use-k">chunk</span><span class="jev-use-v">structure-aware parse + recursive split, parent-child, contextual header on each chunk.</span></div>
+        <div class="jev-use"><span class="jev-use-k">index</span><span class="jev-use-v">HNSW + BM25 in the same store (pgvector + tsvector, or Qdrant hybrid). metadata on everything.</span></div>
+        <div class="jev-use"><span class="jev-use-k">retrieve</span><span class="jev-use-v">rewrite query → hybrid top-50 → RRF.</span></div>
+        <div class="jev-use"><span class="jev-use-k">rerank</span><span class="jev-use-v">cross-encoder → top-5 with a score floor.</span></div>
+        <div class="jev-use"><span class="jev-use-k">measure</span><span class="jev-use-v">recall@50 for retrieval, nDCG@5 / MRR for rerank, RAGAS on the final answer. tune the stage that's actually failing.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="jev-links">
+    <a href="https://www.anthropic.com/news/contextual-retrieval" target="_blank">anthropic: contextual retrieval ↗</a>
+    <a href="https://arxiv.org/abs/2409.04701" target="_blank">late chunking paper ↗</a>
+    <a href="https://arxiv.org/abs/2004.12832" target="_blank">ColBERT ↗</a>
+    <a href="https://arxiv.org/abs/2401.18059" target="_blank">RAPTOR ↗</a>
+    <a href="https://arxiv.org/abs/2212.10496" target="_blank">HyDE ↗</a>
+    <a href="https://arxiv.org/abs/2401.15884" target="_blank">corrective RAG ↗</a>
+    <a href="https://www.sbert.net/examples/cross_encoder/applications/README.html" target="_blank">sbert: cross-encoders ↗</a>
+  </div>
+</div>
+</div>
+<div class="divider"></div>
 
 <!-- ══════════════════════════════════════════
      USE CASE DECONSTRUCTOR
@@ -939,6 +1451,8 @@ urgent = res.answers[<span class="s">"urgent"</span>].noul &gt; <span class="n">
         <tr><td class="rc-name"><div class="res-name"><a href="https://arxiv.org/abs/2501.12948" target="_blank">DeepSeek-R1 (2025)</a></div></td><td class="rc-type"><span class="res-type t-paper">reasoning</span></td><td class="rc-desc"><div class="res-desc">RL-trained reasoning without a mountain of human labels. explains why every model now "thinks" before answering.</div></td><td class="rc-cost"><span class="res-free">free</span></td></tr>
         <tr><td class="rc-name"><div class="res-name"><a href="https://arxiv.org/abs/2307.03172" target="_blank">Lost in the Middle (2023)</a></div></td><td class="rc-type"><span class="res-type t-paper">long context</span></td><td class="rc-desc"><div class="res-desc">models ignore stuff buried mid-context. still the best argument for retrieval + ordering over context stuffing.</div></td><td class="rc-cost"><span class="res-free">free</span></td></tr>
         <tr><td class="rc-name"><div class="res-name"><a href="https://arxiv.org/abs/2310.11511" target="_blank">Self-RAG (2023)</a></div></td><td class="rc-type"><span class="res-type t-paper">RAG</span></td><td class="rc-desc"><div class="res-desc">model decides when to retrieve and critiques its own output. the idea behind most adaptive RAG graphs.</div></td><td class="rc-cost"><span class="res-free">free</span></td></tr>
+        <tr><td class="rc-name"><div class="res-name"><a href="https://arxiv.org/abs/2312.06681" target="_blank">Steering Llama 2 via CAA (2023)</a></div></td><td class="rc-type"><span class="res-type t-paper">steering</span></td><td class="rc-desc"><div class="res-desc">contrastive activation addition. the cleanest intro to steering vectors.</div></td><td class="rc-cost"><span class="res-free">free</span></td></tr>
+        <tr><td class="rc-name"><div class="res-name"><a href="https://arxiv.org/abs/2409.04701" target="_blank">Late Chunking (2024)</a></div></td><td class="rc-type"><span class="res-type t-paper">chunking</span></td><td class="rc-desc"><div class="res-desc">embed the whole doc first, chunk after. chunks keep their context.</div></td><td class="rc-cost"><span class="res-free">free</span></td></tr>
         <tr><td class="rc-name"><div class="res-name"><a href="https://arxiv.org/abs/2404.16130" target="_blank">GraphRAG — From Local to Global (2024)</a></div></td><td class="rc-type"><span class="res-type t-paper">graph RAG</span></td><td class="rc-desc"><div class="res-desc">Microsoft's community-summary approach. read it before bolting a knowledge graph onto your RAG.</div></td><td class="rc-cost"><span class="res-free">free</span></td></tr>
       </tbody>
     </table>
@@ -1041,6 +1555,10 @@ urgent = res.answers[<span class="s">"urgent"</span>].noul &gt; <span class="n">
         <tr><td class="rc-name"><div class="res-name"><a href="https://phoenix.arize.com/" target="_blank">Arize Phoenix</a></div></td><td class="rc-type"><span class="res-type t-code">observability</span></td><td class="rc-desc"><div class="res-desc">open-source tracing + evals for agents. OpenTelemetry native. what Flightcheck runs on.</div></td><td class="rc-cost"><span class="res-free">free</span></td></tr>
         <tr><td class="rc-name"><div class="res-name"><a href="https://langfuse.com/" target="_blank">Langfuse</a></div></td><td class="rc-type"><span class="res-type t-code">observability</span></td><td class="rc-desc"><div class="res-desc">self-hostable LangSmith alternative. traces, prompt versions, datasets, cost tracking.</div></td><td class="rc-cost"><span class="res-free">free</span></td></tr>
         <tr><td class="rc-name"><div class="res-name"><a href="https://ollama.com/" target="_blank">Ollama</a></div></td><td class="rc-type"><span class="res-type t-code">local LLMs</span></td><td class="rc-desc"><div class="res-desc">one command to run Qwen, DeepSeek, Mistral locally. perfect for offline dev and cost-free prototyping.</div></td><td class="rc-cost"><span class="res-free">free</span></td></tr>
+        <tr><td class="rc-name"><div class="res-name"><a href="https://github.com/google-research/harness2" target="_blank">Harness²</a></div></td><td class="rc-type"><span class="res-type t-code">agents</span></td><td class="rc-desc"><div class="res-desc">Google Research's self-improving agent harness. edits prompts, skills, tools; keeps only proven changes.</div></td><td class="rc-cost"><span class="res-free">free</span></td></tr>
+        <tr><td class="rc-name"><div class="res-name"><a href="https://github.com/pydot/pydot" target="_blank">pydot</a></div></td><td class="rc-type"><span class="res-type t-code">viz</span></td><td class="rc-desc"><div class="res-desc">pure-python Graphviz DOT. render your LangGraph to SVG for docs and PRs.</div></td><td class="rc-cost"><span class="res-free">free</span></td></tr>
+        <tr><td class="rc-name"><div class="res-name"><a href="https://github.com/vgel/repeng" target="_blank">repeng</a></div></td><td class="rc-type"><span class="res-type t-code">steering</span></td><td class="rc-desc"><div class="res-desc">control vectors for open-weights models in a few lines. easiest way into activation steering.</div></td><td class="rc-cost"><span class="res-free">free</span></td></tr>
+        <tr><td class="rc-name"><div class="res-name"><a href="https://huggingface.co/BAAI/bge-reranker-v2-m3" target="_blank">bge-reranker-v2-m3</a></div></td><td class="rc-type"><span class="res-type t-code">reranker</span></td><td class="rc-desc"><div class="res-desc">open multilingual cross-encoder. the default self-hosted reranker.</div></td><td class="rc-cost"><span class="res-free">free</span></td></tr>
         <tr><td class="rc-name"><div class="res-name"><a href="https://artificialanalysis.ai/models" target="_blank">Artificial Analysis</a></div></td><td class="rc-type"><span class="res-type t-code">benchmarks</span></td><td class="rc-desc"><div class="res-desc">independent quality / speed / price comparisons. check here before trusting a launch blog.</div></td><td class="rc-cost"><span class="res-free">free</span></td></tr>
       </tbody>
     </table>
@@ -1277,7 +1795,7 @@ urgent = res.answers[<span class="s">"urgent"</span>].noul &gt; <span class="n">
       <div class="cheat-item"><span class="cheat-key">2. chunk</span><span class="cheat-val">recursive, 512 tokens, 50 overlap. semantic > fixed for complex docs.</span></div>
       <div class="cheat-item"><span class="cheat-key">3. embed</span><span class="cheat-val">text-embedding-3-small (fast) or bge-large (quality).</span></div>
       <div class="cheat-item"><span class="cheat-key">4. store</span><span class="cheat-val">ChromaDB (local), pgvector (prod), Qdrant (scale).</span></div>
-      <div class="cheat-item"><span class="cheat-key">5. retrieve</span><span class="cheat-val">hybrid: BM25 + semantic + reranker = best results.</span></div>
+      <div class="cheat-item"><span class="cheat-key">5. retrieve</span><span class="cheat-val">hybrid top-50 → RRF → cross-encoder → top-5. see retrieval playbook.</span></div>
       <div class="cheat-item"><span class="cheat-key">6. generate</span><span class="cheat-val">inject context, instruct no hallucination. stream it.</span></div>
       <div class="cheat-item"><span class="cheat-key">7. eval</span><span class="cheat-val">RAGAS: faithfulness + ctx_precision + answer_relevancy.</span></div>
     </div>
@@ -1299,16 +1817,17 @@ urgent = res.answers[<span class="s">"urgent"</span>].noul &gt; <span class="n">
       <div class="cheat-item"><span class="cheat-key">XML (Claude)</span><span class="cheat-val">wrap context in &lt;context&gt;, docs in &lt;document&gt;.</span></div>
       <div class="cheat-item"><span class="cheat-key">few-shot</span><span class="cheat-val">3–5 examples beats zero-shot for structured output.</span></div>
       <div class="cheat-item"><span class="cheat-key">structured</span><span class="cheat-val">Pydantic + .with_structured_output() = reliable JSON.</span></div>
-      <div class="cheat-item"><span class="cheat-key">temperature</span><span class="cheat-val">0 for extraction/SQL/code. 0.7+ for creative outputs.</span></div>
+      <div class="cheat-item"><span class="cheat-key">temperature</span><span class="cheat-val">0 for extraction/SQL/code where supported. Fable 5.2 rejects it: use effort + prompts.</span></div>
     </div>
 
     <div class="cheat-card">
-      <div class="cheat-title">[ model selection · sep 2026 ]</div>
-      <div class="cheat-item"><span class="cheat-key">reasoning</span><span class="cheat-val">Claude Opus 5.5 / Fable 5.1 / GPT-6 Astra. complex analysis.</span></div>
-      <div class="cheat-item"><span class="cheat-key">daily driver</span><span class="cheat-val">Claude Sonnet 5.5 / GPT-6 Sol. docs, agents, tool use.</span></div>
-      <div class="cheat-item"><span class="cheat-key">fast + cheap</span><span class="cheat-val">Claude Haiku 4.5 / GPT-6 Luna / Gemini 3.5 Flash-Lite.</span></div>
+      <div class="cheat-title">[ model selection · nov 2026 ]</div>
+      <div class="cheat-item"><span class="cheat-key">reasoning</span><span class="cheat-val">Claude Fable 5.2 / Opus 5.5 / GPT-6 Astra / Gemini 4 Argon.</span></div>
+      <div class="cheat-item"><span class="cheat-key">daily driver</span><span class="cheat-val">Claude Sonnet 5.5 / GPT-6.1 Sol. docs, agents, tool use.</span></div>
+      <div class="cheat-item"><span class="cheat-key">fast + cheap</span><span class="cheat-val">Claude Haiku 5.5 / GPT-6.1 Terra / GPT-6 Luna / Gemini 3.8 Flash.</span></div>
+      <div class="cheat-item"><span class="cheat-key">computer use</span><span class="cheat-val">GPT-6.1 Terra for speed, Opus 5.5 for hard flows.</span></div>
       <div class="cheat-item"><span class="cheat-key">decisions</span><span class="cheat-val">Jev for routing, gating, labeling. typed + calibrated.</span></div>
-      <div class="cheat-item"><span class="cheat-key">open weights</span><span class="cheat-val">DeepSeek V4 Flash, GLM-5.2 (code), Qwen 3.8 (local).</span></div>
+      <div class="cheat-item"><span class="cheat-key">open weights</span><span class="cheat-val">Kimi K3.1 Pro, Muse Spark Open, DeepSeek V4.1 Flash, Qwen 3.8 (local).</span></div>
       <div class="cheat-item"><span class="cheat-key">voice</span><span class="cheat-val">Gemini 3.8 Live / OpenAI Realtime.</span></div>
     </div>
 

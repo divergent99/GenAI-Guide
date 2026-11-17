@@ -29,9 +29,15 @@ free forever. no paywalls. no email gates. just the signal.
 
 **newsletters** — 10 newsletters worth actually subscribing to, with honest notes on what each one covers and who it's for.
 
-**the bigger picture** — deployment, use case design frameworks, the Sep 2026 model landscape (Claude Fable 5.1 / Opus 5.5, GPT-6, Gemini 3.8 Flash, open weights), and an honest take on the AI bubble.
+**the bigger picture** — deployment, use case design frameworks, the Nov 2026 model landscape (Claude Fable 5.2 / Opus 5.5 / Haiku 5.5, GPT-6.1 Sol / Terra, Gemini 4 Argon, Kimi K3.1 Pro, Muse Spark Open), and an honest take on the AI bubble.
 
 **Jev** — a dedicated breakdown of TypeSafe's System One model: typed Choice / Score / Noul decisions, where it fits in a LangGraph pipeline, code, limits and caveats.
+
+**the Nov 2026 update** - everything that shipped Sep to Nov 2026 by lab, what to change in your stack this week, plus Google's Harness² (self-improving agent harness) and pydot for drawing LangGraph graphs as code.
+
+**activation steering** - steering vectors / contrastive activation addition: how they're extracted, a runnable PyTorch hook, steering vs prompting vs fine-tuning, and where it's actually useful.
+
+**retrieval playbook** - 8 chunking strategies, 8 indexing techniques, retrieval modes and query transforms, and reranking with a hybrid + RRF + cross-encoder snippet. plus the defaults I'd ship.
 
 ---
 

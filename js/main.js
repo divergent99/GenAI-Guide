@@ -83,7 +83,7 @@ function switchTab(id, btn) {
 
 /* ── NAV SCROLL SPY ── */
 (function () {
-  const sections = ['roadmap','concepts','jev','resources','projects','newsletters','cheatsheet','stack','contact'];
+  const sections = ['roadmap','concepts','jev','update','retrieval','resources','projects','newsletters','cheatsheet','stack','contact'];
   const links = document.querySelectorAll('.nav-links a[data-section]');
   window.addEventListener('scroll', () => {
     let current = '';
